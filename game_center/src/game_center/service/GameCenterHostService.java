@@ -9,11 +9,6 @@ import game_center.interfaces.IGameCenterHostService;
 public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
-	public List<ResponseGameCenter> selectAll() {
-		return null;
-	}
-
-	@Override
 	public List<ResponseGameCenter> selectGame(String gameName) {
 		return null;
 	}
