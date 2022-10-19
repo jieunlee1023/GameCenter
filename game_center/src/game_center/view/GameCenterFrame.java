@@ -26,5 +26,9 @@ public class GameCenterFrame extends JFrame {
 	private void addEventListener() {
 
 	}
+	
+	public static void main(String[] args) {
+		new GameCenterFrame();
+	}
 
 }
