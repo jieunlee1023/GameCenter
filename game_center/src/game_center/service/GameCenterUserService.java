@@ -10,7 +10,6 @@ public class GameCenterUserService implements IGameCenterService {
 
 	@Override
 	public List<ResponseGameCenter> selectGame(String gameName) {
-
 		return null;
 	}
 
