@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/ji_eu/OneDrive/바탕 화면/[221019] 자바 팀프로젝트/tools/lombok.jar"/>
-	<classpathentry kind="lib" path="C:/Users/ji_eu/OneDrive/바탕 화면/[221019] 자바 팀프로젝트/tools/mysql-connector-java-8.0.21.jar"/>
+	<classpathentry kind="lib" path="C:/B_mini_project/GameCenter/tools/lombok.jar"/>
+	<classpathentry kind="lib" path="C:/B_mini_project/GameCenter/tools/mysql-connector-java-8.0.21.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

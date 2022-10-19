@@ -1,5 +1,8 @@
 package game_center.dto;
 
+import lombok.Data;
+
+@Data
 public class RequestGameCenter {
 
 	// user
