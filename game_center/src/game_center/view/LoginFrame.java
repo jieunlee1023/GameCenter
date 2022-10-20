@@ -1,11 +1,8 @@
 package game_center.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,9 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.interfaces.IGameCenterHostService;
-import lombok.Data;
 
-@Data
 public class LoginFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService service;
@@ -30,22 +25,15 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton logInButton;
 
-	<<<<<<<HEAD:game_center/src/game_center/view/LoginFrame.java
-
 	public LoginFrame() {
 		initData();
 		setInitLayout();
 		addEventListener();
 	}
 
-	public LoginFrame(IGameCenterHostService centerHostService) {
-		this.centerHostService = centerHostService;
-=======
-
-	public LoginPage(IGameCenterHostService service) {
+	public LoginFrame(IGameCenterHostService service) {
 		// 매개변수로 인터페이스의 주소값을 받아서 기능을 호출한다
 		this.service = service; // 주소값을 넘겨받는 과정
->>>>>>> e92df49516a53917f877f3449dba8732f4e2bbbc:game_center/src/game_center/view/LoginPage.java
 		initData();
 		setInitLayout();
 		addEventListener();
