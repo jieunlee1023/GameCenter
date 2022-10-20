@@ -13,6 +13,7 @@ import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
+import game_center.service.GameCenterUserService;
 
 public class JoinFrame extends JFrame implements ActionListener {
 
@@ -167,7 +168,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		GameCenterUserService centerUserService = new GameCenterUserService();
 		JButton targetButton = (JButton) e.getSource();
 
 		if (targetButton.getText().equals(userIdCheck.getText())) {

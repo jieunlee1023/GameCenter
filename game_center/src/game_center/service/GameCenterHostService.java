@@ -11,9 +11,7 @@ import game_center.dto.ResponseGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.DBClient;
 import game_center.view.GameCenterFrame;
-import lombok.Data;
 
-@Data
 public class GameCenterHostService implements IGameCenterHostService {
 
 	private DBClient client;
@@ -21,12 +19,11 @@ public class GameCenterHostService implements IGameCenterHostService {
 	private ResultSet rs;
 	private ResponseGameCenter responseGameCenter = new ResponseGameCenter();
 
-	GameCenterFrame centerFrame;
+	private GameCenterFrame frame;
 
 	public GameCenterHostService() {
+		frame = new GameCenterFrame(this);
 		client = DBClient.getInstance();
-
-		centerFrame = new GameCenterFrame(this);
 	}
 
 	@Override
@@ -245,11 +242,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(5, rgc.getEmail());
 			ps.setString(6, rgc.getMobile());
 
-			ps.executeUpdate();
-
-			client.getConnection().commit();
-			client.getConnection().setAutoCommit(true);
-
 		} catch (SQLException e) {
 			try {
 				System.err.println("join에서 롤백 했다 !! 뭐함 ;;");
@@ -266,7 +258,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public int logInId(RequestGameCenter rgc) {
-		int loginPass = 9998;
+		int loginPass = 0;
 
 		List<String> list = selectUserId();
 
@@ -284,7 +276,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public int logInPassword(RequestGameCenter rgc) {
-		int loginPass = 9999;
+		int loginPass = 1;
 
 		List<String> list = selectUserPassword();
 
@@ -600,61 +592,67 @@ public class GameCenterHostService implements IGameCenterHostService {
 		RequestGameCenter center = new RequestGameCenter();
 		GameCenterHostService service = new GameCenterHostService();
 
-//		List<ResponseGameCenter> list = service.selectGame("test2");
+//      List<ResponseGameCenter> list = service.selectGame("test2");
 //
-//		System.out.println(list);
+//      System.out.println(list);
 
-//		List<ResponseGameCenter> list = service.selectCharacter("우니");
+//      List<ResponseGameCenter> list = service.selectCharacter("우니");
 //
-//		System.out.println(list);
+//      System.out.println(list);
 
-//		List<ResponseGameCenter> list = service.selectMap("소환사의 협곡");
+//      List<ResponseGameCenter> list = service.selectMap("소환사의 협곡");
 //
-//		System.out.println(list);
+//      System.out.println(list);
 
+//      center.setUserId("test1");
+//      center.setPassword("1234");
+//      center.setUserName("test1");
+//      center.setEmail("test@naver.com");
+//      center.setMobile("010-1111-1111");
 //
-//		service.insertJoin(center);
+//      service.insertJoin(center);
 
-//		center.setGameName("test");
-//		center.setAgeLimit(19);
-//		center.setGameInfo("크래프톤[15]의 자회사인 펍지 스튜디오[16]의 MMO 슈팅 게임이다. 공식 명칭은...");
+//      center.setGameName("test");
+//      center.setAgeLimit(19);
+//      center.setGameInfo("크래프톤[15]의 자회사인 펍지 스튜디오[16]의 MMO 슈팅 게임이다. 공식 명칭은...");
 //
-//		service.insertGame(center);
+//      service.insertGame(center);
 
-//		service.deleteGame("test");
-//		service.deleteCharater("야스오");
-//		service.deleteMap("칼바람 나락");
+//      service.deleteGame("test");
+//      service.deleteCharater("야스오");
+//      service.deleteMap("칼바람 나락");
 
-//		center.setGameName("배틀그라운드");
-//		center.setGameCharacterName("여자");
-//		center.setGameCharacterInfo("없다.");
+//      center.setGameName("배틀그라운드");
+//      center.setGameCharacterName("여자");
+//      center.setGameCharacterInfo("없다.");
 //
-//		service.insertChracter(center);
+//      service.insertChracter(center);
 
-//		center.setGameName("크레이지아케이드");
-//		center.setGameMapName("아쿠아");
-//		center.setGameMapInfo("무시무시한 상어가 살고 있는 바닷속 맵으로 상어에 닿아..");
+//      center.setGameName("크레이지아케이드");
+//      center.setGameMapName("아쿠아");
+//      center.setGameMapInfo("무시무시한 상어가 살고 있는 바닷속 맵으로 상어에 닿아..");
 //
-//		service.insertMap(center);
+//      service.insertMap(center);
 
 //		service.logIn(center, "A", "asd123
+//      service.logIn(center, "A", "asd1234");
 
-//		center.setGameName("test");
-//		center.setAgeLimit(15);
-//		center.setGameInfo("testText");
+//      center.setGameName("test");
+//      center.setAgeLimit(15);
+//      center.setGameInfo("testText");
 //
-//		service.updateGame(center, "test");
+//      service.updateGame(center, "test");
 
-//		center.setGameName("롤");
-//		center.setGameCharacterName("룰루");
-//		center.setGameCharacterInfo("씹련이다.");
-//		
-//		service.updateCharacter(center, "제드");
+//      center.setGameName("롤");
+//      center.setGameCharacterName("룰루");
+//      center.setGameCharacterInfo("씹련이다.");
+//      
+//      service.updateCharacter(center, "제드");
 
-//		center.setGameMapName("소환사의 협곡");
-//		center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
-//		
-//		service.updateMap(center, "상점");
+//      center.setGameMapName("소환사의 협곡");
+//      center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
+//      
+//      service.updateMap(center, "상점");
 
 	}
 }

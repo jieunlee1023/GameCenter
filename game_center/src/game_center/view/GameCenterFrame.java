@@ -23,6 +23,8 @@ import lombok.Data;
 @Data
 public class GameCenterFrame extends JFrame implements ActionListener {
 
+	IGameCenterHostService service;
+
 	static IGameCenterHostService centerHostService;
 
 	private JPanel mainPanel = new JPanel();

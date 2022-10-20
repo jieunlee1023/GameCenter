@@ -1,8 +1,11 @@
 package game_center.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -12,15 +15,13 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import lombok.Data;
 
 @Data
 public class LoginFrame extends JFrame implements ActionListener {
 
-	IGameCenterHostService centerHostService;
-	RequestGameCenter center = new RequestGameCenter();
+	IGameCenterHostService service;
 
 	private JLabel logIn;
 	private JLabel userId;
@@ -28,6 +29,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private JLabel password;
 	private JPasswordField passwordField;
 	private RoundedButton logInButton;
+
+	<<<<<<<HEAD:game_center/src/game_center/view/LoginFrame.java
 
 	public LoginFrame() {
 		initData();
@@ -37,6 +40,12 @@ public class LoginFrame extends JFrame implements ActionListener {
 
 	public LoginFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
+=======
+
+	public LoginPage(IGameCenterHostService service) {
+		// 매개변수로 인터페이스의 주소값을 받아서 기능을 호출한다
+		this.service = service; // 주소값을 넘겨받는 과정
+>>>>>>> e92df49516a53917f877f3449dba8732f4e2bbbc:game_center/src/game_center/view/LoginPage.java
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -90,6 +99,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 		logInButton.setSize(300, 50);
 		logInButton.setLocation(100, 180);
 		add(logInButton);
+
 	}
 
 	public void addEventListener() {
@@ -99,7 +109,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-	//boolean flag = centerHostService.logIn(center, userIdField.getText(), passwordField.getText());
+		// boolean flag = centerHostService.logIn(center, userIdField.getText(),
+		// passwordField.getText());
 
 		JButton targetButton = (JButton) e.getSource();
 		if (targetButton.getText().equals(logInButton.getText())) {
@@ -110,6 +121,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 		} else {
 			System.out.println("로그인 실패");
 			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
+
 		}
+
 	}
 }
