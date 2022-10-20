@@ -23,7 +23,7 @@ public class GameCenterUserService implements IGameCenterService {
 	}
 
 	private void initData() {
-		dbClient = dbClient.getInstance();
+		dbClient = DBClient.getInstance();
 	}
 
 	@Override

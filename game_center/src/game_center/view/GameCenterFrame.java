@@ -20,8 +20,10 @@ import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.Define;
 
 public class GameCenterFrame extends JFrame implements ActionListener {
-	
+
 	IGameCenterHostService service;
+
+	static IGameCenterHostService centerHostService;
 
 	private JPanel mainPanel;
 	private JScrollBar scrollBar;
@@ -35,8 +37,8 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JButton gameButton2;
 	private JButton gameButton3;
 
-	public GameCenterFrame(IGameCenterHostService service) {
-		this.service = service;
+	public GameCenterFrame(IGameCenterHostService centerHostService) {
+		this.centerHostService = centerHostService;
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -122,10 +124,11 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		JButton targetButton = (JButton) e.getSource();
 		if (targetButton.getText().equals(join.getText())) {
 			System.out.println("회원가입");
-			new JoinPage();
+			new JoinPage(centerHostService);
 		} else if (targetButton.getText().equals(logIn.getText())) {
 			System.out.println("로그인");
 			new LoginPage(service);
+			new LoginPage(centerHostService);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
@@ -147,8 +150,4 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			}
 		}
 	} // end of inner class
-
-	public static void main(String[] args) {
-		new GameCenterFrame();
-	}
 }
