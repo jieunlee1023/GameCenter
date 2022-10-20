@@ -10,7 +10,10 @@ import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.DBClient;
+import game_center.view.GameCenterFrame;
+import lombok.Data;
 
+@Data
 public class GameCenterHostService implements IGameCenterHostService {
 
 	private DBClient client;
@@ -18,8 +21,12 @@ public class GameCenterHostService implements IGameCenterHostService {
 	private ResultSet rs;
 	private ResponseGameCenter responseGameCenter = new ResponseGameCenter();
 
+	GameCenterFrame centerFrame;
+
 	public GameCenterHostService() {
 		client = DBClient.getInstance();
+
+		centerFrame = new GameCenterFrame(this);
 	}
 
 	@Override
@@ -238,6 +245,11 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(5, rgc.getEmail());
 			ps.setString(6, rgc.getMobile());
 
+			ps.executeUpdate();
+
+			client.getConnection().commit();
+			client.getConnection().setAutoCommit(true);
+
 		} catch (SQLException e) {
 			try {
 				System.err.println("join에서 롤백 했다 !! 뭐함 ;;");
@@ -254,7 +266,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public int logInId(RequestGameCenter rgc) {
-		int loginPass = 0;
+		int loginPass = 9998;
 
 		List<String> list = selectUserId();
 
@@ -272,7 +284,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public int logInPassword(RequestGameCenter rgc) {
-		int loginPass = 1;
+		int loginPass = 9999;
 
 		List<String> list = selectUserPassword();
 
@@ -600,11 +612,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 //
 //		System.out.println(list);
 
-//		center.setUserId("test1");
-//		center.setPassword("1234");
-//		center.setUserName("test1");
-//		center.setEmail("test@naver.com");
-//		center.setMobile("010-1111-1111");
 //
 //		service.insertJoin(center);
 
