@@ -8,6 +8,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 public class Game extends JFrame implements ActionListener {
@@ -31,9 +32,9 @@ public class Game extends JFrame implements ActionListener {
 	}
 
 	private void initData() {
-		setSize(1000, 900);
+		setSize(1000, 500);
 		setTitle("Game Center");
-		setResizable(false);
+		//setResizable(false);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
@@ -46,15 +47,17 @@ public class Game extends JFrame implements ActionListener {
 		setVisible(true);
 		setLayout(null);
 
-		mainPanel.setSize(1000, 900);
-		mainPanel.setLocation(0, 0);
-		// mainPanel.setBackground(Color.white);
-		add(mainPanel);
+//		mainPanel.setSize(1000, 900);
+//		mainPanel.setLocation(0, 0);
+//		// mainPanel.setBackground(Color.white);
+//		add(mainPanel);
 
-		scroll.setSize(1000, 1000);
+		scroll.setSize(1000, 1500);
 		scroll.setLocation(0, 0);
-		scroll.setBackground(Color.black);
-		mainPanel.add(scroll);
+		scroll.setVerticalScrollBar(new JScrollBar(JScrollBar.VERTICAL, 10, 10, 10, 1000));
+		scroll.setWheelScrollingEnabled(isMaximumSizeSet());;
+		scroll.setBackground(Color.green);
+		add(scroll);
 
 	}
 

@@ -630,7 +630,9 @@ public class GameCenterHostService implements IGameCenterHostService {
 //
 //		service.insertMap(center);
 
-//		service.logIn(center, "A", "asd1234");
+//		service.logIn(center, "A", "asd123
+		
+		4");
 
 //		center.setGameName("test");
 //		center.setAgeLimit(15);
