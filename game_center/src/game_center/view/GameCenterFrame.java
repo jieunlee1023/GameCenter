@@ -105,7 +105,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private void addEventListener() {
 		join.addActionListener(this);
 		logIn.addActionListener(this);
-//		gameButton1.addActionListener(this);
+		gameButton1.addActionListener(this);
 		gameButton2.addActionListener(this);
 		gameButton3.addActionListener(this);
 		gameButton4.addActionListener(this);
@@ -115,14 +115,19 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 
 		JButton targetButton = (JButton) e.getSource();
+
 		if (targetButton.getText().equals(join.getText())) {
 			System.out.println("회원가입");
 		} else if (targetButton.getText().equals(logIn.getText())) {
 			System.out.println("로그인");
-		} else if (targetButton.getText().equals(gameButton1.getText())) {
+		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
-		} else if (targetButton.getText().equals(gameButton2.getText())) {
+		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
+		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
+			System.out.println("게임 3");
+		} else if (targetButton.hashCode() == (gameButton4.hashCode())) {
+			System.out.println("게임 4");
 		}
 	}
 
