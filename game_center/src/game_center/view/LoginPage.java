@@ -43,7 +43,7 @@ public class LoginPage extends JFrame implements ActionListener {
 
 		userIdField = new JTextField();
 		passwordField = new JPasswordField();
-		
+
 		logInButton = new RoundedButton("로 그 인");
 
 	}
@@ -73,8 +73,8 @@ public class LoginPage extends JFrame implements ActionListener {
 		passwordField.setLocation(180, 130);
 		passwordField.setBackground(new Color(230, 230, 230));
 		add(passwordField);
-		
-		logInButton.setSize(300,50);
+
+		logInButton.setSize(300, 50);
 		logInButton.setLocation(100, 180);
 		add(logInButton);
 
@@ -90,7 +90,7 @@ public class LoginPage extends JFrame implements ActionListener {
 		JButton targetButton = (JButton) e.getSource();
 		if (targetButton.getText().equals(logInButton.getText())) {
 			System.out.println("로그인 버튼 누름");
-		} 
+		}
 
 	}
 
