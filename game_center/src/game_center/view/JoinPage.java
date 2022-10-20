@@ -14,6 +14,8 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import game_center.service.GameCenterUserService;
+
 public class JoinPage extends JFrame implements ActionListener {
 
 	private JLabel join;
@@ -163,7 +165,7 @@ public class JoinPage extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
+		GameCenterUserService centerUserService = new GameCenterUserService();
 		JButton targetButton = (JButton) e.getSource();
 
 		if (targetButton.getText().equals(userIdCheck.getText())) {

@@ -10,6 +10,7 @@ import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.DBClient;
+import game_center.view.GameCenterFrame;
 
 public class GameCenterHostService implements IGameCenterHostService {
 
@@ -18,7 +19,10 @@ public class GameCenterHostService implements IGameCenterHostService {
 	private ResultSet rs;
 	private ResponseGameCenter responseGameCenter = new ResponseGameCenter();
 
+	private GameCenterFrame frame;
+
 	public GameCenterHostService() {
+		frame = new GameCenterFrame(this);
 		client = DBClient.getInstance();
 	}
 

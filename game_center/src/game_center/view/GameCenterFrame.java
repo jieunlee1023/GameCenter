@@ -16,9 +16,12 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 
+import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.Define;
 
 public class GameCenterFrame extends JFrame implements ActionListener {
+	
+	IGameCenterHostService service;
 
 	private JPanel mainPanel;
 	private JScrollBar scrollBar;
@@ -32,7 +35,8 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JButton gameButton2;
 	private JButton gameButton3;
 
-	public GameCenterFrame() {
+	public GameCenterFrame(IGameCenterHostService service) {
+		this.service = service;
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -121,7 +125,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			new JoinPage();
 		} else if (targetButton.getText().equals(logIn.getText())) {
 			System.out.println("로그인");
-			new LoginPage();
+			new LoginPage(service);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {

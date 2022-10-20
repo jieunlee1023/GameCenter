@@ -14,7 +14,11 @@ import javax.swing.JLabel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import game_center.interfaces.IGameCenterHostService;
+
 public class LoginPage extends JFrame implements ActionListener {
+
+	IGameCenterHostService service;
 
 	private JLabel logIn;
 	private JLabel userId;
@@ -23,7 +27,9 @@ public class LoginPage extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton logInButton;
 
-	public LoginPage() {
+	public LoginPage(IGameCenterHostService service) {
+		// 매개변수로 인터페이스의 주소값을 받아서 기능을 호출한다
+		this.service = service; // 주소값을 넘겨받는 과정
 		initData();
 		setInitLayout();
 		addEventListener();
