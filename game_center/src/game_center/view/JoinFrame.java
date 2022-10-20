@@ -1,11 +1,8 @@
 package game_center.view;
 
 import java.awt.Color;
-import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -16,9 +13,8 @@ import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
-import game_center.interfaces.IGameCenterService;
 
-public class JoinPage extends JFrame implements ActionListener {
+public class JoinFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	RequestGameCenter center = new RequestGameCenter();
@@ -40,7 +36,7 @@ public class JoinPage extends JFrame implements ActionListener {
 	private JButton save;
 	private JButton exit;
 
-	public JoinPage(IGameCenterHostService centerHostService) {
+	public JoinFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
 		initData();
 		setInitLayout();

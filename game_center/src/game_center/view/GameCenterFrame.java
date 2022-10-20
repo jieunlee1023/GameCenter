@@ -18,7 +18,9 @@ import javax.swing.JScrollBar;
 
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.Define;
+import lombok.Data;
 
+@Data
 public class GameCenterFrame extends JFrame implements ActionListener {
 
 	static IGameCenterHostService centerHostService;
@@ -34,6 +36,12 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JButton gameButton1;
 	private JButton gameButton2;
 	private JButton gameButton3;
+
+	public GameCenterFrame() {
+		initData();
+		setInitLayout();
+		addEventListener();
+	}
 
 	public GameCenterFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
@@ -122,10 +130,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		JButton targetButton = (JButton) e.getSource();
 		if (targetButton.getText().equals(join.getText())) {
 			System.out.println("회원가입");
-			new JoinPage(centerHostService);
+			new JoinFrame(centerHostService);
 		} else if (targetButton.getText().equals(logIn.getText())) {
 			System.out.println("로그인");
-			new LoginPage(centerHostService);
+			new LoginFrame(centerHostService);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {

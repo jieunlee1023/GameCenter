@@ -8,13 +8,16 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
+import lombok.Data;
 
-public class LoginPage extends JFrame implements ActionListener {
+@Data
+public class LoginFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	RequestGameCenter center = new RequestGameCenter();
@@ -26,7 +29,13 @@ public class LoginPage extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton logInButton;
 
-	public LoginPage(IGameCenterHostService centerHostService) {
+	public LoginFrame() {
+		initData();
+		setInitLayout();
+		addEventListener();
+	}
+
+	public LoginFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
 		initData();
 		setInitLayout();
@@ -83,21 +92,24 @@ public class LoginPage extends JFrame implements ActionListener {
 		add(logInButton);
 	}
 
-	private void addEventListener() {
+	public void addEventListener() {
 		logInButton.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		boolean flag = centerHostService.logIn(center, userIdField.getText(), passwordField.getText());
+	//boolean flag = centerHostService.logIn(center, userIdField.getText(), passwordField.getText());
 
 		JButton targetButton = (JButton) e.getSource();
-		if (targetButton.getText().equals(logInButton.getText()) && flag) {
-			System.out.println("로그인 버튼 누름");
+		if (targetButton.getText().equals(logInButton.getText())) {
 			System.out.println("로그인 성공");
+			this.setVisible(false);
+			new GameCenterFrame();
+
 		} else {
 			System.out.println("로그인 실패");
+			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 		}
 	}
 }
