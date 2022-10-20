@@ -268,6 +268,8 @@ public class GameCenterUserService implements IGameCenterService {
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
+		} finally {
+			memoryClose();
 		}
 	}
 
@@ -301,12 +303,7 @@ public class GameCenterUserService implements IGameCenterService {
 			}
 			e.printStackTrace();
 		} finally {
-			try {
-				psmt.close();
-				dbClient.connectionClose();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			memoryClose();
 		}
 
 		return list;
@@ -341,5 +338,4 @@ public class GameCenterUserService implements IGameCenterService {
 		a.update(rgc);
 
 	}
-
 }

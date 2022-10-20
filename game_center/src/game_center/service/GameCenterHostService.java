@@ -24,12 +24,66 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public void update(RequestGameCenter rgc) {
-
+		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, rgc.getPassword());
+			ps.setString(2, rgc.getUserName());
+			ps.setString(3, rgc.getEmail());
+			ps.setString(4, rgc.getMobile());
+			ps.setString(5, rgc.getUserId());
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			try {
+				client.getConnection().rollback();
+				System.out.println("롤백됐습니다.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			} finally {
+				closeDB();
+			}
+		}
 	}
 
 	@Override
 	public List<ResponseGameCenter> selectUserById(String userId) {
-		return null;
+		String query = "SELECT * FROM user WHERE userId = ? ";
+		List<ResponseGameCenter> list = new ArrayList<>();
+		try {
+			client.getConnection().setAutoCommit(false);
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				ResponseGameCenter userInfo = new ResponseGameCenter();
+				userInfo.setIdentityNum("2");
+				userInfo.setUserId(rs.getString("userId"));
+				userInfo.setPassword(rs.getString("password"));
+				userInfo.setUserName(rs.getString("userName"));
+				userInfo.setEmail(rs.getString("email"));
+				userInfo.setMobile(rs.getString("mobile"));
+				list.add(userInfo);
+			}
+			client.getConnection().commit();
+			client.getConnection().setAutoCommit(true);
+		} catch (SQLException e) {
+			try {
+				client.getConnection().rollback();
+				System.out.println("롤백됐습니다.");
+			} catch (SQLException e1) {
+				e1.printStackTrace();
+			}
+			e.printStackTrace();
+		} finally {
+			try {
+				ps.close();
+				client.connectionClose();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 
 	@Override
@@ -576,7 +630,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 //
 //		service.insertMap(center);
 
-		service.logIn(center, "A", "asd1234");
+//		service.logIn(center, "A", "asd1234");
 
 //		center.setGameName("test");
 //		center.setAgeLimit(15);
