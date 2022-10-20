@@ -150,8 +150,8 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void update(String oldName, String newName) {
-
+	public int update(RequestGameCenter rgc) {
+		return 0;
 	}
 
 	@Override
