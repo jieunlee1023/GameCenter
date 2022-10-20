@@ -1,5 +1,6 @@
 package game_center;
 
+import game_center.service.GameCenterHostService;
 import game_center.view.GameCenterFrame;
 import game_center.view.JoinFrame;
 import game_center.view.LoginFrame;
@@ -18,13 +19,27 @@ public class GameCenterSystem {
 	public void showLogin() {
 		loginFrame = new LoginFrame();
 	}
+//	GameCenterFrame centerFrame;
+//	LoginFrame loginFrame;
+//	JoinFrame joinFrame;
+//	
+//
+//	// 로그인 처리
+//	// 회원가입 처리
+//	// 게임선터 보여주기
+//
+//	public void showLogin() {
+//		loginFrame = new LoginFrame();
+//		loginFrame.setVisible(true);
+//		loginFrame.addEventListener();
+//	}
 
 	public static void main(String[] args) {
 
-		GameCenterSystem gameCenterSystem = new GameCenterSystem();
-		gameCenterSystem.showLogin();
+		new GameCenterHostService();
 
-		// new GameCenterHostService();
+//		GameCenterSystem gameCenterSystem = new GameCenterSystem();
+//		gameCenterSystem.showLogin();
 
 	}
 }

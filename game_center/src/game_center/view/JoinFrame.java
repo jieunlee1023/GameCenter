@@ -3,6 +3,7 @@ package game_center.view;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.Provider.Service;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -13,6 +14,7 @@ import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
+import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
 
 public class JoinFrame extends JFrame implements ActionListener {
@@ -36,6 +38,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 	private JTextField mobileField;
 	private JButton save;
 	private JButton exit;
+	boolean idCheck;
 
 	public JoinFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
@@ -168,29 +171,26 @@ public class JoinFrame extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		GameCenterUserService centerUserService = new GameCenterUserService();
 		JButton targetButton = (JButton) e.getSource();
 
 		if (targetButton.getText().equals(userIdCheck.getText())) {
-
-			System.out.println("센터 겟 : " + center.getUserId());
-			System.out.println("유저가 쓴거 : " + userIdField.getText());
-
-			if (center.getUserId().equals(userIdField.getText())) {
-				System.out.println("이미 있는 아이디입니다");
+			idCheck = centerHostService.joinIdCheck(userIdField.getText());
+			if (idCheck) {
+				System.out.println("중복 아님");
 			} else {
-				System.out.println("등록 가능한 아이디입니다.");
+				System.out.println("중복 맞음");
 			}
+		} else if (targetButton.getText().equals(save.getText()) && idCheck) {
 
-		} else if (targetButton.getText().equals(save.getText())) {
 			center.setUserId(userIdField.getText());
 			center.setPassword(passwordField.getText());
 			center.setUserName(userNameField.getText());
 			center.setEmail(emailField.getText());
 			center.setMobile(mobileField.getText());
-
 			centerHostService.insertJoin(center);
 			System.out.println("저장됨");
+		} else if (targetButton.getText().equals(save.getText()) && !idCheck) {
+			System.out.println("아이디 중복 체크 하세요..");
 		} else if (targetButton.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
