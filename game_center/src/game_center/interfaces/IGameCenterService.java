@@ -15,10 +15,20 @@ public interface IGameCenterService {
 
 	List<ResponseGameCenter> selectMap(String mapName); // 게임 맵 선택 (맵상세)
 
+	List<String> selectUserId();
+
+	List<String> selectUserPassword();
+
 	boolean insertJoin(RequestGameCenter rgc); // 회원가입
 
-	void logIn(RequestGameCenter rgc); // 로그인
+	boolean logIn(RequestGameCenter rgc, String Id, String pw); // 로그인
 
-	int update(RequestGameCenter rgc); // 회원정보 수정
+	int logInId(RequestGameCenter rgc); // 로그인
+
+	int logInPassword(RequestGameCenter rgc); // 로그인
+
+	void update(RequestGameCenter rgc); // 회원정보 수정
+
+	List<ResponseGameCenter> selectUserById(String userId);
 
 }

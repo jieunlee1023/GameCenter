@@ -14,11 +14,11 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	boolean insertMap(RequestGameCenter rgc); // 게임 등록
 
-	void updateGame(String oldGameName, String newGameName); // 게임 정보 수정
+	void updateGame(RequestGameCenter rgc, String name); // 게임 정보 수정
 
-	void updateCharacter(String oldCharacterName, String newCharacterName); // 게임 캐릭터 수정
+	void updateCharacter(RequestGameCenter rgc, String name); // 게임 캐릭터 수정
 
-	void updateMap(String oldMapName, String newMapName); // 게임 맵 수정
+	void updateMap(RequestGameCenter rgc, String name); // 게임 맵 수정
 
 	void deleteGame(String gameName); // 게임 삭제
 

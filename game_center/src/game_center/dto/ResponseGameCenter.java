@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ResponseGameCenter {
 
+	private String identityNum;
 	private String userId;
 	private String password;
 	private String userName;
@@ -20,6 +21,7 @@ public class ResponseGameCenter {
 
 	private String gameMapName;
 	private String gameMapInfo;
+
 	@Override
 	public String toString() {
 		return "ResponseGameCenter [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email="

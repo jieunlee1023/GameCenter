@@ -16,10 +16,68 @@ public class GameCenterHostService implements IGameCenterHostService {
 	private DBClient client;
 	private PreparedStatement ps;
 	private ResultSet rs;
-	private ResponseGameCenter responseGameCenter = new ResponseGameCenter();;
+	private ResponseGameCenter responseGameCenter = new ResponseGameCenter();
 
 	public GameCenterHostService() {
 		client = DBClient.getInstance();
+	}
+
+	@Override
+	public void update(RequestGameCenter rgc) {
+
+	}
+
+	@Override
+	public List<ResponseGameCenter> selectUserById(String userId) {
+		return null;
+	}
+
+	@Override
+	public List<String> selectUserId() {
+		List<String> list = new ArrayList<>();
+
+		String query = "select userId from user";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				responseGameCenter.setUserId(rs.getString("userId"));
+
+				list.add(responseGameCenter.getUserId());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<String> selectUserPassword() {
+		List<String> list = new ArrayList<>();
+
+		String query = "select password from user";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				responseGameCenter.setUserId(rs.getString("password"));
+
+				list.add(responseGameCenter.getUserId());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return list;
 	}
 
 	@Override
@@ -125,13 +183,10 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(4, rgc.getUserName());
 			ps.setString(5, rgc.getEmail());
 			ps.setString(6, rgc.getMobile());
-			ps.executeUpdate();
 
-			client.getConnection().commit();
-			client.getConnection().setAutoCommit(true);
 		} catch (SQLException e) {
 			try {
-				System.err.println("롤백 했다 !! 뭐함 ;;");
+				System.err.println("join에서 롤백 했다 !! 뭐함 ;;");
 				client.getConnection().rollback();
 			} catch (SQLException e1) {
 				e1.printStackTrace();
@@ -140,18 +195,61 @@ public class GameCenterHostService implements IGameCenterHostService {
 		} finally {
 			closeDB();
 		}
-
 		return true;
 	}
 
 	@Override
-	public void logIn(RequestGameCenter rgc) {
+	public int logInId(RequestGameCenter rgc) {
+		int loginPass = 0;
 
+		List<String> list = selectUserId();
+
+		for (String userId : list) {
+			if (rgc.getUserId().equals(userId)) {
+				loginPass = list.indexOf(userId);
+				System.out.println("Id 성공");
+				return loginPass;
+			} else {
+				System.out.println("Id 실패");
+			}
+		}
+		return loginPass;
 	}
 
 	@Override
-	public int update(RequestGameCenter rgc) {
-		return 0;
+	public int logInPassword(RequestGameCenter rgc) {
+		int loginPass = 1;
+
+		List<String> list = selectUserPassword();
+
+		for (String userPassword : list) {
+			if (rgc.getPassword().equals(userPassword)) {
+				loginPass = list.indexOf(userPassword);
+				System.out.println("password 성공");
+				return loginPass;
+			} else {
+				System.out.println("password 실패");
+			}
+		}
+		return loginPass;
+	}
+
+	@Override
+	public boolean logIn(RequestGameCenter rgc, String Id, String pw) {
+
+		rgc.setUserId(Id);
+		rgc.setPassword(pw);
+
+		int id = logInId(rgc);
+		int password = logInPassword(rgc);
+
+		if (id == password) {
+			System.out.println("로그인 성공 !");
+			return true;
+		} else {
+			System.out.println("로그인 실패 ㅠㅠ");
+			return false;
+		}
 	}
 
 	@Override
@@ -215,19 +313,25 @@ public class GameCenterHostService implements IGameCenterHostService {
 		return true;
 	}
 
-	public void getSelectGameName(RequestGameCenter rgc) throws SQLException {
+	public void getSelectGameName(RequestGameCenter rgc) {
 
 		String result = null;
 		String query = "select gameName from gameinfo where gameName = ?";
 
-		ps = client.getConnection().prepareStatement(query);
-		ps.setString(1, rgc.getGameName());
-		rs = ps.executeQuery();
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, rgc.getGameName());
+			rs = ps.executeQuery();
 
-		while (rs.next()) {
-			result = rs.getString("gameName");
+			while (rs.next()) {
+				result = rs.getString("gameName");
 
-			rgc.setGameName(result);
+				rgc.setGameName(result);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
 		}
 	}
 
@@ -298,18 +402,71 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateGame(String oldGameName, String newGameName) {
+	public void updateGame(RequestGameCenter rgc, String name) {
 
+		String query = "update gameInfo " + "set gameName = ? " + ", ageLimit = ? " + ", gameInfo = ? "
+				+ "where gameName = ? ";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+
+			ps.setString(1, rgc.getGameName());
+			ps.setInt(2, rgc.getAgeLimit());
+			ps.setString(3, rgc.getGameInfo());
+
+			ps.setString(4, name);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 
 	@Override
-	public void updateCharacter(String oldCharacterName, String newCharacterName) {
+	public void updateCharacter(RequestGameCenter rgc, String name) {
 
+		String query = "update gameCharacter " + " set gameCharacterName = ? " + ", gameCharacterInfo = ? "
+				+ "where gameCharacterName = ? ";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+
+			ps.setString(1, rgc.getGameCharacterName());
+			ps.setString(2, rgc.getGameCharacterInfo());
+
+			ps.setString(3, name);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 
 	@Override
-	public void updateMap(String oldMapName, String newMapName) {
+	public void updateMap(RequestGameCenter rgc, String name) {
+		String query = "update gameMap " + "set gameMapName = ? " + ", gameMapInfo = ? " + "where gameMapName = ? ";
 
+		try {
+			ps = client.getConnection().prepareStatement(query);
+
+			ps.setString(1, rgc.getGameMapName());
+			ps.setString(2, rgc.getGameMapInfo());
+
+			ps.setString(3, name);
+
+			ps.executeUpdate();
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 
 	@Override
@@ -373,9 +530,11 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	public static void main(String[] args) {
-		GameCenterHostService service = new GameCenterHostService();
+
 		RequestGameCenter center = new RequestGameCenter();
-//		List<ResponseGameCenter> list = service.selectGame("롤");
+		GameCenterHostService service = new GameCenterHostService();
+
+//		List<ResponseGameCenter> list = service.selectGame("test2");
 //
 //		System.out.println(list);
 
@@ -406,7 +565,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 //		service.deleteMap("칼바람 나락");
 
 //		center.setGameName("배틀그라운드");
-//		center.setGameCharacterName("남자");
+//		center.setGameCharacterName("여자");
 //		center.setGameCharacterInfo("없다.");
 //
 //		service.insertChracter(center);
@@ -416,5 +575,25 @@ public class GameCenterHostService implements IGameCenterHostService {
 //		center.setGameMapInfo("무시무시한 상어가 살고 있는 바닷속 맵으로 상어에 닿아..");
 //
 //		service.insertMap(center);
+
+		service.logIn(center, "A", "asd1234");
+
+//		center.setGameName("test");
+//		center.setAgeLimit(15);
+//		center.setGameInfo("testText");
+//
+//		service.updateGame(center, "test");
+
+//		center.setGameName("롤");
+//		center.setGameCharacterName("룰루");
+//		center.setGameCharacterInfo("씹련이다.");
+//		
+//		service.updateCharacter(center, "제드");
+
+//		center.setGameMapName("소환사의 협곡");
+//		center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
+//		
+//		service.updateMap(center, "상점");
+
 	}
 }
