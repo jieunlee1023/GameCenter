@@ -106,6 +106,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private void addEventListener() {
 
 	}
+	
+	public static void main(String[] args) {
+		new GameCenterFrame();
+	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {

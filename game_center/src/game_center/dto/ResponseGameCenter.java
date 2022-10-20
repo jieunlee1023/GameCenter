@@ -20,4 +20,11 @@ public class ResponseGameCenter {
 
 	private String gameMapName;
 	private String gameMapInfo;
+	@Override
+	public String toString() {
+		return "ResponseGameCenter [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email="
+				+ email + ", mobile=" + mobile + ", gameName=" + gameName + ", ageLimit=" + ageLimit + ", gameInfo="
+				+ gameInfo + ", gameCharacterName=" + gameCharacterName + ", gameCharacterInfo=" + gameCharacterInfo
+				+ ", gameMapName=" + gameMapName + ", gameMapInfo=" + gameMapInfo + "]";
+	}
 }
