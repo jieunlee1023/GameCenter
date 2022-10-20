@@ -8,16 +8,15 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 
-public class LoginPage extends JFrame implements ActionListener {
+public class LoginFrame extends JFrame implements ActionListener {
 
-	IGameCenterHostService centerHostService;
-	RequestGameCenter center = new RequestGameCenter();
+	IGameCenterHostService service;
 
 	private JLabel logIn;
 	private JLabel userId;
@@ -26,8 +25,15 @@ public class LoginPage extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton logInButton;
 
-	public LoginPage(IGameCenterHostService centerHostService) {
-		this.centerHostService = centerHostService;
+	public LoginFrame() {
+		initData();
+		setInitLayout();
+		addEventListener();
+	}
+
+	public LoginFrame(IGameCenterHostService service) {
+		// 매개변수로 인터페이스의 주소값을 받아서 기능을 호출한다
+		this.service = service; // 주소값을 넘겨받는 과정
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -81,23 +87,30 @@ public class LoginPage extends JFrame implements ActionListener {
 		logInButton.setSize(300, 50);
 		logInButton.setLocation(100, 180);
 		add(logInButton);
+
 	}
 
-	private void addEventListener() {
+	public void addEventListener() {
 		logInButton.addActionListener(this);
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		boolean flag = centerHostService.logIn(center, userIdField.getText(), passwordField.getText());
+		// boolean flag = centerHostService.logIn(center, userIdField.getText(),
+		// passwordField.getText());
 
 		JButton targetButton = (JButton) e.getSource();
-		if (targetButton.getText().equals(logInButton.getText()) && flag) {
-			System.out.println("로그인 버튼 누름");
+		if (targetButton.getText().equals(logInButton.getText())) {
 			System.out.println("로그인 성공");
+			this.setVisible(false);
+			new GameCenterFrame();
+
 		} else {
 			System.out.println("로그인 실패");
+			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
+
 		}
+
 	}
 }
