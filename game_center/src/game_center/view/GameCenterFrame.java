@@ -15,8 +15,6 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
-import javax.swing.JScrollPane;
-import javax.swing.ScrollPaneConstants;
 
 import game_center.utils.Define;
 
@@ -140,9 +138,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			if (e.getUnitsToScroll() == 3 || e.getUnitsToScroll() == 6) {
 				System.out.println("내려가는 중");
 				boolean flag = true;
-				while (flag) {
-
-				}
 			} else {
 				System.out.println("위로가는중 중");
 			}
