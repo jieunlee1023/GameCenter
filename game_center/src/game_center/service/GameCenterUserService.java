@@ -120,6 +120,19 @@ public class GameCenterUserService implements IGameCenterService {
 	}
 
 	@Override
+	public boolean joinIdCheck(String id) {
+
+		List<String> list = selectUserId();
+
+		for (String string : list) {
+			if (id.equals(string)) {
+				return false;
+			}
+		}
+		return true;
+	}
+
+	@Override
 	public boolean insertJoin(RequestGameCenter rgc) { // 회원가입
 		boolean flag = true;
 		try {
@@ -168,62 +181,31 @@ public class GameCenterUserService implements IGameCenterService {
 		} finally {
 			memoryClose();
 		}
-
 		return list;
 	}
 
 	@Override
-	public int logInId(RequestGameCenter rgc) {
-		int loginPass = 0;
+	public boolean logIn(String Id, String pw) {
+
+		int passwordIndexNum = 0;
 
 		List<String> list = selectUserId();
+		List<String> listPassword = selectUserPassword();
 
-		for (String userId : list) {
-			if (rgc.getUserId().equals(userId)) {
-				loginPass = list.indexOf(userId);
-				System.out.println("Id 성공");
-				return loginPass;
+		for (String string : list) {
+			if (Id.equals(string)) {
+				System.out.println("Id 같음");
+				passwordIndexNum = list.indexOf(string);
 			} else {
-				System.out.println("Id 실패");
+				System.out.println("아이디 혹은 비밀번호가 다름");
 			}
 		}
-		return loginPass;
-	}
-
-	@Override
-	public int logInPassword(RequestGameCenter rgc) {
-		int loginPass = 1;
-
-		List<String> list = selectUserPassword();
-
-		for (String userPassword : list) {
-			if (rgc.getPassword().equals(userPassword)) {
-				loginPass = list.indexOf(userPassword);
-				System.out.println("password 성공");
-				return loginPass;
-			} else {
-				System.out.println("password 실패");
-			}
-		}
-		return loginPass;
-	}
-
-	@Override
-	public boolean logIn(RequestGameCenter rgc, String Id, String pw) {
-
-		rgc.setUserId(Id);
-		rgc.setPassword(pw);
-
-		int id = logInId(rgc);
-		int password = logInPassword(rgc);
-
-		if (id == password) {
-			System.out.println("로그인 성공 !");
+		if (listPassword.get(passwordIndexNum).equals(pw)) {
+			System.out.println("비밀번호도 같음");
 			return true;
-		} else {
-			System.out.println("로그인 실패 ㅠㅠ");
-			return false;
 		}
+		System.out.println("로그인 실패 !!");
+		return false;
 	}
 
 	@Override
@@ -284,7 +266,7 @@ public class GameCenterUserService implements IGameCenterService {
 			rs = psmt.executeQuery();
 			while (rs.next()) {
 				ResponseGameCenter userInfo = new ResponseGameCenter();
-				userInfo.setIdentityNum("2");
+				userInfo.setIdentityNum(2);
 				userInfo.setUserId(rs.getString("userId"));
 				userInfo.setPassword(rs.getString("password"));
 				userInfo.setUserName(rs.getString("userName"));
@@ -305,7 +287,6 @@ public class GameCenterUserService implements IGameCenterService {
 		} finally {
 			memoryClose();
 		}
-
 		return list;
 	}
 

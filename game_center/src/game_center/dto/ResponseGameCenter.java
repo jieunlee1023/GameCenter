@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class ResponseGameCenter {
 
-	private String identityNum;
+	private int identityNum;
 	private String userId;
 	private String password;
 	private String userName;
@@ -24,7 +24,7 @@ public class ResponseGameCenter {
 
 	public String toString() {
 
-		return " 아이디 = " + userId + ", 비밀번호 = " + password + ", 이름 = " + userName + ", 이메일 = " + email + ", 전화번호 = "
+		return "권한 번호 = " + identityNum + " 아이디 = " + userId + ", 비밀번호 = " + password + ", 이름 = " + userName + ", 이메일 = " + email + ", 전화번호 = "
 				+ mobile;
 	}
 }
