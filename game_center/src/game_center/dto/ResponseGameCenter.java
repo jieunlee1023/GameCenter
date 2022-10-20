@@ -5,6 +5,7 @@ import lombok.Data;
 @Data
 public class ResponseGameCenter {
 
+	private String identityNum;
 	private String userId;
 	private String password;
 	private String userName;
@@ -20,11 +21,10 @@ public class ResponseGameCenter {
 
 	private String gameMapName;
 	private String gameMapInfo;
-	@Override
+
 	public String toString() {
-		return "ResponseGameCenter [userId=" + userId + ", password=" + password + ", userName=" + userName + ", email="
-				+ email + ", mobile=" + mobile + ", gameName=" + gameName + ", ageLimit=" + ageLimit + ", gameInfo="
-				+ gameInfo + ", gameCharacterName=" + gameCharacterName + ", gameCharacterInfo=" + gameCharacterInfo
-				+ ", gameMapName=" + gameMapName + ", gameMapInfo=" + gameMapInfo + "]";
+
+		return " 아이디 = " + userId + ", 비밀번호 = " + password + ", 이름 = " + userName + ", 이메일 = " + email + ", 전화번호 = "
+				+ mobile;
 	}
 }
