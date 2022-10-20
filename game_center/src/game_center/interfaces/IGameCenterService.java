@@ -19,6 +19,6 @@ public interface IGameCenterService {
 
 	void logIn(RequestGameCenter rgc); // 로그인
 
-	void update(String oldName, String newName); // 회원정보 수정
+	int update(RequestGameCenter rgc); // 회원정보 수정
 
 }
