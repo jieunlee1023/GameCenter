@@ -26,10 +26,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JButton gameButton2;
 	private JButton gameButton3;
 	private JButton gameButton4;
-	private JButton gameButton5;
-	private JButton gameButton6;
-	private JButton gameButton7;
-	private JButton gameButton8;
 
 	public GameCenterFrame() {
 		initData();
@@ -55,6 +51,11 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton2 = new JButton(new ImageIcon("images/btnImg2.png"));
 		gameButton3 = new JButton(new ImageIcon("images/btnImg3.png"));
 		gameButton4 = new JButton(new ImageIcon("images/btnImg4.png"));
+
+		System.out.println(gameButton1.hashCode());
+		System.out.println(gameButton2.hashCode());
+		System.out.println(gameButton3.hashCode());
+		System.out.println(gameButton4.hashCode());
 
 	}
 
@@ -99,15 +100,15 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton4.setSize(300, 300);
 		gameButton4.setLocation(30, 500); // 위아래 20씩 차이
 		add(gameButton4);
-
 	}
 
 	private void addEventListener() {
-
-	}
-
-	public static void main(String[] args) {
-		new GameCenterFrame();
+		join.addActionListener(this);
+		logIn.addActionListener(this);
+//		gameButton1.addActionListener(this);
+		gameButton2.addActionListener(this);
+		gameButton3.addActionListener(this);
+		gameButton4.addActionListener(this);
 	}
 
 	@Override
@@ -125,4 +126,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		}
 	}
 
+	public static void main(String[] args) {
+		new GameCenterFrame();
+	}
 }
