@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 
 import game_center.utils.RoundedButton;
@@ -106,7 +105,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private void addEventListener() {
 
 	}
-	
+
 	public static void main(String[] args) {
 		new GameCenterFrame();
 	}
