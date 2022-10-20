@@ -31,5 +31,6 @@ public class RequestGameCenter {
 //	private String gameName;
 	private String gameMapName;
 	private String gameMapInfo;
+	
 
 }
