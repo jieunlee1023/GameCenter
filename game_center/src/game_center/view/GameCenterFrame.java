@@ -15,13 +15,14 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
+import javax.swing.JScrollPane;
 
 import game_center.utils.Define;
 
 public class GameCenterFrame extends JFrame implements ActionListener {
 
-	private JPanel mainPanel;
-	private JScrollBar scrollBar;
+	private JPanel mainPanel = new JPanel();
+	private JScrollPane scrollBar = new JScrollPane(mainPanel);
 
 	private JLabel logo;
 	private RoundedButton join;
@@ -46,8 +47,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		getContentPane().setBackground(Color.white);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		mainPanel = new JPanel();
-		scrollBar = new JScrollBar(JScrollBar.VERTICAL, 10, 10, 10, 1000);
 		add(BorderLayout.EAST, mainPanel);
 
 		mainPanel.setLayout(new GridLayout());
@@ -138,6 +137,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			if (e.getUnitsToScroll() == 3 || e.getUnitsToScroll() == 6) {
 				System.out.println("내려가는 중");
 				boolean flag = true;
+
 			} else {
 				System.out.println("위로가는중 중");
 			}
