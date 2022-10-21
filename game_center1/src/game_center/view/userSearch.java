@@ -27,7 +27,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 	private JTextArea search = new JTextArea();
 	private JButton searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
-	private JTextField userField = new JTextField();
+	private JTextArea userField = new JTextArea();
 
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 
@@ -74,6 +74,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 		userField.setSize(400, 300);
 		userField.setLocation(50, 100);
+		userField.setFont(new Font("", Font.PLAIN, 10));
 		add(userField);
 
 	}
