@@ -45,7 +45,7 @@ public class RoundedButton extends JButton {
 
 	@Override
 	protected void paintComponent(Graphics g) {
-		Color c = new Color(230, 230, 230); // 배경색 결정
+		Color c = new Color(255, 255, 255); // 배경색 결정
 		Color o = new Color(0, 0, 0); // 글자색 결정
 		int width = getWidth();
 		int height = getHeight();
@@ -54,7 +54,7 @@ public class RoundedButton extends JButton {
 		if (getModel().isArmed()) {
 			graphics.setColor(c.darker());
 		} else if (getModel().isRollover()) {
-			graphics.setColor(c.brighter());
+			graphics.setColor(c.darker());
 		} else {
 			graphics.setColor(c);
 		}

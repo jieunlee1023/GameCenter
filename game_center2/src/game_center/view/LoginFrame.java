@@ -1,6 +1,7 @@
 package game_center.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -24,13 +25,14 @@ public class LoginFrame extends JFrame implements ActionListener {
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 	GameCenterUserService gameCenterUserService = new GameCenterUserService();
 
-	private JLabel logIn;
 	private JLabel userId;
 	private JTextField userIdField;
 	private JLabel password;
 	private JPasswordField passwordField;
 	private RoundedButton joinButton;
 	private RoundedButton logInButton;
+
+	private JLabel bg;
 
 	public LoginFrame() {
 		// 매개변수로 인터페이스의 주소값을 받아서 기능을 호출한다
@@ -45,10 +47,10 @@ public class LoginFrame extends JFrame implements ActionListener {
 		setLocation(0, 0);
 		setResizable(false);
 		setLocationRelativeTo(null);
-		getContentPane().setBackground(Color.white);
+		getContentPane().setBackground(Color.black);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
-		logIn = new JLabel(new ImageIcon("images/logo2.png"));
+		// logIn = new JLabel(new ImageIcon("images/logo2.png"));
 		userId = new JLabel("아이디 : ");
 		password = new JLabel("비밀번호 : ");
 
@@ -58,27 +60,29 @@ public class LoginFrame extends JFrame implements ActionListener {
 		joinButton = new RoundedButton("회 원 가 입");
 		logInButton = new RoundedButton("로 그 인");
 
+		bg = new JLabel(new ImageIcon("images/bg.png"));
+
 	}
 
 	private void setInitLayout() {
 		setVisible(true);
 		setLayout(null);
 
-		logIn.setSize(125, 30);
-		logIn.setLocation(185, 25);
-		add(logIn);
-
 		userId.setSize(100, 20);
-		userId.setLocation(90, 80);
+		userId.setLocation(115, 90);
+		userId.setForeground(new Color(255, 255, 255));
+		userId.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(userId);
 
 		userIdField.setSize(200, 25);
-		userIdField.setLocation(180, 80);
+		userIdField.setLocation(180, 90);
 		userIdField.setBackground(new Color(230, 230, 230));
 		add(userIdField);
 
 		password.setSize(100, 20);
-		password.setLocation(90, 130);
+		password.setLocation(100, 130);
+		password.setForeground(new Color(255, 255, 255));
+		password.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(password);
 
 		passwordField.setSize(200, 25);
@@ -86,13 +90,17 @@ public class LoginFrame extends JFrame implements ActionListener {
 		passwordField.setBackground(new Color(230, 230, 230));
 		add(passwordField);
 
-		joinButton.setSize(150, 50);
-		joinButton.setLocation(90, 180);
+		joinButton.setSize(150, 30);
+		joinButton.setLocation(85, 190);
 		add(joinButton);
 
-		logInButton.setSize(150, 50);
-		logInButton.setLocation(250, 180);
+		logInButton.setSize(150, 30);
+		logInButton.setLocation(245, 190);
 		add(logInButton);
+
+		bg.setSize(500, 300);
+		bg.setLocation(0, 0);
+		add(bg);
 
 	}
 
@@ -113,6 +121,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 			if (targetButton.getText().equals(logInButton.getText()) && flag) {
 				if (gameCenterHostService.identityNum(userIdField.getText()) == 1) {
 					System.out.println(" 관리자 로그인 성공");
+					JOptionPane.showMessageDialog(this, "관리자 권한으로 로그인 되었습니다.");
 					new GameCenterFrame(centerHostService);
 					this.setVisible(false);
 				} else {
