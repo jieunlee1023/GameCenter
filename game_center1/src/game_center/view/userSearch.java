@@ -1,14 +1,21 @@
 package game_center.view;
 
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
+
+import game_center.service.GameCenterHostService;
+import game_center.utils.Define;
 
 public class userSearch extends JFrame implements ActionListener {
 
@@ -17,6 +24,12 @@ public class userSearch extends JFrame implements ActionListener {
 	private JMenuItem allSelected = new JMenuItem("전체 조회");
 	private JMenuItem choiceSelected = new JMenuItem("선택 조회");
 	private JMenuItem exit = new JMenuItem("닫기");
+
+	private JTextArea search = new JTextArea();
+	private JButton searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
+	private JTextField userField = new JTextField();
+
+	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 
 	public userSearch() {
 		initData();
@@ -30,7 +43,6 @@ public class userSearch extends JFrame implements ActionListener {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setBackground(new Color(30, 40, 90));
-		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 
 	}
 
@@ -48,6 +60,22 @@ public class userSearch extends JFrame implements ActionListener {
 		// 메뉴바를 프레임에 부착
 		setJMenuBar(bar);
 
+		searchButton.setSize(30, 30);
+		searchButton.setLocation(420, 50);
+		searchButton.setBorderPainted(false); // 버튼 테두리
+		searchButton.setContentAreaFilled(false); // 버튼 영역
+		searchButton.setBackground(new Color(255, 255, 255)); // 버튼 영역
+		add(searchButton);
+
+		search.setSize(350, 30);
+		search.setLocation(50, 50);
+		search.setFont(new Font("", Font.PLAIN, 20));
+		add(search);
+
+		userField.setSize(400, 300);
+		userField.setLocation(50, 100);
+		add(userField);
+
 	}
 
 	private void addEventListener() {
@@ -62,6 +90,7 @@ public class userSearch extends JFrame implements ActionListener {
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(allSelected.getText())) {
 			System.out.println("전체");
+			userField.setText(gameCenterHostService.selectAllUser().toString());
 		} else if (targetItem.getText().equals(choiceSelected.getText())) {
 			System.out.println("선택");
 		} else if (targetItem.getText().equals(exit.getText())) {

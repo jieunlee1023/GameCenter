@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
