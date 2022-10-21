@@ -139,6 +139,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public List<String> selectUserId() {
+
 		List<String> list = new ArrayList<>();
 
 		String query = "select userId from user";
@@ -151,6 +152,35 @@ public class GameCenterHostService implements IGameCenterHostService {
 				responseGameCenter.setUserId(rs.getString("userId"));
 
 				list.add(responseGameCenter.getUserId());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<String> selectAllUser() {
+
+		List<String> list = new ArrayList<>();
+
+		String query = "select * from user";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				responseGameCenter.setUserId(rs.getString("userId"));
+				responseGameCenter.setPassword(rs.getString("password"));
+				responseGameCenter.setUserName(rs.getString("userName"));
+				responseGameCenter.setEmail(rs.getString("email"));
+				responseGameCenter.setMobile(rs.getString("mobile"));
+
+				list.add(responseGameCenter.toString());
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -720,4 +750,5 @@ public class GameCenterHostService implements IGameCenterHostService {
 //      service.updateMap(center, "상점");
 
 	}
+
 }

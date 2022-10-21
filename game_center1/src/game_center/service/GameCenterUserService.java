@@ -176,7 +176,32 @@ public class GameCenterUserService implements IGameCenterService {
 	public List<String> selectUserId() {
 		List<String> list = new ArrayList<>();
 
-		String query = "select userId from user";
+		String query = "select * from user";
+
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				responseGameCenter.setUserId(rs.getString("userId"));
+
+				list.add(responseGameCenter.getUserId());
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<String> selectAllUser() {
+
+		List<String> list = new ArrayList<>();
+
+		String query = "select * from user";
 
 		try {
 			psmt = dbClient.getConnection().prepareStatement(query);
@@ -212,25 +237,33 @@ public class GameCenterUserService implements IGameCenterService {
 	@Override
 	public boolean logIn(String Id, String pw) {
 
-		int passwordIndexNum = 0;
+		UserInfo userInfo = UserInfo.getInstance();
 
-		List<String> list = selectUserId();
-		List<String> listPassword = selectUserPassword();
+		String query = " select * from user where userId = ? and password = ? ";
 
-		for (String string : list) {
-			if (Id.equals(string)) {
-				System.out.println("Id 같음");
-				passwordIndexNum = list.indexOf(string);
-			} else {
-				System.out.println("아이디 혹은 비밀번호가 다름");
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			psmt.setString(1, Id);
+			psmt.setString(2, pw);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+
+				UserInfo.isLogin = true;
+
+				userInfo.setUserId(rs.getString("userId"));
+				userInfo.setUserName(rs.getString("userName"));
+				userInfo.setPassword(rs.getString("password"));
+				userInfo.setEmail(rs.getString("email"));
+				userInfo.setMobile(rs.getString("mobile"));
+
 			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
 		}
-		if (listPassword.get(passwordIndexNum).equals(pw)) {
-			System.out.println("비밀번호도 같음");
-			return true;
-		}
-		System.out.println("로그인 실패 !!");
-		return false;
+		return UserInfo.isLogin;
 	}
 
 	@Override

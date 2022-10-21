@@ -18,6 +18,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.JTextField;
 
 import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
@@ -43,6 +45,12 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JButton gameButton1;
 	private JButton gameButton2;
 	private JButton gameButton3;
+
+	private JTextArea search;
+	private JButton searchButton;
+
+	private JTextArea game1Name;
+	private JTextField game1Info;
 
 	public GameCenterFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
@@ -79,12 +87,17 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		logOut = new RoundedButton("로그아웃");
 		back = new JButton(new ImageIcon(Define.IMAGE_PATH + "back.png"));
 
-		allGame = new JLabel("전체게임");
+		allGame = new JLabel("· 전체게임");
 
 		gameButton1 = new JButton(new ImageIcon(Define.IMAGE_PATH + "btnImg1.png"));
 		gameButton2 = new JButton(new ImageIcon(Define.IMAGE_PATH + "btnImg2.png"));
 		gameButton3 = new JButton(new ImageIcon(Define.IMAGE_PATH + "btnImg3.png"));
 
+		search = new JTextArea();
+		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
+
+		game1Name = new JTextArea("게임이름~");
+		game1Info = new JTextField("설명~");
 	}
 
 	private void setInitLayout() {
@@ -111,8 +124,21 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		back.setBackground(new Color(30, 40, 90));
 		add(back);
 
+		searchButton.setSize(30, 30);
+		searchButton.setLocation(920, 130);
+		searchButton.setBorderPainted(false); // 버튼 테두리
+		searchButton.setContentAreaFilled(false); // 버튼 영역
+		searchButton.setBackground(new Color(255, 255, 255)); // 버튼 영역
+		add(searchButton);
+
+		search.setSize(210, 30);
+		search.setLocation(700, 130);
+		search.setBackground(new Color(230, 230, 230));
+		search.setFont(new Font("", Font.PLAIN, 15));
+		add(search);
+
 		allGame.setSize(150, 50);
-		allGame.setLocation(50, 120);
+		allGame.setLocation(35, 120);
 		allGame.setFont(new Font("맑은 고딕", Font.BOLD, 23));
 		allGame.setForeground(new Color(230, 230, 230));
 		add(allGame);
@@ -122,6 +148,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton1.setBorderPainted(false); // 버튼 테두리
 		gameButton1.setContentAreaFilled(false); // 버튼 영역
 		add(gameButton1);
+
+		game1Name.setSize(300, 20);
+		game1Name.setLocation(30, 500);
+		add(game1Name);
+
+		game1Info.setSize(300, 50);
+		game1Info.setLocation(30, 530);
+		add(game1Info);
 
 		gameButton2.setSize(300, 300);
 		gameButton2.setLocation(340, 180);
@@ -148,6 +182,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton1.addActionListener(this);
 		gameButton2.addActionListener(this);
 		gameButton3.addActionListener(this);
+		searchButton.addActionListener(this);
 		scrollBar.addAdjustmentListener(new MyListener());
 	}
 
@@ -170,6 +205,9 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.out.println("게임 2");
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
+		} else if (targetButton.hashCode() == searchButton.hashCode()) {
+			if (search.getText() == "게임 아이디 등 검색할 정보")
+				System.out.println("검색버튼");
 		}
 	}
 

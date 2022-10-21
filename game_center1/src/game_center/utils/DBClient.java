@@ -13,7 +13,7 @@ public class DBClient {
 	private static final String DB_DATABASE_NAME = "game_center";
 	private static final String DB_CHARSET = "UTF-8";
 	private static final String DB_USER_NAME = "root";
-	private static final String DB_PASSWORD = "qwer1234";
+	private static final String DB_PASSWORD = "asd1234";
 
 	private static DBClient dbHelper;
 	private Connection conn;

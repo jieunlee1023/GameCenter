@@ -13,7 +13,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
@@ -53,8 +52,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 		userId = new JLabel("아이디 : ");
 		password = new JLabel("비밀번호 : ");
 
-		userIdField = new JTextField();
-		passwordField = new JPasswordField();
+		userIdField = new JTextField("A");
+		passwordField = new JPasswordField("1");
 
 		joinButton = new RoundedButton("회 원 가 입");
 		logInButton = new RoundedButton("로 그 인");
@@ -121,7 +120,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 				if (gameCenterHostService.identityNum(userIdField.getText()) == 1) {
 					System.out.println(" 관리자 로그인 성공");
 					JOptionPane.showMessageDialog(this, "관리자 권한으로 로그인 되었습니다.");
-					new GameCenterFrame(centerHostService);
+					new GameCenterHostFrame(centerHostService);
 					this.setVisible(false);
 				} else {
 					System.out.println(" 사용자 로그인 성공");
