@@ -1,6 +1,5 @@
 package game_center;
 
-import game_center.dto.UserInfo;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.view.GameCenterFrame;
 import game_center.view.LoginFrame;
@@ -14,7 +13,6 @@ public class GameCenterSystem {
 	MyInfoFrame joinFrame;
 	MyInfoFrame myInfoFrame;
 	static IGameCenterHostService centerHostService;
-	
 
 	// 로그인 처리
 	// 회원가입 처리
