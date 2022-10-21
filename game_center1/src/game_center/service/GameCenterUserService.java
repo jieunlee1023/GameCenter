@@ -8,6 +8,7 @@ import java.util.List;
 
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
+import game_center.dto.UserInfo;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.DBClient;
 
@@ -24,6 +25,29 @@ public class GameCenterUserService implements IGameCenterService {
 
 	private void initData() {
 		dbClient = DBClient.getInstance();
+	}
+
+	@Override
+	public void delete(String userId) {
+
+		UserInfo userInfo = UserInfo.getInstance();
+
+		String query = " delete from user where userId = ? ";
+
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			psmt.setString(1, userId);
+			psmt.executeUpdate();
+
+			UserInfo.isLogin = false;
+			userInfo = null;
+			System.out.println("탈퇴 (계정 삭제) 완료");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
+		}
 	}
 
 	@Override
@@ -235,7 +259,7 @@ public class GameCenterUserService implements IGameCenterService {
 
 	@Override
 	public void update(RequestGameCenter rgc) { // 본인 정보 수정
-		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+		String query = "UPDATE user SET password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
 		try {
 			psmt = dbClient.getConnection().prepareStatement(query);
 			psmt.setString(1, rgc.getPassword());

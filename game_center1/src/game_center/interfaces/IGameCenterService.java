@@ -27,6 +27,8 @@ public interface IGameCenterService {
 
 	void update(RequestGameCenter rgc); // 회원정보 수정
 
+	void delete(String userId);
+
 	List<ResponseGameCenter> selectUserById(String userId);
 
 }

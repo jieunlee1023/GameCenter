@@ -137,7 +137,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(16);
-		
 
 	}
 
