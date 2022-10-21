@@ -10,6 +10,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -17,11 +18,12 @@ import game_center.dto.RequestGameCenter;
 import game_center.dto.LoginUserInfo;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
+import lombok.Data;
 
+@Data
 public class MyInfoFrame extends JFrame implements ActionListener {
 
 	RequestGameCenter center = new RequestGameCenter();
-	GameCenterUserService gameCenterUserService = new GameCenterUserService();
 	GameCenterHostService centerHostService = new GameCenterHostService();
 
 	private JLabel logo;
@@ -203,6 +205,7 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 
 			centerHostService.update(center);
 			System.out.println("수정 완료 !");
+			JOptionPane.showMessageDialog(this, "수정이 완료되었습니다.");
 		} else if (targetButton.getText().equals(exit.getText())) {
 
 			System.out.println("나가기");
@@ -210,6 +213,8 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 		} else if (targetButton.getText().equals(leave.getText())) {
 			centerHostService.delete(userIdField.getText());
 			System.out.println("탈퇴 완료");
+			JOptionPane.showMessageDialog(this, "탈퇴가 완료되었습니다.");
+			new LoginFrame();
 			this.setVisible(false);
 		}
 	}

@@ -4,10 +4,13 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
@@ -26,8 +29,8 @@ public class userSearch extends JFrame implements ActionListener {
 	private JMenuItem exit = new JMenuItem("닫기");
 
 	private JTextArea search = new JTextArea();
-	private JButton searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
-	private JTextField userField = new JTextField();
+	private JTextArea userField = new JTextArea();
+	private JLabel define = new JLabel("[ ⓐ: 아이디 / ⓑ : 비밀번호 / ⓒ : 이름 / ⓓ : 이메일 / ⓔ : 연락처 ]");
 
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 
@@ -60,20 +63,18 @@ public class userSearch extends JFrame implements ActionListener {
 		// 메뉴바를 프레임에 부착
 		setJMenuBar(bar);
 
-		searchButton.setSize(30, 30);
-		searchButton.setLocation(420, 50);
-		searchButton.setBorderPainted(false); // 버튼 테두리
-		searchButton.setContentAreaFilled(false); // 버튼 영역
-		searchButton.setBackground(new Color(255, 255, 255)); // 버튼 영역
-		add(searchButton);
-
-		search.setSize(350, 30);
+		search.setSize(400, 30);
 		search.setLocation(50, 50);
 		search.setFont(new Font("", Font.PLAIN, 20));
 		add(search);
 
-		userField.setSize(400, 300);
-		userField.setLocation(50, 100);
+		define.setSize(400, 30);
+		define.setLocation(50, 90);
+		define.setForeground(Color.white);
+		add(define);
+
+		userField.setSize(400, 280);
+		userField.setLocation(50, 120);
 		add(userField);
 
 	}
@@ -87,21 +88,18 @@ public class userSearch extends JFrame implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(allSelected.getText())) {
 			System.out.println("전체");
 			userField.setText(gameCenterHostService.selectAllUser().toString());
 		} else if (targetItem.getText().equals(choiceSelected.getText())) {
 			System.out.println("선택");
+			userField.setText(gameCenterHostService.selectUserById(search.getText()).toString());
 		} else if (targetItem.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
 		}
-
-	}
-
-	public static void main(String[] args) {
-		new userSearch();
 	}
 
 }
