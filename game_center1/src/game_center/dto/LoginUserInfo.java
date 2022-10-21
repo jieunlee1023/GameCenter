@@ -3,7 +3,7 @@ package game_center.dto;
 import lombok.Data;
 
 @Data
-public class UserInfo {
+public class LoginUserInfo {
 
 	public static boolean isLogin = false;
 
@@ -13,15 +13,15 @@ public class UserInfo {
 	private String email;
 	private String mobile;
 
-	private UserInfo() {
+	private LoginUserInfo() {
 
 	}
 
-	private static UserInfo instance = new UserInfo();
+	private static LoginUserInfo instance = new LoginUserInfo();
 
-	public static UserInfo getInstance() {
+	public static LoginUserInfo getInstance() {
 		if (instance == null) {
-			instance = new UserInfo();
+			instance = new LoginUserInfo();
 		}
 		return instance;
 	}

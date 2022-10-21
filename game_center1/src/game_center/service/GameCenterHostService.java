@@ -8,7 +8,7 @@ import java.util.List;
 
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
-import game_center.dto.UserInfo;
+import game_center.dto.LoginUserInfo;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.DBClient;
 
@@ -24,9 +24,62 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
+	public String selectGameName(String name) {
+
+		String query = "select gameName from gamecenterinfo where gameName = ? ";
+		String gameName = null;
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+
+				responseGameCenter.setUserName(rs.getString("gameName"));
+			}
+			gameName = responseGameCenter.getUserName();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return gameName;
+	}
+
+	@Override
+	public String selectGameInfo(String name) {
+		String query = "select gameInfo from gameinfo where gameName = ? ";
+		String gameInfo = null;
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, name);
+			rs = ps.executeQuery();
+			while (rs.next()) {
+				responseGameCenter.setGameInfo(rs.getString("gameInfo"));
+			}
+			gameInfo = responseGameCenter.getGameInfo();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(gameInfo);
+		return gameInfo;
+	}
+
+	@Override
+	public String selectCharacterName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String selectMapName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void delete(String userId) {
 
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = " delete from user where userId = ? ";
 
@@ -35,7 +88,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(1, userId);
 			ps.executeUpdate();
 
-			UserInfo.isLogin = false;
+			LoginUserInfo.isLogin = false;
 			userInfo = null;
 			System.out.println("탈퇴 (계정 삭제) 완료");
 
@@ -49,7 +102,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 	@Override
 	public void update(RequestGameCenter rgc) {
 
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
 		System.out.println("try 전");
@@ -133,7 +186,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 				e.printStackTrace();
 			}
 		}
-
 		return list;
 	}
 
@@ -349,7 +401,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 	@Override
 	public boolean logIn(String Id, String pw) {
 
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = " select * from user where userId = ? and password = ? ";
 
@@ -357,25 +409,24 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, Id);
 			ps.setString(2, pw);
-			rs = ps.executeQuery();
 
-			while (rs.next()) {
-
-				UserInfo.isLogin = true;
-
-				userInfo.setUserId(rs.getString("userId"));
-				userInfo.setUserName(rs.getString("userName"));
-				userInfo.setPassword(rs.getString("password"));
-				userInfo.setEmail(rs.getString("email"));
-				userInfo.setMobile(rs.getString("mobile"));
-
+			if (!Id.isEmpty() && !pw.isEmpty()) {
+				rs = ps.executeQuery();
+				while (rs.next()) {
+					LoginUserInfo.isLogin = true;
+					userInfo.setUserId(rs.getString("userId"));
+					userInfo.setUserName(rs.getString("userName"));
+					userInfo.setPassword(rs.getString("password"));
+					userInfo.setEmail(rs.getString("email"));
+					userInfo.setMobile(rs.getString("mobile"));
+				}
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
 			closeDB();
 		}
-		return UserInfo.isLogin;
+		return LoginUserInfo.isLogin;
 	}
 
 	@Override
@@ -750,5 +801,4 @@ public class GameCenterHostService implements IGameCenterHostService {
 //      service.updateMap(center, "상점");
 
 	}
-
 }

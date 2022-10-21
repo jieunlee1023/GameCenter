@@ -19,9 +19,9 @@ import game_center.service.GameCenterUserService;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
-	IGameCenterHostService centerHostService;
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 	GameCenterUserService gameCenterUserService = new GameCenterUserService();
+	IGameCenterHostService centerHostService = gameCenterHostService;
 
 	private JLabel userId;
 	private JTextField userIdField;

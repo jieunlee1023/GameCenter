@@ -19,7 +19,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
@@ -102,14 +101,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		search = new JTextArea();
 		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
 
-		game1Name = new JLabel("게임이름~");
-		game1Info = new JLabel("설명~");
+		game1Name = new JLabel(centerHostService.selectGameName("롤"));
+		game1Info = new JLabel(centerHostService.selectGameInfo("롤"));
 
-		game2Name = new JLabel("게임이름~");
-		game2Info = new JLabel("설명~");
+		game2Name = new JLabel(centerHostService.selectGameName("피파온라인4"));
+		game2Info = new JLabel(centerHostService.selectGameInfo("피파온라인4"));
 
-		game3Name = new JLabel("게임이름~");
-		game3Info = new JLabel("설명~");
+		game3Name = new JLabel(centerHostService.selectGameName("크레이지아케이드"));
+		game3Info = new JLabel(centerHostService.selectGameInfo("크레이지아케이드"));
 	}
 
 	private void setInitLayout() {
@@ -206,6 +205,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
+	}
+
+	private void insertGameNameOnFrame() {
+		game1Name.setText(centerHostService.selectGameName("롤"));
 	}
 
 	private void addEventListener() {
