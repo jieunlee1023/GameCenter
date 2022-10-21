@@ -21,7 +21,7 @@ public class RequestGameCenter {
 
 	// gameInfo
 //	private String gameName;
-	private int ageLimit;
+	private String ageLimit;
 	private String gameInfo;
 
 	// gameCharacter

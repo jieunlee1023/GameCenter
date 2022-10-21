@@ -3,10 +3,9 @@ package game_center.dto;
 import lombok.Data;
 
 @Data
-public class GameInfo {
+public class MapInfo {
 
 	private String gameName;
-	private String ageLimit;
-	private String gameInfo;
-
+	private String gameMapName;
+	private String gameMapInfo;
 }

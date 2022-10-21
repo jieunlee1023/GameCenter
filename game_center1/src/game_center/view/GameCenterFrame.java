@@ -6,10 +6,7 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.AdjustmentEvent;
-import java.awt.event.AdjustmentListener;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseWheelEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -20,6 +17,7 @@ import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import game_center.dto.GameInfo;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
@@ -31,6 +29,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
+
+	private final int LOL = 0;
+	private final int FIFA = 3;
+	private final int CRAZY = 2;
 
 	private JPanel mainPanel = new JPanel();
 	private JScrollBar scrollBar = new JScrollBar();
@@ -209,7 +211,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	}
 
 	private void addEventListener() {
-		this.addMouseWheelListener(new MyListener());
+//		this.addMouseWheelListener(new MyListener());
 		myInfo.addActionListener(this);
 		logOut.addActionListener(this);
 		back.addActionListener(this);
@@ -217,13 +219,16 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton2.addActionListener(this);
 		gameButton3.addActionListener(this);
 		searchButton.addActionListener(this);
-		scrollBar.addAdjustmentListener(new MyListener());
+//		scrollBar.addAdjustmentListener(new MyListener());
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
 		JButton targetButton = (JButton) e.getSource();
+
+		List<GameInfo> list = centerHostService.GameInfo();
+
 		if (targetButton.getText().equals(myInfo.getText())) {
 			System.out.println("내 정보");
 			new MyInfoFrame();
@@ -234,44 +239,84 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.out.println("로그아웃");
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
+
 			System.out.println("게임 1");
-			new GameInfoFrame();
+			System.out.println(list.get(LOL).getGameName());
+			if (list.get(LOL).getGameName().equals("롤")) {
+				new GameInfoFrame(list.get(LOL));
+			}
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
-			new GameInfoFrame();
+			System.out.println(list.get(FIFA).getGameName());
+			if (list.get(FIFA).getGameName().equals("피파온라인4"))
+				new GameInfoFrame(list.get(FIFA));
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
-			System.out.println("게임 3");
-			new GameInfoFrame();
+			System.out.println(list.get(CRAZY).getGameName());
+			if (list.get(CRAZY).getGameName().equals("크레이지아케이드"))
+				new GameInfoFrame(list.get(CRAZY));
 		} else if (targetButton.hashCode() == searchButton.hashCode()) {
 			if (search.getText() == "게임 아이디 등 검색할 정보")
 				System.out.println("검색버튼");
 		}
 	}
 
-	private class MyListener extends MouseAdapter implements AdjustmentListener {
-
-		JScrollBar vertical;
-		int currentStatus;
-
-		@Override
-		public void mouseWheelMoved(MouseWheelEvent e) {
-
-			int notches = e.getWheelRotation();
-			if (notches < 0) {
-				System.out.println("위");
-			} else {
-				System.out.println("아래");
-			}
-		}
-
-		@Override
-		public void adjustmentValueChanged(AdjustmentEvent e) {
-			System.out.println("1111111111111111111111111");
-
-			vertical = scrollPane.getVerticalScrollBar();
-			currentStatus = e.getValue();
-
-		}
-	} // end of inner class
-
+//	@Override
+//	public void actionPerformed(ActionEvent e) {
+//
+//		JButton targetButton = (JButton) e.getSource();
+//
+//		if (targetButton.getText().equals(myInfo.getText())) {
+//			System.out.println("내 정보");
+//			new MyInfoFrame();
+//		} else if (targetButton.hashCode() == (back.hashCode())) {
+//			new LoginFrame();
+//			this.setVisible(false);
+//		} else if (targetButton.getText().equals(logOut.getText())) {
+//			System.out.println("로그아웃");
+//			System.exit(0);
+//		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
+//			System.out.println("게임 1");
+//			new GameInfoFrame(gameInfo);
+//			System.out.println(gameInfo);
+//		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
+//			System.out.println("게임 2");
+//			new GameInfoFrame(gameInfo);
+//			System.out.println(gameInfo);
+//		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
+//			System.out.println("게임 3");
+//			new GameInfoFrame(gameInfo);
+//			System.out.println(gameInfo);
+//		} else if (targetButton.hashCode() == searchButton.hashCode()) {
+//			if (search.getText() == "게임 아이디 등 검색할 정보") {
+//				System.out.println("검색버튼");
+//			}
+//		}
+//
+//	}
 }
+
+//private class MyListener extends MouseAdapter implements AdjustmentListener {
+//
+//	JScrollBar vertical;
+//	int currentStatus;
+//
+//	@Override
+//	public void mouseWheelMoved(MouseWheelEvent e) {
+//
+//		int notches = e.getWheelRotation();
+//		if (notches < 0) {
+//			System.out.println("위");
+//		} else {
+//			System.out.println("아래");
+//		}
+//	}
+//
+//	@Override
+//	public void adjustmentValueChanged(AdjustmentEvent e) {
+//		System.out.println("1111111111111111111111111");
+//
+//		vertical = scrollPane.getVerticalScrollBar();
+//		currentStatus = e.getValue();
+//
+//	}
+//} // end of inner class
