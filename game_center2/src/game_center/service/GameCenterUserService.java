@@ -27,12 +27,6 @@ public class GameCenterUserService implements IGameCenterService {
 	}
 
 	@Override
-	public List<ResponseGameCenter> selectAllUserInfo(String userId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
 	public List<ResponseGameCenter> selectGame(String gameName) { // 게임 선택 (게임정보 나옴 + 캐릭터요약 + 맵요약)
 		List<ResponseGameCenter> list = new ArrayList<>();
 		String query = "select * " + "from gameInfo " + "where gameName = ? ";
@@ -89,7 +83,7 @@ public class GameCenterUserService implements IGameCenterService {
 
 	private void memoryClose() {
 		try {
-			rs.close();
+			// rs.close();
 			psmt.close();
 			dbClient.connectionClose();
 		} catch (SQLException e) {
@@ -123,19 +117,6 @@ public class GameCenterUserService implements IGameCenterService {
 		}
 
 		return list;
-	}
-
-	@Override
-	public boolean joinIdCheck(String id) {
-
-		List<String> list = selectUserId();
-
-		for (String string : list) {
-			if (id.equals(string)) {
-				return false;
-			}
-		}
-		return true;
 	}
 
 	@Override
@@ -187,7 +168,21 @@ public class GameCenterUserService implements IGameCenterService {
 		} finally {
 			memoryClose();
 		}
+
 		return list;
+	}
+
+	@Override
+	public boolean joinIdCheck(String id) {
+
+		List<String> list = selectUserId();
+
+		for (String string : list) {
+			if (id.equals(string)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@Override
@@ -293,12 +288,13 @@ public class GameCenterUserService implements IGameCenterService {
 		} finally {
 			memoryClose();
 		}
+
 		return list;
 	}
 
 	public static void main(String[] args) {
-		RequestGameCenter rgc = new RequestGameCenter();
-		GameCenterUserService a = new GameCenterUserService();
+//		RequestGameCenter rgc = new RequestGameCenter();
+//		GameCenterUserService a = new GameCenterUserService();
 
 //      rgc.setUserId("bins");
 //      rgc.setPassword("1234");
@@ -308,21 +304,21 @@ public class GameCenterUserService implements IGameCenterService {
 //      a.insertJoin(rgc);
 
 		// selectbyId
-		List<ResponseGameCenter> select = a.selectUserById("bins");
-		if (select == null) {
-			System.out.println("없는 ID 입니다.");
-		} else {
-			System.out.println(rgc.getIDENTITY_NUM_USER());
-			System.out.println(select.toString());
-		}
-		// 2 bins 1234 강빈 adasd@sadasd.com 010-9432-9080
-		rgc.setPassword("1212");
-		rgc.setUserName("binbi");
-		rgc.setEmail(null);
-		rgc.setMobile(null);
-		rgc.setUserId("bins");
-
-		a.update(rgc);
+//		List<ResponseGameCenter> select = a.selectUserById("bins");
+//		if (select == null) {
+//			System.out.println("없는 ID 입니다.");
+//		} else {
+//			System.out.println(rgc.getIDENTITY_NUM_USER());
+//			System.out.println(select.toString());
+//		}
+//		// 2 bins 1234 강빈 adasd@sadasd.com 010-9432-9080
+//		rgc.setPassword("1212");
+//		rgc.setUserName("binbi");
+//		rgc.setEmail(null);
+//		rgc.setMobile(null);
+//		rgc.setUserId("bins");
+//
+//		a.update(rgc);
 
 	}
 }

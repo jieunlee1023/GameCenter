@@ -12,10 +12,8 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
-import game_center.dto.RequestGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.service.GameCenterHostService;
-import game_center.utils.DBClient;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
@@ -101,6 +99,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		// boolean flag = service.logIn(center, userIdField.getText(),
+		// passwordField.getText());
 		boolean flag = centerHostService.logIn(userIdField.getText(), passwordField.getText());
 
 		JButton targetButton = (JButton) e.getSource();
