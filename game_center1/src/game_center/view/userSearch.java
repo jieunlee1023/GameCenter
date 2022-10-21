@@ -45,7 +45,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 	private void initData() {
 		setSize(500, 500);
-		setTitle("관리자 게임 정보");
+		setTitle("관리자 유저 정보");
 		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setBackground(new Color(30, 40, 90));
@@ -63,7 +63,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 		hostAuthority.add(hostIn);
 		hostAuthority.add(hostOut);
-		
+
 		// 메뉴바에 메뉴 삽입
 		bar.add(screenMenu); // 보기 메뉴 삽입
 		bar.add(hostAuthority); // 보기 메뉴 삽입
@@ -108,9 +108,9 @@ public class userSearch extends JFrame implements ActionListener {
 		} else if (targetItem.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
-		}else if (targetItem.getText().equals(hostIn.getText())) {
+		} else if (targetItem.getText().equals(hostIn.getText())) {
 			System.out.println("임명~~~~~~~~~~~~~~~~~~~~~~~~~~");
-		}else if (targetItem.getText().equals(hostOut.getText())) {
+		} else if (targetItem.getText().equals(hostOut.getText())) {
 			System.out.println("제명~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
 		}
 	}
