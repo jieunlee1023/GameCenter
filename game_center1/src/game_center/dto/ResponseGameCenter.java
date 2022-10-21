@@ -24,6 +24,7 @@ public class ResponseGameCenter {
 
 	public String toString() {
 
-		return " ⓐ " + userId + " ⓑ " + password + " ⓒ " + userName + " ⓓ " + email + " ⓔ " + mobile;
+		return " ⓐ" + identityNum + " ⓑ " + userId + " ⓒ " + password + " ⓓ " + userName + " ⓔ " + email + " ⓕ "
+				+ mobile;
 	}
 }

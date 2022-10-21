@@ -51,7 +51,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 		UserInfo userInfo = UserInfo.getInstance();
 
-		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+		String query = "UPDATE user SET password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
 		System.out.println("try 전");
 		try {
 			System.out.println("try 후");
@@ -174,6 +174,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
+				responseGameCenter.setIdentityNum(rs.getInt("identityNum"));
 				responseGameCenter.setUserId(rs.getString("userId"));
 				responseGameCenter.setPassword(rs.getString("password"));
 				responseGameCenter.setUserName(rs.getString("userName"));

@@ -30,7 +30,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 	private JTextArea search = new JTextArea();
 	private JTextArea userField = new JTextArea();
-	private JLabel define = new JLabel("[ ⓐ: 아이디 / ⓑ : 비밀번호 / ⓒ : 이름 / ⓓ : 이메일 / ⓔ : 연락처 ]");
+	private JLabel define = new JLabel("[ ⓐ: 등급 / ⓑ : 아이디 / ⓒ : 비밀번호 / ⓓ : 이름 / ⓔ : 이메일  / ⓕ : 번호]");
 
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 
