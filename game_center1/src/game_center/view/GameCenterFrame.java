@@ -23,7 +23,10 @@ import javax.swing.JTextArea;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
+import game_center.view.game.CrazyArcadeInfoFrame;
+import game_center.view.game.FIFAInfoFrame;
 import game_center.view.game.GameInfoFrame;
+import game_center.view.game.LOLInfoFrame;
 import lombok.Data;
 
 @Data
@@ -235,13 +238,13 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
-			new GameInfoFrame();
+			new LOLInfoFrame();
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
-			new GameInfoFrame();
+			new FIFAInfoFrame();
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
-			new GameInfoFrame();
+			new CrazyArcadeInfoFrame();
 		} else if (targetButton.hashCode() == searchButton.hashCode()) {
 			if (search.getText() == "게임 아이디 등 검색할 정보")
 				System.out.println("검색버튼");

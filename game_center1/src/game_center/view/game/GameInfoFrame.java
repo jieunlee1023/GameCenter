@@ -13,7 +13,9 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 
 import game_center.utils.Define;
+import lombok.Data;
 
+@Data
 public class GameInfoFrame extends JFrame implements ActionListener {
 
 	private JMenuBar bar = new JMenuBar();
@@ -33,7 +35,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private JMenuItem gameCharacterUpdate = new JMenuItem("캐릭터 수정");
 	private JMenuItem gameCharacterDelete = new JMenuItem("캐릭터 삭제");
 
-	private JLabel gameImage = new JLabel(new ImageIcon(Define.IMAGE_PATH + "bg.png"));
+	private JLabel gameImage;
 
 	private JLabel gameName = new JLabel(" 게임 이름 ~~ ");
 	private JLabel ageLimit = new JLabel(" 연령제한 ~~");
@@ -56,6 +58,8 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		setResizable(false);
 		setLocationRelativeTo(null);
 		getContentPane().setBackground(new Color(30, 40, 90));
+
+		gameImage = new JLabel();
 	}
 
 	private void setInitLayout() {
@@ -130,6 +134,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			remove(gameName);
 			remove(ageLimit);
 			remove(gameInformation);
+			remove(gameNameUpdate);
+			remove(ageLimitUpdate);
+			remove(gameInfomationUpdate);
 
 			gameSelectComponents();
 
@@ -143,10 +150,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			remove(gameInformation);
 
 			System.out.println("게임 정보 수정");
-
 			gameUpdateComponents();
-
 			repaint();
+
 		} else if (targetItem.getText().equals(gameDelete.getText())) {
 			System.out.println("게임 삭제 ");
 		} else if (targetItem.getText().equals(exit.getText())) {
@@ -154,7 +160,6 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			this.setVisible(false);
 		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
 			System.out.println("맵 조회 ");
-
 		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
 			System.out.println("맵 수정 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
@@ -209,4 +214,8 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		gameInformation.setForeground(Color.white);
 		add(gameInformation);
 	}
+
+//	public static void main(String[] args) {
+//		new GameInfoFrame();
+//	}
 }

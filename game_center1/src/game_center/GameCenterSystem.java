@@ -28,4 +28,5 @@ public class GameCenterSystem {
 		GameCenterSystem gameCenterSystem = new GameCenterSystem();
 		gameCenterSystem.showLogin();
 	}
+	
 }
