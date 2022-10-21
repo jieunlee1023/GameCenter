@@ -27,6 +27,36 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
+	public List<ResponseGameCenter> selectAllUserInfo(String userId) {
+
+		String query = " select * from user where userId = ? ";
+		List<ResponseGameCenter> list = new ArrayList<>();
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+
+				responseGameCenter.setIdentityNum(rs.getInt("identityNum"));
+				responseGameCenter.setUserId(rs.getString("userId"));
+				responseGameCenter.setPassword(rs.getString("password"));
+				responseGameCenter.setUserName(rs.getString("userName"));
+				responseGameCenter.setEmail(rs.getString("email"));
+				responseGameCenter.setMobile(rs.getString("mobile"));
+
+				list.add(responseGameCenter);
+			}
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return list;
+	}
+
+	@Override
 	public void update(RequestGameCenter rgc) {
 		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
 		try {
@@ -60,7 +90,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				ResponseGameCenter userInfo = new ResponseGameCenter();
-				userInfo.setIdentityNum("2");
+				userInfo.setIdentityNum(1);
 				userInfo.setUserId(rs.getString("userId"));
 				userInfo.setPassword(rs.getString("password"));
 				userInfo.setUserName(rs.getString("userName"));
@@ -134,7 +164,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 		} finally {
 			closeDB();
 		}
-
 		return list;
 	}
 
@@ -242,6 +271,10 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(5, rgc.getEmail());
 			ps.setString(6, rgc.getMobile());
 
+			ps.executeUpdate();
+
+			client.getConnection().commit();
+			client.getConnection().setAutoCommit(true);
 		} catch (SQLException e) {
 			try {
 				System.err.println("join에서 롤백 했다 !! 뭐함 ;;");
@@ -253,61 +286,45 @@ public class GameCenterHostService implements IGameCenterHostService {
 		} finally {
 			closeDB();
 		}
+		System.out.println("회원가입 완료 !");
 		return true;
 	}
 
 	@Override
-	public int logInId(RequestGameCenter rgc) {
-		int loginPass = 0;
+	public boolean joinIdCheck(String id) {
 
 		List<String> list = selectUserId();
 
-		for (String userId : list) {
-			if (rgc.getUserId().equals(userId)) {
-				loginPass = list.indexOf(userId);
-				System.out.println("Id 성공");
-				return loginPass;
-			} else {
-				System.out.println("Id 실패");
+		for (String string : list) {
+			if (id.equals(string)) {
+				return false;
 			}
 		}
-		return loginPass;
+		return true;
 	}
 
 	@Override
-	public int logInPassword(RequestGameCenter rgc) {
-		int loginPass = 1;
+	public boolean logIn(String Id, String pw) {
 
-		List<String> list = selectUserPassword();
+		int passwordIndexNum = 0;
 
-		for (String userPassword : list) {
-			if (rgc.getPassword().equals(userPassword)) {
-				loginPass = list.indexOf(userPassword);
-				System.out.println("password 성공");
-				return loginPass;
+		List<String> list = selectUserId();
+		List<String> listPassword = selectUserPassword();
+
+		for (String string : list) {
+			if (Id.equals(string)) {
+				System.out.println("Id 같음");
+				passwordIndexNum = list.indexOf(string);
 			} else {
-				System.out.println("password 실패");
+				System.out.println("아이디 혹은 비밀번호가 다름");
 			}
 		}
-		return loginPass;
-	}
-
-	@Override
-	public boolean logIn(RequestGameCenter rgc, String Id, String pw) {
-
-		rgc.setUserId(Id);
-		rgc.setPassword(pw);
-
-		int id = logInId(rgc);
-		int password = logInPassword(rgc);
-
-		if (id == password) {
-			System.out.println("로그인 성공 !");
+		if (listPassword.get(passwordIndexNum).equals(pw)) {
+			System.out.println("비밀번호도 같음");
 			return true;
-		} else {
-			System.out.println("로그인 실패 ㅠㅠ");
-			return false;
 		}
+		System.out.println("로그인 실패 !!");
+		return false;
 	}
 
 	@Override
@@ -578,6 +595,33 @@ public class GameCenterHostService implements IGameCenterHostService {
 		}
 	}
 
+	@Override
+	public int identityNum(String userId) {
+		int identityNum = 0;
+
+		String query = "select identityNum from user where userId =  ?";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			System.out.println(userId);
+			rs = ps.executeQuery();
+			System.out.println("rs : " + rs);
+			while (rs.next()) {
+				responseGameCenter.setIdentityNum(rs.getInt("identityNum"));
+
+				System.out.println("번호 : " + identityNum);
+				identityNum = responseGameCenter.getIdentityNum();
+				System.out.println("번호1 : " + identityNum);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return identityNum;
+	}
+
 	private void closeDB() {
 		try {
 			ps.close();
@@ -654,5 +698,18 @@ public class GameCenterHostService implements IGameCenterHostService {
 //      
 //      service.updateMap(center, "상점");
 
+//		center.setUserId("test");
+//		int i = service.identityNum("A");
+//		System.out.println(i);
+
+//		center.setUserId("qwerqwer");
+//		center.setUserName("testㅠㅠ");
+//		center.setPassword("qwerqwer");
+//		center.setEmail("qwerqwer");
+//		center.setMobile("qwerqwer");
+//		service.insertJoin(center);
+		List<ResponseGameCenter> list = service.selectAllUserInfo("A");
+
+		System.out.println(list);
 	}
 }

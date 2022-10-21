@@ -25,4 +25,6 @@ public interface IGameCenterHostService extends IGameCenterService {
 	void deleteCharater(String charaterName); // 게임 삭제
 
 	void deleteMap(String MapName); // 게임 삭제
+
+	int identityNum(String userId);
 }

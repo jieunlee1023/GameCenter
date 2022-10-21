@@ -13,10 +13,12 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.interfaces.IGameCenterHostService;
+import game_center.service.GameCenterHostService;
 
 public class LoginFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService service;
+	GameCenterHostService centerHostService = new GameCenterHostService();
 
 	private JLabel logIn;
 	private JLabel userId;
@@ -99,18 +101,19 @@ public class LoginFrame extends JFrame implements ActionListener {
 
 		// boolean flag = service.logIn(center, userIdField.getText(),
 		// passwordField.getText());
+		boolean flag = centerHostService.logIn(userIdField.getText(), passwordField.getText());
 
 		JButton targetButton = (JButton) e.getSource();
-		if (targetButton.getText().equals(logInButton.getText())) {
+		if (targetButton.getText().equals(logInButton.getText()) && flag) {
+			System.out.println(userIdField.getText() + "로 로그인 성공");
 			System.out.println("로그인 성공");
 			this.setVisible(false);
-			new GameCenterFrame();
+//			new GameCenterFrame();
 
 		} else {
 			System.out.println("로그인 실패");
 			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 
 		}
-
 	}
 }
