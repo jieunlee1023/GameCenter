@@ -30,6 +30,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton joinButton;
 	private RoundedButton logInButton;
+	MyInfoFrame infoFrame = new MyInfoFrame();
+	
 
 	private JLabel bg;
 
@@ -125,6 +127,8 @@ public class LoginFrame extends JFrame implements ActionListener {
 					this.setVisible(false);
 				} else {
 					System.out.println(" 사용자 로그인 성공");
+					infoFrame.ABCDE = userIdField.getText();
+					System.out.println("ABCDE : " + infoFrame.ABCDE);
 					new GameCenterFrame(centerHostService);
 					this.setVisible(false);
 				}
