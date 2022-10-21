@@ -94,6 +94,7 @@ public class userSearch extends JFrame implements ActionListener {
 
 		} else if (targetItem.getText().equals(choiceSelected.getText())) {
 			System.out.println("선택");
+			userField.setText(gameCenterHostService.selectUserById(search.getText()).toString());
 		} else if (targetItem.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
