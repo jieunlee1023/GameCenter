@@ -22,7 +22,6 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 
 	RequestGameCenter center = new RequestGameCenter();
 	GameCenterUserService gameCenterUserService = new GameCenterUserService();
-	static String ABCDE = null;
 	
 	private JLabel logo;
 	private JLabel info;
@@ -63,7 +62,7 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 		email = new JLabel("이메일 : ");
 		mobile = new JLabel("연락처 : ");
 
-		userIdField = new JTextField(gameCenterUserService.selectUserId().toString());
+		userIdField = new JTextField();
 		passwordField = new JPasswordField();
 		userNameField = new JTextField();
 		emailField = new JTextField();
