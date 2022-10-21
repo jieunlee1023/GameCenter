@@ -238,6 +238,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
+			new GameInfoFrame();
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
