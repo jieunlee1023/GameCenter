@@ -22,7 +22,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 	private GameCenterFrame frame;
 
 	public GameCenterHostService() {
-//		frame = new GameCenterFrame(this);
+		frame = new GameCenterFrame(this);
 		client = DBClient.getInstance();
 	}
 
