@@ -42,6 +42,8 @@ public class JoinFrame extends JFrame implements ActionListener {
 	private JTextField mobileField;
 	private JButton save;
 	private JButton exit;
+	private boolean userIdCehck;
+	private boolean userPasswordCehck;
 
 	public JoinFrame() {
 		initData();
@@ -200,35 +202,50 @@ public class JoinFrame extends JFrame implements ActionListener {
 		JButton targetButton = (JButton) e.getSource();
 
 		if (targetButton.hashCode() == (userIdCheckBtn.hashCode())) {
+			userIdCehck = gameCenterUserService.joinIdCheck(userIdField.getText());
+			System.out.println("아이디 중복 체크 : " + userIdCehck);
 
-//			System.out.println("센터 겟 : " + center.getUserId());
-//			System.out.println("유저가 쓴거 : " + userIdField.getText());
-//
-//			if (center.getUserId().equals(userIdField.getText())) {
-//				System.out.println("이미 있는 아이디입니다");
-//			} else {
-//				System.out.println("등록 가능한 아이디입니다.");
-//			}
-
-		} else if (targetButton.hashCode() == (passwordCheckBtn.hashCode())) {
-			System.out.println(passwordField.getText());
-			System.out.println(passwordFieldCheck.getText());
-
-			if (passwordField.getText() != (passwordFieldCheck.getText())) {
-				JOptionPane.showMessageDialog(this, "입력하신 두 비밀번호가 다릅니다.");
+		} else if (targetButton.hashCode() == passwordCheckBtn.hashCode()) {
+			if (passwordField.getText().equals(passwordFieldCheck.getText())) {
+				System.out.println("비밀번호 체크 완료");
+				userPasswordCehck = true;
+			} else if (passwordField.getText().isEmpty()) {
+				System.out.println("비밀번호를 입력하세요.");
+				userPasswordCehck = false;
+			} else if (passwordFieldCheck.getText().isEmpty()) {
+				System.out.println("비밀번호 확인을 입력하세요.");
+				userPasswordCehck = false;
 			} else {
-				System.out.println("gg");
+				System.out.println("비밀번호를 확인하세요.");
+				userPasswordCehck = false;
 			}
-		}
+		} else if (targetButton.getText().equals(save.getText()) && userIdCehck && userPasswordCehck) {
 
-		else if (targetButton.getText().equals(save.getText())) {
 			center.setUserId(userIdField.getText());
 			center.setPassword(passwordField.getText());
+			center.setPasswordCheck(passwordFieldCheck.getText());
 			center.setUserName(userNameField.getText());
 			center.setEmail(emailField.getText());
 			center.setMobile(mobileField.getText());
-			gameCenterUserService.insertJoin(center);
-			System.out.println("저장됨");
+
+			if (userIdField.getText().isEmpty()) {
+				System.out.println("아이디를 입력하세요");
+			} else if (passwordField.getText().isEmpty()) {
+				System.out.println("비밀번호를 입력하세요.");
+			} else if (userNameField.getText().isEmpty()) {
+				System.out.println("회원님의 이름을 입력하세요.");
+			} else if (emailField.getText().isEmpty()) {
+				System.out.println("회원님의 이메일을 입력하세요.");
+			} else if (mobileField.getText().isEmpty()) {
+				System.out.println("전화번호를 입력하세요.");
+			} else {
+				gameCenterUserService.insertJoin(center);
+				System.out.println("회원가입 완료 !");
+			}
+		} else if (targetButton.getText().equals(save.getText()) && !userIdCehck) {
+			System.out.println("아이디 중복 체크를 확인하세요.");
+		} else if (targetButton.getText().equals(save.getText()) && !userPasswordCehck) {
+			System.out.println("비밀번호 확인 체크를 확인하세요.");
 		} else if (targetButton.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);

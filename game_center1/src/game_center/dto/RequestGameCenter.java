@@ -11,6 +11,7 @@ public class RequestGameCenter {
 
 	private String userId;
 	private String password;
+	private String passwordCheck;
 	private String userName;
 	private String email;
 	private String mobile;

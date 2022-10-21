@@ -266,6 +266,13 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
+	public boolean joinPasswordCheck(String password) {
+
+		
+		return false;
+	}
+
+	@Override
 	public boolean logIn(String Id, String pw) {
 
 		int passwordIndexNum = 0;

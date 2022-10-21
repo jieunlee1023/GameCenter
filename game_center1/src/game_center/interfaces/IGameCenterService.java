@@ -23,6 +23,8 @@ public interface IGameCenterService {
 
 	boolean joinIdCheck(String id);
 
+	boolean joinPasswordCheck(String password);
+
 	boolean logIn(String Id, String pw);
 
 	void update(RequestGameCenter rgc); // 회원정보 수정
