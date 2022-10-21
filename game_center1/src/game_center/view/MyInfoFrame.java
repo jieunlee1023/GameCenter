@@ -4,6 +4,7 @@ import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.security.Provider.Service;
 
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
@@ -14,12 +15,14 @@ import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
 import game_center.dto.UserInfo;
+import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
 
 public class MyInfoFrame extends JFrame implements ActionListener {
 
 	RequestGameCenter center = new RequestGameCenter();
 	GameCenterUserService gameCenterUserService = new GameCenterUserService();
+	GameCenterHostService centerHostService = new GameCenterHostService();
 
 	private JLabel logo;
 	private JLabel info;
@@ -188,16 +191,26 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton targetButton = (JButton) e.getSource();
 
+		System.out.println("if문 전");
 		if (targetButton.getText().equals(save.getText())) {
+			System.out.println("저장 누름");
 
+			center.setPassword(passwordField.getText());
+			center.setUserName(userNameField.getText());
+			center.setEmail(emailField.getText());
+			center.setMobile(mobileField.getText());
+			center.setUserId(userIdField.getText());
+
+			centerHostService.update(center);
 			System.out.println("수정 완료 !");
 		} else if (targetButton.getText().equals(exit.getText())) {
 
 			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetButton.getText().equals(leave.getText())) {
-
+			centerHostService.delete(userIdField.getText());
 			System.out.println("탈퇴 완료");
+			this.setVisible(false);
 		}
 	}
 }
