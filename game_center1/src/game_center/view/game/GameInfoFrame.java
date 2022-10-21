@@ -82,11 +82,39 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		setJMenuBar(bar);
 
+		gameImage.setSize(400, 400);
+		gameImage.setLocation(50, 0);
+		gameImage.setBackground(Color.white);
+		add(gameImage);
+
+		gameName.setSize(400, 20);
+		gameName.setLocation(50, 360);
+		gameName.setForeground(Color.white);
+		add(gameName);
+
+		ageLimit.setSize(400, 20);
+		ageLimit.setLocation(370, 360);
+		ageLimit.setForeground(Color.white);
+		add(ageLimit);
+
+		gameInfomation.setSize(400, 200);
+		gameInfomation.setLocation(50, 300);
+		gameInfomation.setForeground(Color.white);
+		add(gameInfomation);
+
 	}
 
 	private void addEventListener() {
 		gameSelected.addActionListener(this);
 		gameUpdate.addActionListener(this);
+		exit.addActionListener(this);
+		gameMapSelected.addActionListener(this);
+		gameMapUpdate.addActionListener(this);
+		gameMapDelete.addActionListener(this);
+		gameCharacterSelected.addActionListener(this);
+		gameCharacterUpdate.addActionListener(this);
+		gameCharacterDelete.addActionListener(this);
+
 	}
 
 	@Override
@@ -95,7 +123,11 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(gameSelected.getText())) {
 
-			System.out.println("게임정보조회");
+			remove(gameImage);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInfomation);
+			
 			gameImage.setSize(400, 400);
 			gameImage.setLocation(50, 0);
 			gameImage.setBackground(Color.white);
@@ -120,6 +152,11 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		} else if (targetItem.getText().equals(gameUpdate.getText())) {
 
+			remove(gameImage);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInfomation);
+
 			System.out.println("게임 정보 수정");
 
 			gameImage.setSize(400, 400);
@@ -140,8 +177,24 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			add(gameInfomationUpdate);
 
 			repaint();
-//			remove(this);
+		} else if (targetItem.getText().equals(gameDelete.getText())) {
+			System.out.println("게임 삭제 ");
+		} else if (targetItem.getText().equals(exit.getText())) {
+			System.out.println("나가기");
+			this.setVisible(false);
+		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
+			System.out.println("맵 조회 ");
 
+		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
+			System.out.println("맵 수정 ");
+		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
+			System.out.println("맵 삭제 ");
+		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
+			System.out.println("캐릭터 조회 ");
+		} else if (targetItem.getText().equals(gameCharacterUpdate.getText())) {
+			System.out.println("캐릭터 수정 ");
+		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
+			System.out.println("캐릭터 삭제 ");
 		}
 	}
 
