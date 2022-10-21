@@ -257,6 +257,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
+				responseGameCenter.setIdentityNum(rs.getInt("identityNum"));
 				responseGameCenter.setUserId(rs.getString("userId"));
 				responseGameCenter.setPassword(rs.getString("password"));
 				responseGameCenter.setUserName(rs.getString("userName"));
