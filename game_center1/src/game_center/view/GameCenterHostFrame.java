@@ -12,8 +12,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 
 	private RoundedButton userSelect;
 	private RoundedButton gameInsert;
-	private RoundedButton gameUpdate;
-	private RoundedButton gameDelete;
 
 	public GameCenterHostFrame(IGameCenterHostService centerHostService) {
 		super(centerHostService);
@@ -25,34 +23,22 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 	private void initData() {
 		userSelect = new RoundedButton("유저 조회");
 		gameInsert = new RoundedButton("게임 추가");
-		gameUpdate = new RoundedButton("게임 수정");
-		gameDelete = new RoundedButton("게임 삭제");
 
 	}
 
 	private void setInitLayout() {
 		userSelect.setSize(80, 35);
-		userSelect.setLocation(90, 20);
+		userSelect.setLocation(85, 25);
 		add(userSelect);
 
 		gameInsert.setSize(80, 35);
-		gameInsert.setLocation(690, 70);
+		gameInsert.setLocation(870, 70);
 		add(gameInsert);
-
-		gameUpdate.setSize(80, 35);
-		gameUpdate.setLocation(780, 70);
-		add(gameUpdate);
-
-		gameDelete.setSize(80, 35);
-		gameDelete.setLocation(870, 70);
-		add(gameDelete);
 	}
 
 	private void addEventListener() {
 		userSelect.addActionListener(this);
 		gameInsert.addActionListener(this);
-		gameUpdate.addActionListener(this);
-		gameDelete.addActionListener(this);
 
 	}
 
@@ -65,12 +51,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			new userSearch();
 		} else if (targetButton.getText().equals(gameInsert.getText())) {
 			System.out.println("게임 추가");
-
-		} else if (targetButton.getText().equals(gameUpdate.getText())) {
-			System.out.println("게임 수정");
-
-		} else if (targetButton.getText().equals(gameDelete.getText())) {
-			System.out.println("게임 삭제");
 
 		}
 	}
