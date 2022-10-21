@@ -2,7 +2,6 @@ package game_center;
 
 import game_center.interfaces.IGameCenterHostService;
 import game_center.view.GameCenterFrame;
-import game_center.view.MyInfoFrame;
 import game_center.view.LoginFrame;
 import game_center.view.MyInfoFrame;
 
