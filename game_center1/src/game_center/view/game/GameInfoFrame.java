@@ -38,7 +38,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 	private JLabel gameName = new JLabel(" 게임 이름 ~~ ");
 	private JLabel ageLimit = new JLabel(" 연령제한 ~~");
-	private JLabel gameInfomation = new JLabel(" 게임 정보 ~~");
+	private JLabel gameInformation = new JLabel(" 게임 정보 ~~");
 
 	// 수정시 사용 (관리자만 사용함)
 	private JTextArea gameNameUpdate = new JTextArea();
@@ -83,6 +83,26 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		setJMenuBar(bar);
 
+		gameImage.setSize(400, 400);
+		gameImage.setLocation(50, 0);
+		gameImage.setBackground(Color.white);
+		add(gameImage);
+
+		gameName.setSize(400, 20);
+		gameName.setLocation(50, 360);
+		gameName.setForeground(Color.white);
+		add(gameName);
+
+		ageLimit.setSize(400, 20);
+		ageLimit.setLocation(370, 360);
+		ageLimit.setForeground(Color.white);
+		add(ageLimit);
+
+		gameInformation.setSize(400, 200);
+		gameInformation.setLocation(50, 300);
+		gameInformation.setForeground(Color.white);
+		add(gameInformation);
+
 		System.out.println("게임 정보 수정");
 
 		gameSelectComponents();
@@ -91,6 +111,14 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private void addEventListener() {
 		gameSelected.addActionListener(this);
 		gameUpdate.addActionListener(this);
+		exit.addActionListener(this);
+		gameMapSelected.addActionListener(this);
+		gameMapUpdate.addActionListener(this);
+		gameMapDelete.addActionListener(this);
+		gameCharacterSelected.addActionListener(this);
+		gameCharacterUpdate.addActionListener(this);
+		gameCharacterDelete.addActionListener(this);
+
 	}
 
 	@Override
@@ -100,9 +128,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		if (targetItem.getText().equals(gameSelected.getText())) {
 
 			remove(gameImage);
-			remove(gameNameUpdate);
-			remove(ageLimitUpdate);
-			remove(gameInfomationUpdate);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInformation);
 
 			gameSelectComponents();
 
@@ -113,13 +141,31 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			remove(gameImage);
 			remove(gameName);
 			remove(ageLimit);
-			remove(gameInfomation);
+			remove(gameInformation);
 
 			System.out.println("게임 정보 수정");
 
 			gameUpdateComponents();
 
 			repaint();
+		} else if (targetItem.getText().equals(gameDelete.getText())) {
+			System.out.println("게임 삭제 ");
+		} else if (targetItem.getText().equals(exit.getText())) {
+			System.out.println("나가기");
+			this.setVisible(false);
+		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
+			System.out.println("맵 조회 ");
+
+		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
+			System.out.println("맵 수정 ");
+		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
+			System.out.println("맵 삭제 ");
+		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
+			System.out.println("캐릭터 조회 ");
+		} else if (targetItem.getText().equals(gameCharacterUpdate.getText())) {
+			System.out.println("캐릭터 수정 ");
+		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
+			System.out.println("캐릭터 삭제 ");
 		}
 	}
 
@@ -159,9 +205,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		ageLimit.setForeground(Color.white);
 		add(ageLimit);
 
-		gameInfomation.setSize(400, 200);
-		gameInfomation.setLocation(50, 300);
-		gameInfomation.setForeground(Color.white);
-		add(gameInfomation);
+		gameInformation.setSize(400, 200);
+		gameInformation.setLocation(50, 300);
+		gameInformation.setForeground(Color.white);
+		add(gameInformation);
 	}
 }
