@@ -24,7 +24,7 @@ public class ResponseGameCenter {
 
 	public String toString() {
 
-		return " 아이디 = " + userId + ", 비밀번호 = " + password + ", 이름 = " + userName + ", 이메일 = " + email + ", 전화번호 = "
-				+ mobile;
+		return " ⓐ " + userId + " ⓑ " + password + " ⓒ " + userName + " ⓓ " + email + " ⓔ "
+				+ mobile ;
 	}
 }
