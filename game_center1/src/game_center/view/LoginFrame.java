@@ -29,7 +29,6 @@ public class LoginFrame extends JFrame implements ActionListener {
 	private JPasswordField passwordField;
 	private RoundedButton joinButton;
 	private RoundedButton logInButton;
-	
 
 	private JLabel bg;
 

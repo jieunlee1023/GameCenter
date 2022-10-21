@@ -6,8 +6,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.security.auth.login.LoginContext;
-
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 import game_center.dto.UserInfo;
@@ -26,9 +24,37 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void update(RequestGameCenter rgc) {
-		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+	public void delete(String userId) {
+
+		UserInfo userInfo = UserInfo.getInstance();
+
+		String query = " delete from user where userId = ? ";
+
 		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+
+			UserInfo.isLogin = false;
+			userInfo = null;
+			System.out.println("탈퇴 (계정 삭제) 완료");
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+
+	@Override
+	public void update(RequestGameCenter rgc) {
+
+		UserInfo userInfo = UserInfo.getInstance();
+
+		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+		System.out.println("try 전");
+		try {
+			System.out.println("try 후");
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, rgc.getPassword());
 			ps.setString(2, rgc.getUserName());
@@ -36,6 +62,28 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(4, rgc.getMobile());
 			ps.setString(5, rgc.getUserId());
 			ps.executeUpdate();
+
+			userInfo.setPassword(rgc.getPassword());
+			userInfo.setUserName(rgc.getUserName());
+			userInfo.setEmail(rgc.getEmail());
+			userInfo.setMobile(rgc.getMobile());
+			userInfo.setUserId(rgc.getUserId());
+
+			System.out.println("rgc에 들어간 정보들");
+			System.out.println(rgc.getPassword());
+			System.out.println(rgc.getUserName());
+			System.out.println(rgc.getEmail());
+			System.out.println(rgc.getMobile());
+			System.out.println(rgc.getUserId());
+			System.out.println("+++++++++++++++++++");
+
+			System.out.println("유저 인포에 들어간 정보들");
+			System.out.println(userInfo.getPassword());
+			System.out.println(userInfo.getUserName());
+			System.out.println(userInfo.getEmail());
+			System.out.println(userInfo.getMobile());
+			System.out.println(userInfo.getUserId());
+
 		} catch (SQLException e) {
 			try {
 				client.getConnection().rollback();
@@ -126,12 +174,12 @@ public class GameCenterHostService implements IGameCenterHostService {
 			rs = ps.executeQuery();
 
 			while (rs.next()) {
-				responseGameCenter.setUserId(rs.getString("userId"));				
+				responseGameCenter.setUserId(rs.getString("userId"));
 				responseGameCenter.setPassword(rs.getString("password"));
 				responseGameCenter.setUserName(rs.getString("userName"));
 				responseGameCenter.setEmail(rs.getString("email"));
 				responseGameCenter.setMobile(rs.getString("mobile"));
-				
+
 				list.add(responseGameCenter.toString() + "\n");
 			}
 		} catch (SQLException e) {

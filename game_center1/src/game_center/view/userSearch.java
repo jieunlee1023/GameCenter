@@ -90,8 +90,8 @@ public class userSearch extends JFrame implements ActionListener {
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(allSelected.getText())) {
 			System.out.println("전체");
-				userField.setText(gameCenterHostService.selectAllUser().toString());				
-	
+			userField.setText(gameCenterHostService.selectAllUser().toString());
+
 		} else if (targetItem.getText().equals(choiceSelected.getText())) {
 			System.out.println("선택");
 		} else if (targetItem.getText().equals(exit.getText())) {
