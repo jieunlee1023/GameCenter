@@ -49,8 +49,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JTextArea search;
 	private JButton searchButton;
 
-	private JTextArea game1Name;
-	private JTextField game1Info;
+	private JLabel game1Name;
+	private JLabel game1Info;
+
+	private JLabel game2Name;
+	private JLabel game2Info;
+
+	private JLabel game3Name;
+	private JLabel game3Info;
 
 	public GameCenterFrame(IGameCenterHostService centerHostService) {
 		this.centerHostService = centerHostService;
@@ -96,8 +102,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		search = new JTextArea();
 		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
 
-		game1Name = new JTextArea("게임이름~");
-		game1Info = new JTextField("설명~");
+		game1Name = new JLabel("게임이름~");
+		game1Info = new JLabel("설명~");
+
+		game2Name = new JLabel("게임이름~");
+		game2Info = new JLabel("설명~");
+
+		game3Name = new JLabel("게임이름~");
+		game3Info = new JLabel("설명~");
 	}
 
 	private void setInitLayout() {
@@ -151,11 +163,33 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 		game1Name.setSize(300, 20);
 		game1Name.setLocation(30, 500);
+		game1Name.setForeground(Color.white);
 		add(game1Name);
 
 		game1Info.setSize(300, 50);
-		game1Info.setLocation(30, 530);
+		game1Info.setLocation(30, 510);
+		game1Info.setForeground(Color.white);
 		add(game1Info);
+
+		game2Name.setSize(300, 20);
+		game2Name.setLocation(340, 500);
+		game2Name.setForeground(Color.white);
+		add(game2Name);
+
+		game2Info.setSize(300, 50);
+		game2Info.setLocation(340, 510);
+		game2Info.setForeground(Color.white);
+		add(game2Info);
+
+		game3Name.setSize(300, 20);
+		game3Name.setLocation(650, 500);
+		game3Name.setForeground(Color.white);
+		add(game3Name);
+
+		game3Info.setSize(300, 50);
+		game3Info.setLocation(650, 510);
+		game3Info.setForeground(Color.white);
+		add(game3Info);
 
 		gameButton2.setSize(300, 300);
 		gameButton2.setLocation(340, 180);

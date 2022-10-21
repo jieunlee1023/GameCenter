@@ -241,6 +241,8 @@ public class JoinFrame extends JFrame implements ActionListener {
 			} else {
 				gameCenterUserService.insertJoin(center);
 				System.out.println("회원가입 완료 !");
+				JOptionPane.showMessageDialog(this, "회원가입이 완료 되었습니다.");
+				this.setVisible(false);
 			}
 		} else if (targetButton.getText().equals(save.getText()) && !userIdCehck) {
 			System.out.println("아이디 중복 체크를 확인하세요.");
