@@ -25,13 +25,14 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public void hostIn(String userId) {
-
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 		String query = "update user set identityNum = 1 where userId = ? ";
-
 		try {
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, userId);
 			ps.executeUpdate();
+
+			userInfo.setIdentity(1);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -41,12 +42,13 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public void hostOut(String userId) {
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 		String query = "update user set identityNum = 2 where userId = ? ";
-
 		try {
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, userId);
 			ps.executeUpdate();
+			userInfo.setIdentity(2);
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
