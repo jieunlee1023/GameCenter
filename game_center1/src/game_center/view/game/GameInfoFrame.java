@@ -81,6 +81,25 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		bar.add(gameCharacterInfo);
 
 		setJMenuBar(bar);
+		
+		System.out.println("게임 정보 수정");
+
+		gameImage.setSize(400, 400);
+		gameImage.setLocation(50, 0);
+		gameImage.setBackground(Color.white);
+		add(gameImage);
+
+		gameNameUpdate.setSize(300, 20);
+		gameNameUpdate.setLocation(50, 370);
+		add(gameNameUpdate);
+
+		ageLimitUpdate.setSize(80, 20);
+		ageLimitUpdate.setLocation(370, 370);
+		add(ageLimitUpdate);
+
+		gameInfomationUpdate.setSize(400, 200);
+		gameInfomationUpdate.setLocation(50, 400);
+		add(gameInfomationUpdate);
 
 	}
 
@@ -94,6 +113,11 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(gameSelected.getText())) {
+
+			remove(gameImage);
+			remove(gameNameUpdate);
+			remove(ageLimitUpdate);
+			remove(gameInfomationUpdate);
 
 			System.out.println("게임정보조회");
 			gameImage.setSize(400, 400);
@@ -120,6 +144,11 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		} else if (targetItem.getText().equals(gameUpdate.getText())) {
 
+			remove(gameImage);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInfomation);
+
 			System.out.println("게임 정보 수정");
 
 			gameImage.setSize(400, 400);
@@ -140,12 +169,6 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			add(gameInfomationUpdate);
 
 			repaint();
-//			remove(this);
-
 		}
-	}
-
-	public static void main(String[] args) {
-		new GameInfoFrame();
 	}
 }
