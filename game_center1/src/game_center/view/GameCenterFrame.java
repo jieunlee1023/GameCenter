@@ -208,10 +208,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	}
 
-	private void insertGameNameOnFrame() {
-		game1Name.setText(centerHostService.selectGameName("롤"));
-	}
-
 	private void addEventListener() {
 		this.addMouseWheelListener(new MyListener());
 		myInfo.addActionListener(this);
