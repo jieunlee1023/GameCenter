@@ -13,6 +13,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
+import game_center.dto.UserInfo;
 import game_center.service.GameCenterUserService;
 
 public class MyInfoFrame extends JFrame implements ActionListener {
@@ -162,9 +163,23 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 		exit.setForeground(new Color(230, 230, 230));
 		add(exit);
 
+		setUserInfo();
+	}
+
+	private void setUserInfo() {
+		UserInfo userInfo = UserInfo.getInstance();
+
+		if (UserInfo.isLogin) {
+			userIdField.setText(userInfo.getUserId());
+			userNameField.setText(userInfo.getUserName());
+			passwordField.setText(userInfo.getPassword());
+			emailField.setText(userInfo.getEmail());
+			mobileField.setText(userInfo.getMobile());
+		}
 	}
 
 	private void addEventListener() {
+		leave.addActionListener(this);
 		save.addActionListener(this);
 		exit.addActionListener(this);
 	}
@@ -175,10 +190,14 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 
 		if (targetButton.getText().equals(save.getText())) {
 
+			System.out.println("수정 완료 !");
 		} else if (targetButton.getText().equals(exit.getText())) {
+
 			System.out.println("나가기");
 			this.setVisible(false);
+		} else if (targetButton.getText().equals(leave.getText())) {
+
+			System.out.println("탈퇴 완료");
 		}
 	}
-
 }
