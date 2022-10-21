@@ -1,6 +1,7 @@
 package game_center.view.game;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -81,9 +82,48 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		bar.add(gameCharacterInfo);
 
 		setJMenuBar(bar);
-		
+
 		System.out.println("게임 정보 수정");
 
+		gameSelectComponents();
+	}
+
+	private void addEventListener() {
+		gameSelected.addActionListener(this);
+		gameUpdate.addActionListener(this);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+		JMenuItem targetItem = (JMenuItem) e.getSource();
+		if (targetItem.getText().equals(gameSelected.getText())) {
+
+			remove(gameImage);
+			remove(gameNameUpdate);
+			remove(ageLimitUpdate);
+			remove(gameInfomationUpdate);
+
+			gameSelectComponents();
+
+			repaint();
+
+		} else if (targetItem.getText().equals(gameUpdate.getText())) {
+
+			remove(gameImage);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInfomation);
+
+			System.out.println("게임 정보 수정");
+
+			gameUpdateComponents();
+
+			repaint();
+		}
+	}
+
+	private void gameUpdateComponents() {
 		gameImage.setSize(400, 400);
 		gameImage.setLocation(50, 0);
 		gameImage.setBackground(Color.white);
@@ -103,72 +143,25 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 	}
 
-	private void addEventListener() {
-		gameSelected.addActionListener(this);
-		gameUpdate.addActionListener(this);
-	}
+	private void gameSelectComponents() {
+		gameImage.setSize(400, 400);
+		gameImage.setLocation(50, 0);
+		gameImage.setBackground(Color.white);
+		add(gameImage);
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
+		gameName.setSize(400, 20);
+		gameName.setLocation(50, 360);
+		gameName.setForeground(Color.white);
+		add(gameName);
 
-		JMenuItem targetItem = (JMenuItem) e.getSource();
-		if (targetItem.getText().equals(gameSelected.getText())) {
+		ageLimit.setSize(400, 20);
+		ageLimit.setLocation(370, 360);
+		ageLimit.setForeground(Color.white);
+		add(ageLimit);
 
-			remove(gameImage);
-			remove(gameNameUpdate);
-			remove(ageLimitUpdate);
-			remove(gameInfomationUpdate);
-
-			System.out.println("게임정보조회");
-			gameImage.setSize(400, 400);
-			gameImage.setLocation(50, 0);
-			gameImage.setBackground(Color.white);
-			add(gameImage);
-
-			gameName.setSize(400, 20);
-			gameName.setLocation(50, 360);
-			gameName.setForeground(Color.white);
-			add(gameName);
-
-			ageLimit.setSize(400, 20);
-			ageLimit.setLocation(370, 360);
-			ageLimit.setForeground(Color.white);
-			add(ageLimit);
-
-			gameInfomation.setSize(400, 200);
-			gameInfomation.setLocation(50, 300);
-			gameInfomation.setForeground(Color.white);
-			add(gameInfomation);
-
-			repaint();
-
-		} else if (targetItem.getText().equals(gameUpdate.getText())) {
-
-			remove(gameImage);
-			remove(gameName);
-			remove(ageLimit);
-			remove(gameInfomation);
-
-			System.out.println("게임 정보 수정");
-
-			gameImage.setSize(400, 400);
-			gameImage.setLocation(50, 0);
-			gameImage.setBackground(Color.white);
-			add(gameImage);
-
-			gameNameUpdate.setSize(300, 20);
-			gameNameUpdate.setLocation(50, 370);
-			add(gameNameUpdate);
-
-			ageLimitUpdate.setSize(80, 20);
-			ageLimitUpdate.setLocation(370, 370);
-			add(ageLimitUpdate);
-
-			gameInfomationUpdate.setSize(400, 200);
-			gameInfomationUpdate.setLocation(50, 400);
-			add(gameInfomationUpdate);
-
-			repaint();
-		}
+		gameInfomation.setSize(400, 200);
+		gameInfomation.setLocation(50, 300);
+		gameInfomation.setForeground(Color.white);
+		add(gameInfomation);
 	}
 }

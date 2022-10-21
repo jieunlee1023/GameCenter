@@ -20,7 +20,7 @@ public class GameCenterSystem {
 
 	public void showLogin() {
 		loginFrame = new LoginFrame();
-		
+
 	}
 
 	public static void main(String[] args) {
