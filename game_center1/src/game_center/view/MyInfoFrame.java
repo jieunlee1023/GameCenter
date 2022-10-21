@@ -18,11 +18,12 @@ import game_center.dto.RequestGameCenter;
 import game_center.dto.UserInfo;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
+import lombok.Data;
 
+@Data
 public class MyInfoFrame extends JFrame implements ActionListener {
 
 	RequestGameCenter center = new RequestGameCenter();
-	GameCenterUserService gameCenterUserService = new GameCenterUserService();
 	GameCenterHostService centerHostService = new GameCenterHostService();
 
 	private JLabel logo;
@@ -214,7 +215,6 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 			System.out.println("탈퇴 완료");
 			JOptionPane.showMessageDialog(this, "탈퇴가 완료되었습니다.");
 			new LoginFrame();
-
 			this.setVisible(false);
 		}
 	}

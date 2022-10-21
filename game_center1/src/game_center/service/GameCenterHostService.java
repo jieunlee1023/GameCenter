@@ -180,7 +180,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 				responseGameCenter.setEmail(rs.getString("email"));
 				responseGameCenter.setMobile(rs.getString("mobile"));
 
-				list.add(responseGameCenter.toString());
+				list.add(responseGameCenter.toString() + "\n");
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
