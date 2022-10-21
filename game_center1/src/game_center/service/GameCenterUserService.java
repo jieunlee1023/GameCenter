@@ -8,7 +8,7 @@ import java.util.List;
 
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
-import game_center.dto.UserInfo;
+import game_center.dto.LoginUserInfo;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.DBClient;
 
@@ -28,9 +28,61 @@ public class GameCenterUserService implements IGameCenterService {
 	}
 
 	@Override
+	public String selectGameName(String name) {
+		String query = "select gameName from gamecenterinfo where gameName = ? ";
+		String gameName = null;
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			psmt.setString(1, name);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+
+				responseGameCenter.setUserName(rs.getString("gameName"));
+			}
+			gameName = responseGameCenter.getUserName();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		return gameName;
+	}
+
+	@Override
+	public String selectGameInfo(String name) {
+		String query = "select gameInfo from gameinfo where gameName = ? ";
+		String gameInfo = null;
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			psmt.setString(1, name);
+			rs = psmt.executeQuery();
+			while (rs.next()) {
+				responseGameCenter.setGameInfo(rs.getString("gameInfo"));
+			}
+			gameInfo = responseGameCenter.getGameInfo();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+
+		System.out.println(gameInfo);
+		return gameInfo;
+	}
+
+	@Override
+	public String selectCharacterName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public String selectMapName(String name) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
 	public void delete(String userId) {
 
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = " delete from user where userId = ? ";
 
@@ -39,7 +91,7 @@ public class GameCenterUserService implements IGameCenterService {
 			psmt.setString(1, userId);
 			psmt.executeUpdate();
 
-			UserInfo.isLogin = false;
+			LoginUserInfo.isLogin = false;
 			userInfo = null;
 			System.out.println("탈퇴 (계정 삭제) 완료");
 
@@ -237,7 +289,7 @@ public class GameCenterUserService implements IGameCenterService {
 	@Override
 	public boolean logIn(String Id, String pw) {
 
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = " select * from user where userId = ? and password = ? ";
 
@@ -249,7 +301,7 @@ public class GameCenterUserService implements IGameCenterService {
 
 			while (rs.next()) {
 
-				UserInfo.isLogin = true;
+				LoginUserInfo.isLogin = true;
 
 				userInfo.setUserId(rs.getString("userId"));
 				userInfo.setUserName(rs.getString("userName"));
@@ -263,7 +315,7 @@ public class GameCenterUserService implements IGameCenterService {
 		} finally {
 			memoryClose();
 		}
-		return UserInfo.isLogin;
+		return LoginUserInfo.isLogin;
 	}
 
 	@Override
