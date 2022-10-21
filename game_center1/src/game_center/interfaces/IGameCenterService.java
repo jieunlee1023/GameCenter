@@ -15,6 +15,14 @@ public interface IGameCenterService {
 
 	List<ResponseGameCenter> selectMap(String mapName); // 게임 맵 선택 (맵상세)
 
+	String selectGameName(String name);
+	
+	String selectGameInfo(String name);
+
+	String selectCharacterName(String name);
+
+	String selectMapName(String name);
+
 	List<String> selectAllUser(); // 전체 조회
 
 	List<String> selectUserId();

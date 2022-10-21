@@ -96,8 +96,8 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		search = new JTextArea();
 		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
 
-		game1Name = new JTextArea("게임이름~");
-		game1Info = new JTextField("설명~");
+		game1Name = new JTextArea(centerHostService.selectGameName("롤"));
+		game1Info = new JTextField(centerHostService.selectGameInfo("롤"));
 	}
 
 	private void setInitLayout() {
@@ -172,6 +172,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		scrollPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		scrollPane.getVerticalScrollBar().setUnitIncrement(16);
 
+	}
+
+	private void insertGameNameOnFrame() {
+		game1Name.setText(centerHostService.selectGameName("롤"));
 	}
 
 	private void addEventListener() {

@@ -14,7 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.dto.RequestGameCenter;
-import game_center.dto.UserInfo;
+import game_center.dto.LoginUserInfo;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
 
@@ -170,9 +170,9 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 	}
 
 	private void setUserInfo() {
-		UserInfo userInfo = UserInfo.getInstance();
+		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
-		if (UserInfo.isLogin) {
+		if (LoginUserInfo.isLogin) {
 			userIdField.setText(userInfo.getUserId());
 			userNameField.setText(userInfo.getUserName());
 			passwordField.setText(userInfo.getPassword());
