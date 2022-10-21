@@ -6,7 +6,10 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import game_center.dto.CharacterInfo;
+import game_center.dto.GameInfo;
 import game_center.dto.LoginUserInfo;
+import game_center.dto.MapInfo;
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 import game_center.interfaces.IGameCenterHostService;
@@ -21,6 +24,86 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	public GameCenterHostService() {
 		client = DBClient.getInstance();
+	}
+
+	@Override
+	public List<GameInfo> GameInfo() {
+
+		List<GameInfo> list = new ArrayList<>();
+
+		String query = "select * from gameInfo";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				GameInfo gameInfo = new GameInfo();
+				gameInfo.setGameName(rs.getString("gamename"));
+				gameInfo.setAgeLimit(rs.getString("ageLimit"));
+				gameInfo.setGameInfo(rs.getString("gameInfo"));
+
+				list.add(gameInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<CharacterInfo> CharacterInfo() {
+		List<CharacterInfo> list = new ArrayList<>();
+
+		String query = "select * from gameCharacter";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				CharacterInfo characterInfo = new CharacterInfo();
+				characterInfo.setGameName(rs.getString("gamename"));
+				characterInfo.setGameCharacterName(rs.getString("gameCharacterName"));
+				characterInfo.setGameCharacterInfo(rs.getString("gameCharacterInfo"));
+
+				list.add(characterInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return list;
+	}
+
+	@Override
+	public List<MapInfo> MapInfo() {
+		List<MapInfo> list = new ArrayList<>();
+
+		String query = "select * from gamemap";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			rs = ps.executeQuery();
+
+			while (rs.next()) {
+				MapInfo mapInfo = new MapInfo();
+				mapInfo.setGameName(rs.getString("gamename"));
+				mapInfo.setGameMapName(rs.getString("gameMapName"));
+				mapInfo.setGameMapInfo(rs.getString("gameMapInfo"));
+
+				list.add(mapInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+		return list;
 	}
 
 	@Override
@@ -505,7 +588,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps = client.getConnection().prepareStatement(query);
 
 			ps.setString(1, rgc.getGameName());
-			ps.setInt(2, rgc.getAgeLimit());
+			ps.setString(2, rgc.getAgeLimit());
 			ps.setString(3, rgc.getGameInfo());
 			ps.executeUpdate();
 
@@ -614,21 +697,28 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateGame(RequestGameCenter rgc, String name) {
+	public void updateGame(RequestGameCenter rgc) {
 
-		String query = "update gameInfo " + "set gameName = ? " + ", ageLimit = ? " + ", gameInfo = ? "
-				+ "where gameName = ? ";
+		List<GameInfo> list = GameInfo();
+
+		String query = "update gameInfo set ageLimit = ? ,gameInfo = ? where gameName = ? ";
 
 		try {
 			ps = client.getConnection().prepareStatement(query);
 
-			ps.setString(1, rgc.getGameName());
-			ps.setInt(2, rgc.getAgeLimit());
-			ps.setString(3, rgc.getGameInfo());
+			for (GameInfo gameInfo : list) {
+				if (gameInfo.getGameName() == rgc.getGameName()) {
+					System.out.println("들어오나");
+					gameInfo.setAgeLimit(rgc.getAgeLimit());
+					gameInfo.setGameInfo(rgc.getGameInfo());
+				}
+			}
+			ps.setString(1, rgc.getAgeLimit());
+			ps.setString(2, rgc.getGameInfo());
+			ps.setString(3, rgc.getGameName());
+			System.out.println();
 
-			ps.setString(4, name);
-
-			ps.executeUpdate();
+			ps.executeUpdate(rgc.getGameInfo());
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -638,7 +728,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateCharacter(RequestGameCenter rgc, String name) {
+	public void updateCharacter(RequestGameCenter rgc) {
 
 		String query = "update gameCharacter " + " set gameCharacterName = ? " + ", gameCharacterInfo = ? "
 				+ "where gameCharacterName = ? ";
@@ -649,7 +739,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(1, rgc.getGameCharacterName());
 			ps.setString(2, rgc.getGameCharacterInfo());
 
-			ps.setString(3, name);
+//			ps.setString(3, name);
 
 			ps.executeUpdate();
 
@@ -661,7 +751,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateMap(RequestGameCenter rgc, String name) {
+	public void updateMap(RequestGameCenter rgc) {
 		String query = "update gameMap " + "set gameMapName = ? " + ", gameMapInfo = ? " + "where gameMapName = ? ";
 
 		try {
@@ -670,7 +760,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			ps.setString(1, rgc.getGameMapName());
 			ps.setString(2, rgc.getGameMapInfo());
 
-			ps.setString(3, name);
+//			ps.setString(3, name);
 
 			ps.executeUpdate();
 
@@ -773,7 +863,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 		RequestGameCenter center = new RequestGameCenter();
 		GameCenterHostService service = new GameCenterHostService();
 
-		service.hostIn("test1");
+//		service.hostIn("test1");
 
 //      List<ResponseGameCenter> list = service.selectGame("test2");
 //
@@ -836,6 +926,13 @@ public class GameCenterHostService implements IGameCenterHostService {
 //      center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
 //      
 //      service.updateMap(center, "상점");
+		List<GameInfo> gameInfos = service.GameInfo();
+		List<CharacterInfo> characterInfos = service.CharacterInfo();
+		List<MapInfo> mapInfos = service.MapInfo();
+
+		System.out.println(gameInfos.get(1));
+		System.out.println(characterInfos.get(5));
+		System.out.println(mapInfos.get(1));
 
 	}
 }

@@ -1,5 +1,10 @@
 package game_center.interfaces;
 
+import java.util.List;
+
+import game_center.dto.CharacterInfo;
+import game_center.dto.GameInfo;
+import game_center.dto.MapInfo;
 import game_center.dto.RequestGameCenter;
 
 public interface IGameCenterHostService extends IGameCenterService {
@@ -16,11 +21,11 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	boolean insertMap(RequestGameCenter rgc); // 게임 등록
 
-	void updateGame(RequestGameCenter rgc, String name); // 게임 정보 수정
+	void updateGame(RequestGameCenter rgc); // 게임 정보 수정
 
-	void updateCharacter(RequestGameCenter rgc, String name); // 게임 캐릭터 수정
+	void updateCharacter(RequestGameCenter rgc); // 게임 캐릭터 수정
 
-	void updateMap(RequestGameCenter rgc, String name); // 게임 맵 수정
+	void updateMap(RequestGameCenter rgc); // 게임 맵 수정
 
 	void deleteGame(String gameName); // 게임 삭제
 
@@ -31,5 +36,11 @@ public interface IGameCenterHostService extends IGameCenterService {
 	void hostIn(String userId);
 
 	void hostOut(String userId);
+
+	List<GameInfo> GameInfo();
+
+	List<MapInfo> MapInfo();
+
+	List<CharacterInfo> CharacterInfo();
 
 }
