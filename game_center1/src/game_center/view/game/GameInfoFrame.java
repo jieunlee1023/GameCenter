@@ -21,18 +21,21 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private JMenuBar bar = new JMenuBar();
 	private JMenu gameInfo = new JMenu("메뉴");
 	private JMenuItem gameSelected = new JMenuItem("게임 정보 조회");
-	private JMenuItem gameUpdate = new JMenuItem("게임 정보 수정");
+	private JMenuItem gameUpDate = new JMenuItem("게임 정보 수정");
+	private JMenuItem gameSave = new JMenuItem("게임 정보 저장");
 	private JMenuItem gameDelete = new JMenuItem("게임 정보 삭제");
 	private JMenuItem exit = new JMenuItem("나가기");
 
 	private JMenu gameMapInfo = new JMenu("맵");
 	private JMenuItem gameMapSelected = new JMenuItem("맵 조회");
 	private JMenuItem gameMapUpdate = new JMenuItem("맵 수정");
+	private JMenuItem gameMapSave = new JMenuItem("맵 저장");
 	private JMenuItem gameMapDelete = new JMenuItem("맵 삭제");
 
 	private JMenu gameCharacterInfo = new JMenu("캐릭터");
 	private JMenuItem gameCharacterSelected = new JMenuItem("캐릭터 조회");
 	private JMenuItem gameCharacterUpdate = new JMenuItem("캐릭터 수정");
+	private JMenuItem gameCharacterSave = new JMenuItem("캐릭터 저장");
 	private JMenuItem gameCharacterDelete = new JMenuItem("캐릭터 삭제");
 
 	private JLabel gameImage;
@@ -67,17 +70,20 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		setLayout(null);
 
 		gameInfo.add(gameSelected);
-		gameInfo.add(gameUpdate);
+		gameInfo.add(gameUpDate);
+		gameInfo.add(gameSave);
 		gameInfo.add(gameDelete);
 		gameInfo.addSeparator(); // 분리선 삽입
 		gameInfo.add(exit);
 
 		gameMapInfo.add(gameMapSelected);
 		gameMapInfo.add(gameMapUpdate);
+		gameMapInfo.add(gameMapSave);
 		gameMapInfo.add(gameMapDelete);
 
 		gameCharacterInfo.add(gameCharacterSelected);
 		gameCharacterInfo.add(gameCharacterUpdate);
+		gameCharacterInfo.add(gameCharacterSave);
 		gameCharacterInfo.add(gameCharacterDelete);
 
 		bar.add(gameInfo);
@@ -113,7 +119,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 	private void addEventListener() {
 		gameSelected.addActionListener(this);
-		gameUpdate.addActionListener(this);
+		gameUpDate.addActionListener(this);
 		exit.addActionListener(this);
 		gameMapSelected.addActionListener(this);
 		gameMapUpdate.addActionListener(this);
@@ -142,7 +148,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 			repaint();
 
-		} else if (targetItem.getText().equals(gameUpdate.getText())) {
+		} else if (targetItem.getText().equals(gameUpDate.getText())) {
 
 			remove(gameImage);
 			remove(gameName);
@@ -153,6 +159,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			gameUpdateComponents();
 			repaint();
 
+		} else if (targetItem.getText().equals(gameSave.getText())) {
+			System.out.println("게임 저장 ");
+
 		} else if (targetItem.getText().equals(gameDelete.getText())) {
 			System.out.println("게임 삭제 ");
 		} else if (targetItem.getText().equals(exit.getText())) {
@@ -162,12 +171,16 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			System.out.println("맵 조회 ");
 		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
 			System.out.println("맵 수정 ");
+		} else if (targetItem.getText().equals(gameMapSave.getText())) {
+			System.out.println("맵 저장 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
 			System.out.println("맵 삭제 ");
 		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
 			System.out.println("캐릭터 조회 ");
 		} else if (targetItem.getText().equals(gameCharacterUpdate.getText())) {
 			System.out.println("캐릭터 수정 ");
+		} else if (targetItem.getText().equals(gameCharacterSave.getText())) {
+			System.out.println("캐릭터 저장");
 		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
 			System.out.println("캐릭터 삭제 ");
 		}
