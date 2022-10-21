@@ -1,5 +1,6 @@
 package game_center.service;
 
+import java.security.Provider.Service;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -21,6 +22,37 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	public GameCenterHostService() {
 		client = DBClient.getInstance();
+	}
+
+	@Override
+	public void hostIn(String userId) {
+
+		String query = "update user set identityNum = 1 where userId = ? ";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
+	}
+
+	@Override
+	public void hostOut(String userId) {
+		String query = "update user set identityNum = 2 where userId = ? ";
+
+		try {
+			ps = client.getConnection().prepareStatement(query);
+			ps.setString(1, userId);
+			ps.executeUpdate();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			closeDB();
+		}
 	}
 
 	@Override
@@ -104,7 +136,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
-		String query = "UPDATE user SET identityNum = 2, password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
+		String query = "UPDATE user SET password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
 		System.out.println("try 전");
 		try {
 			System.out.println("try 후");
@@ -414,6 +446,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 				rs = ps.executeQuery();
 				while (rs.next()) {
 					LoginUserInfo.isLogin = true;
+					userInfo.setIdentity(rs.getInt("identity"));
 					userInfo.setUserId(rs.getString("userId"));
 					userInfo.setUserName(rs.getString("userName"));
 					userInfo.setPassword(rs.getString("password"));
@@ -735,8 +768,10 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	public static void main(String[] args) {
 
-//		RequestGameCenter center = new RequestGameCenter();
-//		GameCenterHostService service = new GameCenterHostService();
+		RequestGameCenter center = new RequestGameCenter();
+		GameCenterHostService service = new GameCenterHostService();
+
+		service.hostIn("test1");
 
 //      List<ResponseGameCenter> list = service.selectGame("test2");
 //

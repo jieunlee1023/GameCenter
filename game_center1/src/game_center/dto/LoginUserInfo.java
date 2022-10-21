@@ -7,6 +7,7 @@ public class LoginUserInfo {
 
 	public static boolean isLogin = false;
 
+	private int identity;
 	private String userId;
 	private String userName;
 	private String password;
