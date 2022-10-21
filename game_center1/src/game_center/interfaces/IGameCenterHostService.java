@@ -28,4 +28,8 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	void deleteMap(String MapName); // 게임 삭제
 
+	void hostIn(String userId);
+
+	void hostOut(String userId);
+
 }
