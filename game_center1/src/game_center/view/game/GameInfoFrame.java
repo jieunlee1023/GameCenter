@@ -119,6 +119,10 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		infomation.setForeground(Color.white);
 		add(infomation);
 
+		gameInformation.setSize(400, 200);
+		gameInformation.setLocation(50, 300);
+		gameInformation.setForeground(Color.white);
+		add(gameInformation);
 		memo.setSize(400, 20);
 		memo.setLocation(50, 460);
 		memo.setForeground(Color.white);
@@ -162,6 +166,9 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			remove(memo);
 			remove(memoTextArea);
 			remove(gameImage);
+			remove(gameName);
+			remove(ageLimit);
+			remove(gameInformation);
 			remove(gameNameUpdate);
 			remove(ageLimitUpdate);
 			remove(gameInfomationUpdate);
@@ -236,6 +243,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		add(ageLimit);
 
 		gameInformation.setSize(400, 200);
+		gameInformation.setLocation(50, 300);
 		gameInformation.setLocation(40, 300);
 		gameInformation.setForeground(Color.white);
 		add(gameInformation);
