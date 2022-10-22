@@ -23,7 +23,10 @@ import javax.swing.JTextArea;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
+import game_center.view.game.CrazyArcadeInfoFrame;
+import game_center.view.game.FIFAInfoFrame;
 import game_center.view.game.GameInfoFrame;
+import game_center.view.game.LOLInfoFrame;
 import lombok.Data;
 
 @Data
@@ -31,6 +34,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
+	GameCenterHostFrame centerHostFrame;
 
 	private JPanel mainPanel = new JPanel();
 	private JScrollBar scrollBar = new JScrollBar();
@@ -235,16 +239,23 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
-			new GameInfoFrame();
+			new LOLInfoFrame();
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
-			new GameInfoFrame();
+			new FIFAInfoFrame();
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
-			new GameInfoFrame();
+			new CrazyArcadeInfoFrame();
 		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-			if (search.getText() == "게임 아이디 등 검색할 정보")
-				System.out.println("검색버튼");
+			if (search.getText().equals("롤")) {
+				new LOLInfoFrame();
+			}else if(search.getText().equals("피파온라인4")) {
+				new FIFAInfoFrame();
+			}else if(search.getText().equals("크레이지아케이드")) {
+				new CrazyArcadeInfoFrame();
+			}else {
+				System.out.println("창을 만들어주세요 ㅠ");
+			}
 		}
 	}
 
