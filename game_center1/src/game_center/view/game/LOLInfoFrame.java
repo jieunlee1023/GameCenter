@@ -8,13 +8,13 @@ import game_center.utils.Define;
 public class LOLInfoFrame extends GameInfoFrame {
 
 	public LOLInfoFrame() {
+		super();
 		setInitLayout();
 	}
 
 	private void setInitLayout() {
 
 		super.setGameImage(new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "main.png")));
-		
 	}
 
 	public static void main(String[] args) {
