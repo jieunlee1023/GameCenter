@@ -13,79 +13,15 @@ import javax.swing.JTextField;
 import game_center.utils.Define;
 import lombok.Data;
 
-@Data
-public class CrazyArcadeInfoFrame extends GameInfoFrame {
-
-	private JLabel mainImg;
-
-	// map 아이템들
-	private JLabel MapInfo;
-
-	private JLabel patretMap;
-	private JLabel patretMapDetail;
-	private JLabel patretMapName;
-	private JLabel patretMapInfo;
-
-	private JLabel campMap;
-	private JLabel campMapDetail;
-	private JLabel campMapName;
-	private JLabel campMapInfo;
-
-	private JLabel factoryMap;
-	private JLabel factoryMapDetail;
-	private JLabel factoryMapName;
-	private JLabel factoryMapInfo;
-
-	JTextField updatePatretMapName;
-	JTextArea updatePatretMapInfo;
-
-	JTextField updateCampMapName;
-	JTextArea updateCampMapInfo;
-
-	JTextField updateFactoryMapName;
-	JTextField updateFactoryMapInfo;
-
-	// 캐릭터 아이템
-
-	JLabel caracterInfo;
-
-	JLabel bazziImage;
-	JLabel bazziIName;
-	JLabel bazziIInfo;
-
-	JLabel uniImage;
-	JLabel uniName;
-	JLabel uniInfo;
-
-	JLabel kephiImage;
-	JLabel kephiName;
-	JLabel kephiInfo;
-
-	JLabel daoImage;
-	JLabel daoName;
-	JLabel daoInfo;
-
-	JTextField updatebazziName;
-	JTextArea updatebazziInfo;
-
-	JTextField updateUniName;
-	JTextArea updateUniInfo;
-
-	JTextField updatekephiImage;
-	JTextField updatekephiInfo;
-
-	JTextField updateDaoImage;
-	JTextField updateDaoInfo;
+public class CrazyArcadeInfoFrame extends GameItem {
 
 	public CrazyArcadeInfoFrame() {
-
 		super();
 		initData();
 	}
 
 	private void initData() {
 		setTitle("크레이지아케이드 정보창");
-		setDefaultCloseOperation(this.EXIT_ON_CLOSE);
 
 		mainImg = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "main.png"));
 		super.setGameImage(mainImg);
@@ -196,230 +132,223 @@ public class CrazyArcadeInfoFrame extends GameInfoFrame {
 	// map
 	private void mapItem() {
 
-		MapInfo = new JLabel("★ Map Info ★");
+		mapInfo = new JLabel("★ Map Info ★");
 
-		patretMap = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));
-		patretMapDetail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map1.png"));
-		patretMapName = new JLabel("111게임 이름");
-		patretMapInfo = new JLabel("111게임정보");
+		map1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));
+		map1Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map1.png"));
+		map1Name = new JLabel("111 맵 이름");
+		map1Info = new JLabel("111 맵정보");
 
-		campMap = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m2.png"));
-		campMapDetail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map2.png"));
-		campMapName = new JLabel("222게임 이름");
-		campMapInfo = new JLabel("222게임정보");
+		map2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m2.png"));
+		map2Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map2.png"));
+		map2Name = new JLabel("222맵 이름");
+		map2Info = new JLabel("222게임정보");
 
-		factoryMap = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
-		factoryMapDetail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
-		factoryMapName = new JLabel("333게임 이름");
-		factoryMapInfo = new JLabel("333게임정보");
+		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
+		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
+		map3Name = new JLabel("333맵 이름");
+		map3pInfo = new JLabel("333맵정보");
 
-		updatePatretMapName = new JTextField();
-		updatePatretMapInfo = new JTextArea();
+		updateMap1Name = new JTextField();
+		updateMap1Info = new JTextArea();
 
-		updateCampMapName = new JTextField();
-		updateCampMapInfo = new JTextArea();
+		updateMap2Name = new JTextField();
+		updateMap2Info = new JTextArea();
 
-		updateFactoryMapName = new JTextField();
-		updateFactoryMapInfo = new JTextField();
+		updateMap3Name = new JTextField();
+		updateMap3Info = new JTextField();
 	}
 
 	private void thisMapImgRemove() {
-		remove(MapInfo);
-		remove(patretMap);
-		remove(patretMapDetail);
-		remove(campMap);
-		remove(campMapDetail);
-		remove(factoryMap);
-		remove(factoryMapDetail);
+		remove(mapInfo);
+		remove(map1);
+		remove(map1Detail);
+		remove(map2);
+		remove(map2Detail);
+		remove(map3);
+		remove(map3Detail);
 
 	}
 
 	private void thisMapSelectRemove() {
 
-		remove(patretMapName);
-		remove(patretMapInfo);
-		remove(campMapName);
-		remove(campMapInfo);
-		remove(factoryMapName);
-		remove(factoryMapInfo);
+		remove(map1Name);
+		remove(map1Info);
+		remove(map2Name);
+		remove(map2Info);
+		remove(map3Name);
+		remove(map3pInfo);
 	}
 
 	private void thisMapUpdateRemove() {
 
-		remove(updatePatretMapName);
-		remove(updatePatretMapInfo);
-		remove(updateCampMapName);
-		remove(updateCampMapInfo);
-		remove(updateFactoryMapName);
-		remove(updateFactoryMapInfo);
+		remove(updateMap1Name);
+		remove(updateMap1Info);
+		remove(updateMap2Name);
+		remove(updateMap2Info);
+		remove(updateMap3Name);
+		remove(updateMap3Info);
 	}
 
 	private void gameMapImageComponents() {
 
-		MapInfo.setSize(500, 50);
-		MapInfo.setLocation(140, 20);
-		MapInfo.setFont(new Font("", Font.BOLD, 30));
-		MapInfo.setForeground(Color.white);
-		add(MapInfo);
+		mapInfo.setSize(500, 50);
+		mapInfo.setLocation(140, 20);
+		mapInfo.setFont(new Font("", Font.BOLD, 30));
+		mapInfo.setForeground(Color.white);
+		add(mapInfo);
 
-		patretMap.setSize(100, 105);
-		patretMap.setLocation(50, 80);
-		add(patretMap);
+		map1.setSize(100, 105);
+		map1.setLocation(50, 80);
+		add(map1);
 
-		patretMapDetail.setSize(135, 120);
-		patretMapDetail.setLocation(30, 480);
-		add(patretMapDetail);
+		map1Detail.setSize(135, 120);
+		map1Detail.setLocation(30, 480);
+		add(map1Detail);
 
-		campMap.setSize(100, 105);
-		campMap.setLocation(200, 80);
-		add(campMap);
+		map2.setSize(100, 105);
+		map2.setLocation(200, 80);
+		add(map2);
 
-		campMapDetail.setSize(135, 120);
-		campMapDetail.setLocation(175, 480);
-		add(campMapDetail);
+		map2Detail.setSize(135, 120);
+		map2Detail.setLocation(175, 480);
+		add(map2Detail);
 
-		factoryMap.setSize(100, 105);
-		factoryMap.setLocation(345, 80);
-		add(factoryMap);
+		map3.setSize(100, 105);
+		map3.setLocation(345, 80);
+		add(map3);
 
-		factoryMapDetail.setSize(135, 120);
-		factoryMapDetail.setLocation(320, 480);
-		add(factoryMapDetail);
+		map3Detail.setSize(135, 120);
+		map3Detail.setLocation(320, 480);
+		add(map3Detail);
 
 	}
 
 	private void gameMapSelectComponents() {
 
-		patretMapName.setSize(100, 30);
-		patretMapName.setLocation(60, 200);
-		patretMapName.setForeground(Color.white);
-		add(patretMapName);
+		map1Name.setSize(100, 30);
+		map1Name.setLocation(60, 200);
+		map1Name.setForeground(Color.white);
+		add(map1Name);
 
-		patretMapInfo.setSize(100, 230);
-		patretMapInfo.setLocation(60, 230);
-		patretMapInfo.setForeground(Color.white);
-		add(patretMapInfo);
+		map1Info.setSize(100, 230);
+		map1Info.setLocation(60, 230);
+		map1Info.setForeground(Color.white);
+		add(map1Info);
 
-		campMapName.setSize(100, 30);
-		campMapName.setLocation(210, 200);
-		campMapName.setForeground(Color.white);
-		add(campMapName);
+		map2Name.setSize(100, 30);
+		map2Name.setLocation(210, 200);
+		map2Name.setForeground(Color.white);
+		add(map2Name);
 
-		campMapInfo.setSize(100, 230);
-		campMapInfo.setLocation(210, 230);
-		campMapInfo.setForeground(Color.white);
-		add(campMapInfo);
+		map2Info.setSize(100, 230);
+		map2Info.setLocation(210, 230);
+		map2Info.setForeground(Color.white);
+		add(map2Info);
 
-		factoryMapName.setSize(100, 30);
-		factoryMapName.setLocation(360, 200);
-		factoryMapName.setForeground(Color.white);
-		add(factoryMapName);
+		map3Name.setSize(100, 30);
+		map3Name.setLocation(360, 200);
+		map3Name.setForeground(Color.white);
+		add(map3Name);
 
-		factoryMapInfo.setSize(100, 230);
-		factoryMapInfo.setLocation(360, 230);
-		factoryMapInfo.setForeground(Color.white);
-		add(factoryMapInfo);
+		map3pInfo.setSize(100, 230);
+		map3pInfo.setLocation(360, 230);
+		map3pInfo.setForeground(Color.white);
+		add(map3pInfo);
 
 	}
 
 	private void gameMapUpdateComponents() {
-		updatePatretMapName.setSize(100, 20);
-		updatePatretMapName.setLocation(50, 200);
-		updatePatretMapName.setForeground(Color.white);
-		add(updatePatretMapName);
+		updateMap1Name.setSize(100, 20);
+		updateMap1Name.setLocation(50, 200);
+		add(updateMap1Name);
 
-		updatePatretMapInfo.setSize(100, 230);
-		updatePatretMapInfo.setLocation(50, 230);
-		updatePatretMapInfo.setForeground(Color.white);
-		add(updatePatretMapInfo);
+		updateMap1Info.setSize(100, 230);
+		updateMap1Info.setLocation(50, 230);
+		add(updateMap1Info);
 
-		updateCampMapName.setSize(100, 20);
-		updateCampMapName.setLocation(200, 200);
-		updateCampMapName.setForeground(Color.white);
-		add(updateCampMapName);
+		updateMap2Name.setSize(100, 20);
+		updateMap2Name.setLocation(200, 200);
+		add(updateMap2Name);
 
-		updateCampMapInfo.setSize(100, 230);
-		updateCampMapInfo.setLocation(200, 230);
-		updateCampMapInfo.setForeground(Color.white);
-		add(updateCampMapInfo);
+		updateMap2Info.setSize(100, 230);
+		updateMap2Info.setLocation(200, 230);
+		add(updateMap2Info);
 
-		updateFactoryMapName.setSize(100, 20);
-		updateFactoryMapName.setLocation(350, 200);
-		updateFactoryMapName.setForeground(Color.white);
-		add(updateFactoryMapName);
+		updateMap3Name.setSize(100, 20);
+		updateMap3Name.setLocation(350, 200);
+		add(updateMap3Name);
 
-		updateFactoryMapInfo.setSize(100, 230);
-		updateFactoryMapInfo.setLocation(350, 230);
-		updateFactoryMapInfo.setForeground(Color.white);
-		add(updateFactoryMapInfo);
+		updateMap3Info.setSize(100, 230);
+		updateMap3Info.setLocation(350, 230);
+		add(updateMap3Info);
 
 	}
 
 	// character
-
 	private void characterItem() {
 
 		caracterInfo = new JLabel("★ Character Info ★");
 
-		bazziImage = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca1.png"));
-		bazziIName = new JLabel("캐릭터 이름");
-		bazziIInfo = new JLabel("캐릭터 소개");
+		character1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca1.png"));
+		character1Name = new JLabel("캐릭터 이름");
+		character1Info = new JLabel("캐릭터 소개");
 
-		uniImage = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca2.png"));
-		uniName = new JLabel("캐릭터 이름");
-		uniInfo = new JLabel("캐릭터 소개");
+		character2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca2.png"));
+		character2Name = new JLabel("캐릭터 이름");
+		character2Info = new JLabel("캐릭터 소개");
 
-		kephiImage = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca3.png"));
-		kephiName = new JLabel("캐릭터 이름");
-		kephiInfo = new JLabel("캐릭터 소개");
+		character3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca3.png"));
+		character3Name = new JLabel("캐릭터 이름");
+		character3Info = new JLabel("캐릭터 소개");
 
-		daoImage = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca4.png"));
-		daoName = new JLabel("캐릭터 이름");
-		daoInfo = new JLabel("캐릭터 소개");
+		character4 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca4.png"));
+		character4Name = new JLabel("캐릭터 이름");
+		character4Info = new JLabel("캐릭터 소개");
 
-		updatebazziName = new JTextField();
-		updatebazziInfo = new JTextArea();
+		updateCharacter1Name = new JTextField();
+		updateCharacter1nfo = new JTextArea();
 
-		updateUniName = new JTextField();
-		updateUniInfo = new JTextArea();
+		updateCharacter2Name = new JTextField();
+		updateCharacter2nfo = new JTextArea();
 
-		updatekephiImage = new JTextField();
-		updatekephiInfo = new JTextField();
+		updateCharacter3Name = new JTextField();
+		updateCharacter3nfo = new JTextField();
 
-		updateDaoImage = new JTextField();
-		updateDaoInfo = new JTextField();
+		updateCharacter4Name = new JTextField();
+		updateCharacter4nfo = new JTextField();
 	}
 
 	private void thisCharacterImgRemove() {
 
 		remove(caracterInfo);
-		remove(bazziImage);
-		remove(uniImage);
-		remove(kephiImage);
-		remove(daoImage);
+		remove(character1);
+		remove(character2);
+		remove(character3);
+		remove(character4);
 	}
 
 	private void thisCharacterSelectRemove() {
 
-		remove(bazziIName);
-		remove(bazziIInfo);
-		remove(uniName);
-		remove(uniInfo);
-		remove(kephiName);
-		remove(kephiInfo);
-		remove(daoName);
-		remove(daoInfo);
+		remove(character1Name);
+		remove(character1Info);
+		remove(character2Name);
+		remove(character2Info);
+		remove(character3Name);
+		remove(character3Info);
+		remove(character4Name);
+		remove(character4Info);
 	}
 
 	private void thisCharacterUpdateRemove() {
-		remove(updatebazziName);
-		remove(updatebazziInfo);
-		remove(updateUniName);
-		remove(updateUniInfo);
-		remove(updatekephiImage);
-		remove(updatekephiInfo);
-		remove(updateDaoImage);
-		remove(updateDaoInfo);
+		remove(updateCharacter1Name);
+		remove(updateCharacter1nfo);
+		remove(updateCharacter2Name);
+		remove(updateCharacter2nfo);
+		remove(updateCharacter3Name);
+		remove(updateCharacter3nfo);
+		remove(updateCharacter4Name);
+		remove(updateCharacter4nfo);
 	}
 
 	private void gameCharacterImageComponents() {
@@ -429,98 +358,93 @@ public class CrazyArcadeInfoFrame extends GameInfoFrame {
 		caracterInfo.setForeground(Color.white);
 		add(caracterInfo);
 
-		bazziImage.setSize(170, 165);
-		bazziImage.setLocation(50, 100);
-		add(bazziImage);
+		character1.setSize(170, 165);
+		character1.setLocation(50, 100);
+		add(character1);
 
-		uniImage.setSize(170, 165);
-		uniImage.setLocation(280, 100);
-		add(uniImage);
+		character2.setSize(170, 165);
+		character2.setLocation(280, 100);
+		add(character2);
 
-		kephiImage.setSize(170, 165);
-		kephiImage.setLocation(50, 360);
-		add(kephiImage);
+		character3.setSize(170, 165);
+		character3.setLocation(50, 360);
+		add(character3);
 
-		daoImage.setSize(170, 165);
-		daoImage.setLocation(280, 360);
-		add(daoImage);
+		character4.setSize(170, 165);
+		character4.setLocation(280, 360);
+		add(character4);
 
 	}
 
 	private void gameCharacterSelectComponents() {
 
-		bazziIName.setSize(100, 20);
-		bazziIName.setLocation(85, 270);
-		bazziIName.setForeground(Color.WHITE);
-		add(bazziIName);
-		bazziIInfo.setSize(150, 50);
-		bazziIInfo.setLocation(60, 300);
-		bazziIInfo.setForeground(Color.WHITE);
-		add(bazziIInfo);
+		character1Name.setSize(100, 20);
+		character1Name.setLocation(85, 270);
+		character1Name.setForeground(Color.WHITE);
+		add(character1Name);
+		character1Info.setSize(150, 50);
+		character1Info.setLocation(60, 300);
+		character1Info.setForeground(Color.WHITE);
+		add(character1Info);
 
-		uniName.setSize(100, 20);
-		uniName.setLocation(315, 270);
-		uniName.setForeground(Color.WHITE);
-		add(uniName);
-		uniInfo.setSize(150, 50);
-		uniInfo.setLocation(290, 300);
-		uniInfo.setForeground(Color.WHITE);
-		add(uniInfo);
+		character2Name.setSize(100, 20);
+		character2Name.setLocation(315, 270);
+		character2Name.setForeground(Color.WHITE);
+		add(character2Name);
+		character2Info.setSize(150, 50);
+		character2Info.setLocation(290, 300);
+		character2Info.setForeground(Color.WHITE);
+		add(character2Info);
 
-		kephiName.setSize(100, 20);
-		kephiName.setLocation(85, 530);
-		kephiName.setForeground(Color.WHITE);
-		add(kephiName);
-		kephiInfo.setSize(150, 50);
-		kephiInfo.setLocation(60, 560);
-		kephiInfo.setForeground(Color.WHITE);
-		add(kephiInfo);
+		character3Name.setSize(100, 20);
+		character3Name.setLocation(85, 530);
+		character3Name.setForeground(Color.WHITE);
+		add(character3Name);
+		character3Info.setSize(150, 50);
+		character3Info.setLocation(60, 560);
+		character3Info.setForeground(Color.WHITE);
+		add(character3Info);
 
-		daoName.setSize(100, 20);
-		daoName.setLocation(315, 530);
-		daoName.setForeground(Color.WHITE);
-		add(daoName);
-		daoInfo.setSize(150, 50);
-		daoInfo.setLocation(290, 560);
-		daoInfo.setForeground(Color.WHITE);
-		add(daoInfo);
+		character4Name.setSize(100, 20);
+		character4Name.setLocation(315, 530);
+		character4Name.setForeground(Color.WHITE);
+		add(character4Name);
+		character4Info.setSize(150, 50);
+		character4Info.setLocation(290, 560);
+		character4Info.setForeground(Color.WHITE);
+		add(character4Info);
 
 	}
 
 	private void gameCharacterUpdateComponents() {
 
-		updatebazziName.setSize(100, 20);
-		updatebazziName.setLocation(85, 270);
-		add(updatebazziName);
-		updatebazziInfo.setSize(150, 50);
-		updatebazziInfo.setLocation(60, 300);
-		add(updatebazziInfo);
+		updateCharacter1Name.setSize(100, 20);
+		updateCharacter1Name.setLocation(85, 270);
+		add(updateCharacter1Name);
+		updateCharacter1nfo.setSize(150, 50);
+		updateCharacter1nfo.setLocation(60, 300);
+		add(updateCharacter1nfo);
 
-		updateUniName.setSize(100, 20);
-		updateUniName.setLocation(315, 270);
-		add(updateUniName);
-		updateUniInfo.setSize(150, 50);
-		updateUniInfo.setLocation(290, 300);
-		add(updateUniInfo);
+		updateCharacter2Name.setSize(100, 20);
+		updateCharacter2Name.setLocation(315, 270);
+		add(updateCharacter2Name);
+		updateCharacter2nfo.setSize(150, 50);
+		updateCharacter2nfo.setLocation(290, 300);
+		add(updateCharacter2nfo);
 
-		updatekephiImage.setSize(100, 20);
-		updatekephiImage.setLocation(85, 530);
-		add(updatekephiImage);
-		updatekephiInfo.setSize(150, 50);
-		updatekephiInfo.setLocation(60, 560);
-		add(updatekephiInfo);
+		updateCharacter3Name.setSize(100, 20);
+		updateCharacter3Name.setLocation(85, 530);
+		add(updateCharacter3Name);
+		updateCharacter3nfo.setSize(150, 50);
+		updateCharacter3nfo.setLocation(60, 560);
+		add(updateCharacter3nfo);
 
-		updateDaoImage.setSize(100, 20);
-		updateDaoImage.setLocation(315, 530);
-		add(updateDaoImage);
-		updateDaoInfo.setSize(150, 50);
-		updateDaoInfo.setLocation(290, 560);
-		add(updateDaoInfo);
+		updateCharacter4Name.setSize(100, 20);
+		updateCharacter4Name.setLocation(315, 530);
+		add(updateCharacter4Name);
+		updateCharacter4nfo.setSize(150, 50);
+		updateCharacter4nfo.setLocation(290, 560);
+		add(updateCharacter4nfo);
 
 	}
-
-	public static void main(String[] args) {
-		new CrazyArcadeInfoFrame();
-	}
-
 }

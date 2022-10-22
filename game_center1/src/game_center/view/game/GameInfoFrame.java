@@ -28,12 +28,12 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 	private JMenuBar bar = new JMenuBar();
 	private JMenu menu = new JMenu("메뉴");
+	private JMenuItem exit = new JMenuItem("나가기");
 	private JMenu gameInfo = new JMenu("게임");
 	private JMenuItem gameSelected = new JMenuItem("게임 정보 조회");
 	private JMenuItem gameUpDate = new JMenuItem("게임 정보 수정");
 	private JMenuItem gameSave = new JMenuItem("게임 정보 저장");
 	private JMenuItem gameDelete = new JMenuItem("게임 정보 삭제");
-	private JMenuItem exit = new JMenuItem("나가기");
 
 	private JMenu gameMapInfo = new JMenu("맵");
 	private JMenuItem gameMapSelected = new JMenuItem("맵 조회");
@@ -79,22 +79,25 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		setVisible(true);
 		setLayout(null);
 
+		menu.add(exit);
+
 		gameInfo.add(gameSelected);
 		gameInfo.add(gameUpDate);
-		gameInfo.add(gameSave);
 		gameInfo.add(gameDelete);
 		gameInfo.addSeparator(); // 분리선 삽입
-		gameInfo.add(exit);
+		gameInfo.add(gameSave);
 
 		gameMapInfo.add(gameMapSelected);
 		gameMapInfo.add(gameMapUpdate);
-		gameMapInfo.add(gameMapSave);
 		gameMapInfo.add(gameMapDelete);
+		gameMapInfo.addSeparator(); // 분리선 삽입
+		gameMapInfo.add(gameMapSave);
 
 		gameCharacterInfo.add(gameCharacterSelected);
 		gameCharacterInfo.add(gameCharacterUpdate);
-		gameCharacterInfo.add(gameCharacterSave);
 		gameCharacterInfo.add(gameCharacterDelete);
+		gameCharacterInfo.addSeparator(); // 분리선 삽입
+		gameCharacterInfo.add(gameCharacterSave);
 
 		bar.add(menu);
 		bar.add(gameInfo);

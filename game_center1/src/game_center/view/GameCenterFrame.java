@@ -246,8 +246,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.out.println("게임 3");
 			new CrazyArcadeInfoFrame();
 		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-			if (search.getText() == "게임 아이디 등 검색할 정보")
-				System.out.println("검색버튼");
+			if (search.getText().equals("롤")) {
+				new LOLInfoFrame();
+			}
+			System.out.println("검색버튼");
 		}
 	}
 
