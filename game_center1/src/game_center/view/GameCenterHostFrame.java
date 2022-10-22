@@ -51,7 +51,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			new userSearch();
 		} else if (targetButton.getText().equals(gameInsert.getText())) {
 			System.out.println("게임 추가");
-
 		}
 	}
 }

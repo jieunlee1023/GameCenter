@@ -398,7 +398,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 			while (rs.next()) {
 				responseGameCenter.setGameName(rs.getString("gameName"));
-				responseGameCenter.setAgeLimit(rs.getInt("ageLimit"));
+				responseGameCenter.setAgeLimit(rs.getString("ageLimit"));
 				responseGameCenter.setGameInfo(rs.getString("gameInfo"));
 
 				list.add(responseGameCenter);
@@ -697,28 +697,19 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateGame(RequestGameCenter rgc) {
+	public void updateGame(RequestGameCenter rgc, GameInfo gameInfo) {
 
-		List<GameInfo> list = GameInfo();
-
-		String query = "update gameInfo set ageLimit = ? ,gameInfo = ? where gameName = ? ";
-
+		String query = "update gameInfo set ageLimit = ? , gameInfo = ? where gameName = ? ";
 		try {
 			ps = client.getConnection().prepareStatement(query);
 
-			for (GameInfo gameInfo : list) {
-				if (gameInfo.getGameName() == rgc.getGameName()) {
-					System.out.println("들어오나");
-					gameInfo.setAgeLimit(rgc.getAgeLimit());
-					gameInfo.setGameInfo(rgc.getGameInfo());
-				}
-			}
+			gameInfo.setAgeLimit(rgc.getAgeLimit());
+			gameInfo.setGameInfo(rgc.getGameInfo());
+
 			ps.setString(1, rgc.getAgeLimit());
 			ps.setString(2, rgc.getGameInfo());
-			ps.setString(3, rgc.getGameName());
-			System.out.println();
-
-			ps.executeUpdate(rgc.getGameInfo());
+			ps.setString(3, gameInfo.getGameName());
+			ps.executeUpdate();
 
 		} catch (SQLException e) {
 			e.printStackTrace();

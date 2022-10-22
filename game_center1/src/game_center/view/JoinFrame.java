@@ -203,10 +203,15 @@ public class JoinFrame extends JFrame implements ActionListener {
 		if (targetButton.hashCode() == (userIdCheckBtn.hashCode())) {
 			userIdCehck = gameCenterUserService.joinIdCheck(userIdField.getText());
 			System.out.println("아이디 중복 체크 : " + userIdCehck);
-
+			if (userIdCehck == false) {
+				JOptionPane.showMessageDialog(this, "중복된 아이디가 존재합니다. \n 다시 입력해주세요.");
+			} else {
+				JOptionPane.showMessageDialog(this, "사용 가능한 아이디 입니다.");
+			}
 		} else if (targetButton.hashCode() == passwordCheckBtn.hashCode()) {
 			if (passwordField.getText().equals(passwordFieldCheck.getText())) {
 				System.out.println("비밀번호 체크 완료");
+				JOptionPane.showMessageDialog(this, "비밀번호가 일치합니다.");
 				userPasswordCehck = true;
 			} else if (passwordField.getText().isEmpty()) {
 				System.out.println("비밀번호를 입력하세요.");
@@ -217,6 +222,7 @@ public class JoinFrame extends JFrame implements ActionListener {
 			} else {
 				System.out.println("비밀번호를 확인하세요.");
 				userPasswordCehck = false;
+				JOptionPane.showMessageDialog(this, "비밀번호가 일치하지 않습니다. \n 다시 입력해주세요.");
 			}
 		} else if (targetButton.getText().equals(save.getText()) && userIdCehck && userPasswordCehck) {
 

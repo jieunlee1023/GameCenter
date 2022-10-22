@@ -13,7 +13,7 @@ public class ResponseGameCenter {
 	private String mobile;
 
 	private String gameName;
-	private int ageLimit;
+	private String ageLimit;
 	private String gameInfo;
 
 	private String gameCharacterName;
