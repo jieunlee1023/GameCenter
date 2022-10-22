@@ -10,6 +10,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import game_center.service.GameCenterHostService;
@@ -106,9 +107,11 @@ public class userSearch extends JFrame implements ActionListener {
 			gameCenterHostService.hostIn(search.getText());
 			System.out.println("userField.getText() : " + search.getText());
 			System.out.println("임명~~~~~~~~~~~~~~~~~~~~~~~~~~");
+			JOptionPane.showMessageDialog(this, "관리자로 임명되었습니다.");
 		} else if (targetItem.getText().equals(hostOut.getText())) {
 			gameCenterHostService.hostOut(search.getText());
 			System.out.println("제명~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
+			JOptionPane.showMessageDialog(this, "관리자에서 제명 되었습니다.");
 		}
 	}
 

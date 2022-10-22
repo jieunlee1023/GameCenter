@@ -205,7 +205,6 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 			System.out.println("수정 완료 !");
 			JOptionPane.showMessageDialog(this, "수정이 완료되었습니다.");
 		} else if (targetButton.getText().equals(exit.getText())) {
-
 			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetButton.getText().equals(leave.getText())) {

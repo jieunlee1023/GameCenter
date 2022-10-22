@@ -21,7 +21,7 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	boolean insertMap(RequestGameCenter rgc); // 게임 등록
 
-	void updateGame(RequestGameCenter rgc); // 게임 정보 수정
+	void updateGame(RequestGameCenter rgc, GameInfo gameInfo); // 게임 정보 수정
 
 	void updateCharacter(RequestGameCenter rgc); // 게임 캐릭터 수정
 

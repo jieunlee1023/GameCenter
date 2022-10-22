@@ -114,7 +114,7 @@ public class GameCenterUserService implements IGameCenterService {
 
 			while (rs.next()) {
 				responseGameCenter.setGameName(rs.getString("gameName"));
-				responseGameCenter.setAgeLimit(rs.getInt("ageLimit"));
+				responseGameCenter.setAgeLimit(rs.getString("ageLimit"));
 				responseGameCenter.setGameInfo(rs.getString("gameInfo"));
 
 				list.add(responseGameCenter);

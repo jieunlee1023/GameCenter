@@ -12,6 +12,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
@@ -23,7 +24,6 @@ import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
 import game_center.view.game.CrazyArcadeInfoFrame;
 import game_center.view.game.FIFAInfoFrame;
-import game_center.view.game.GameInfoFrame;
 import game_center.view.game.LOLInfoFrame;
 import lombok.Data;
 
@@ -32,6 +32,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
+	GameCenterHostFrame centerHostFrame;
 
 	private final int LOL = 0;
 	private final int FIFA = 3;
@@ -242,6 +243,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.out.println("로그아웃");
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
+			System.out.println("게임 1");
 			if (list.get(LOL).getGameName().equals("롤")) {
 				new LOLInfoFrame(list.get(LOL));
 			}
@@ -253,13 +255,27 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
 			if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
-				new GameInfoFrame(list.get(CRAZY));
+				new CrazyArcadeInfoFrame(list.get(CRAZY));
 			}
-		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-			if (search.getText() == "게임 아이디 등 검색할 정보")
-				System.out.println("검색버튼");
+//		} else if (targetButton.hashCode() == searchButton.hashCode()) {
+//			if (search.getText().equals("롤")) {
+//				if (list.get(LOL).getGameName().equals("롤")) {
+//					new LOLInfoFrame(list.get(LOL));
+//				}
+//			} else if (search.getText().equals("피파온라인4")) {
+//				if (list.get(FIFA).getGameName().equals("피파온라인4")) {
+//					new FIFAInfoFrame(list.get(FIFA));
+//				}
+//			} else if (search.getText().equals("크레이지아케이드") || search.getText().equals("크아")
+//					|| search.getText().equals("크레이지 아케이드")) {
+//				if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
+//					new CrazyArcadeInfoFrame(list.get(CRAZY));
+//				}
+		} else {
+			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 		}
 	}
+}
 
 //	@Override
 //	public void actionPerformed(ActionEvent e) {
@@ -294,7 +310,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 //		}
 //
 //	}
-}
 
 //private class MyListener extends MouseAdapter implements AdjustmentListener {
 //
