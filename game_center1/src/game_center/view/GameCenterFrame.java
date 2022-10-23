@@ -34,8 +34,8 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	IGameCenterService centerService;
 
 	private final int LOL = 0;
-	private final int FIFA = 3;
-	private final int CRAZY = 2;
+	private final int CRAZY = 1;
+	private final int FIFA = 2;
 
 	private JPanel mainPanel = new JPanel();
 	private JScrollBar scrollBar = new JScrollBar();

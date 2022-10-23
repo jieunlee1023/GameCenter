@@ -151,13 +151,13 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		map3Name = new JLabel("333맵 이름");
 		map3pInfo = new JLabel("333맵정보");
 
-		updateMap1Name = new JTextField();
+		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
 
-		updateMap2Name = new JTextField();
+		updateMap2Name = new JLabel();
 		updateMap2Info = new JTextArea();
 
-		updateMap3Name = new JTextField();
+		updateMap3Name = new JLabel();
 		updateMap3Info = new JTextField();
 	}
 
@@ -263,6 +263,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	private void gameMapUpdateComponents() {
 		updateMap1Name.setSize(100, 20);
 		updateMap1Name.setLocation(50, 200);
+		updateMap1Name.setForeground(Color.white);
 		add(updateMap1Name);
 
 		updateMap1Info.setSize(100, 230);
@@ -271,6 +272,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateMap2Name.setSize(100, 20);
 		updateMap2Name.setLocation(200, 200);
+		updateMap2Name.setForeground(Color.white);
 		add(updateMap2Name);
 
 		updateMap2Info.setSize(100, 230);
@@ -279,6 +281,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateMap3Name.setSize(100, 20);
 		updateMap3Name.setLocation(350, 200);
+		updateMap3Name.setForeground(Color.white);
 		add(updateMap3Name);
 
 		updateMap3Info.setSize(100, 230);
@@ -308,16 +311,16 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JLabel("캐릭터 소개");
 
-		updateCharacter1Name = new JTextField();
+		updateCharacter1Name = new JLabel();
 		updateCharacter1nfo = new JTextArea();
 
-		updateCharacter2Name = new JTextField();
+		updateCharacter2Name = new JLabel();
 		updateCharacter2nfo = new JTextArea();
 
-		updateCharacter3Name = new JTextField();
+		updateCharacter3Name = new JLabel();
 		updateCharacter3nfo = new JTextField();
 
-		updateCharacter4Name = new JTextField();
+		updateCharacter4Name = new JLabel();
 		updateCharacter4nfo = new JTextField();
 	}
 
@@ -422,6 +425,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateCharacter1Name.setSize(100, 20);
 		updateCharacter1Name.setLocation(85, 270);
+		updateCharacter1Name.setForeground(Color.white);
 		add(updateCharacter1Name);
 		updateCharacter1nfo.setSize(150, 50);
 		updateCharacter1nfo.setLocation(60, 300);
@@ -429,6 +433,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateCharacter2Name.setSize(100, 20);
 		updateCharacter2Name.setLocation(315, 270);
+		updateCharacter2Name.setForeground(Color.white);
 		add(updateCharacter2Name);
 		updateCharacter2nfo.setSize(150, 50);
 		updateCharacter2nfo.setLocation(290, 300);
@@ -436,6 +441,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateCharacter3Name.setSize(100, 20);
 		updateCharacter3Name.setLocation(85, 530);
+		updateCharacter3Name.setForeground(Color.white);
 		add(updateCharacter3Name);
 		updateCharacter3nfo.setSize(150, 50);
 		updateCharacter3nfo.setLocation(60, 560);
@@ -443,6 +449,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(315, 530);
+		updateCharacter4Name.setForeground(Color.white);
 		add(updateCharacter4Name);
 		updateCharacter4nfo.setSize(150, 50);
 		updateCharacter4nfo.setLocation(290, 560);

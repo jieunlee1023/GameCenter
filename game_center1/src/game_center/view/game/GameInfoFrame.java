@@ -59,7 +59,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private JLabel info = new JLabel("★ Game Info ★");
 
 	// 수정시 사용 (관리자만 사용함)
-	private JTextArea gameNameUpdate = new JTextArea();
+	private JLabel gameNameUpdate = new JLabel();
 	private JTextArea ageLimitUpdate = new JTextArea();
 	private JTextArea gameInfomationUpdate = new JTextArea();
 
@@ -135,7 +135,6 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		memo.setForeground(Color.white);
 		add(memo);
 
-		gameSelectComponents();
 		memoTextArea.setSize(400, 120);
 		memoTextArea.setLocation(50, 480);
 		memoTextArea.setForeground(Color.white);
@@ -245,6 +244,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 		gameNameUpdate.setSize(300, 20);
 		gameNameUpdate.setLocation(50, 370);
+		gameNameUpdate.setForeground(Color.white);
 		gameNameUpdate.setText(gameInfoClass.getGameName());
 		add(gameNameUpdate);
 

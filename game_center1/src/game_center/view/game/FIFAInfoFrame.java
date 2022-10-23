@@ -142,10 +142,10 @@ public class FIFAInfoFrame extends GameItem {
 		map2Name = new JLabel("222맵 이름");
 		map2Info = new JLabel("222맵 정보");
 
-		updateMap1Name = new JTextField();
+		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
 
-		updateMap2Name = new JTextField();
+		updateMap2Name = new JLabel();
 		updateMap2Info = new JTextArea();
 	}
 
@@ -215,8 +215,10 @@ public class FIFAInfoFrame extends GameItem {
 	}
 
 	private void gameMapUpdateComponents() {
+
 		updateMap1Name.setSize(150, 20);
 		updateMap1Name.setLocation(70, 285);
+		updateMap1Name.setForeground(Color.white);
 		add(updateMap1Name);
 
 		updateMap1Info.setSize(360, 25);
@@ -225,6 +227,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		updateMap2Name.setSize(150, 20);
 		updateMap2Name.setLocation(70, 565);
+		updateMap2Name.setForeground(Color.white);
 		add(updateMap2Name);
 
 		updateMap2Info.setSize(360, 25);
@@ -236,6 +239,7 @@ public class FIFAInfoFrame extends GameItem {
 	// character
 
 	private void characterItem() {
+
 
 		caracterInfo = new JLabel("★ Character Info ★");
 
@@ -255,20 +259,21 @@ public class FIFAInfoFrame extends GameItem {
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JLabel("캐릭터 소개");
 
-		updateCharacter1Name = new JTextField();
+		updateCharacter1Name = new JLabel();
 		updateCharacter1nfo = new JTextArea();
 
-		updateCharacter2Name = new JTextField();
+		updateCharacter2Name = new JLabel();
 		updateCharacter2nfo = new JTextArea();
 
-		updateCharacter3Name = new JTextField();
+		updateCharacter3Name = new JLabel();
 		updateCharacter3nfo = new JTextField();
 
-		updateCharacter4Name = new JTextField();
+		updateCharacter4Name = new JLabel();
 		updateCharacter4nfo = new JTextField();
 	}
 
 	private void thisCharacterImgRemove() {
+
 
 		remove(caracterInfo);
 		remove(character1);
@@ -278,6 +283,7 @@ public class FIFAInfoFrame extends GameItem {
 	}
 
 	private void thisCharacterSelectRemove() {
+
 
 		remove(character1Name);
 		remove(character1Info);
@@ -368,8 +374,10 @@ public class FIFAInfoFrame extends GameItem {
 
 	private void gameCharacterUpdateComponents() {
 
+
 		updateCharacter1Name.setSize(100, 20);
 		updateCharacter1Name.setLocation(150, 80);
+		updateCharacter1Name.setForeground(Color.white);
 		add(updateCharacter1Name);
 		updateCharacter1nfo.setSize(300, 80);
 		updateCharacter1nfo.setLocation(150, 110);
@@ -377,6 +385,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		updateCharacter2Name.setSize(100, 20);
 		updateCharacter2Name.setLocation(270, 210);
+		updateCharacter2Name.setForeground(Color.white);
 		add(updateCharacter2Name);
 		updateCharacter2nfo.setSize(300, 80);
 		updateCharacter2nfo.setLocation(70, 240);
@@ -384,6 +393,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		updateCharacter3Name.setSize(100, 20);
 		updateCharacter3Name.setLocation(150, 340);
+		updateCharacter3Name.setForeground(Color.white);
 		add(updateCharacter3Name);
 		updateCharacter3nfo.setSize(300, 80);
 		updateCharacter3nfo.setLocation(150, 370);
@@ -391,6 +401,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(270, 470);
+		updateCharacter4Name.setForeground(Color.white);
 		add(updateCharacter4Name);
 		updateCharacter4nfo.setSize(300, 80);
 		updateCharacter4nfo.setLocation(70, 500);
