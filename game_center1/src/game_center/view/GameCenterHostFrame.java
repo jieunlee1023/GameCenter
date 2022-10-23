@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import game_center.dto.GameInfo;
 import game_center.interfaces.IGameCenterHostService;
@@ -64,18 +65,22 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			System.exit(0);
 		} else if (targetButton.hashCode() == (getGameButton1().hashCode())) {
 			System.out.println("게임 1");
-			if (list.get(getLOL()).getGameName().equals("롤")) {
-				new LOLHostInfoFrame(list.get(getLOL()));
-			}
+			new LOLHostInfoFrame(getFirstGameInfos());
 		} else if (targetButton.hashCode() == (getGameButton2().hashCode())) {
 			System.out.println("게임 2");
-			if (list.get(getFIFA()).getGameName().equals("피파온라인4")) {
-				new FIFAHostInfoFrame(list.get(getFIFA()));
-			}
+			new FIFAHostInfoFrame(getSecondGameInfos());
 		} else if (targetButton.hashCode() == (getGameButton3().hashCode())) {
 			System.out.println("게임 3");
-			if (list.get(getCRAZY()).getGameName().equals("크레이지아케이드")) {
-				new CrazyArcadeHostInfoFrame(list.get(getCRAZY()));
+			new CrazyArcadeHostInfoFrame(getSecondGameInfos());
+		} else if (targetButton.hashCode() == getSearchButton().hashCode()) {
+			if (getSearch().getText().equals(getFirstGameInfos().getGameName())) {
+				new LOLHostInfoFrame(getFirstGameInfos());
+			} else if (getSearch().getText().equals(getSecondGameInfos().getGameName())) {
+				new FIFAHostInfoFrame(getSecondGameInfos());
+			} else if (getSearch().getText().equals(getThirdGameInfos().getGameName())) {
+				new CrazyArcadeHostInfoFrame(getThirdGameInfos());
+			} else {
+				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 			}
 		} else if (targetButton.getText().equals(userSelect.getText())) {
 			System.out.println("유저 정보 조회");

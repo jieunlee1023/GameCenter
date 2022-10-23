@@ -69,10 +69,10 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	public GameCenterFrame(IGameCenterService centerService) {
 		this.centerService = centerService;
+		gameInfo();
 		initData();
 		setInitLayout();
 		addEventListener();
-		gameInfo();
 	}
 
 	private void gameInfo() {
@@ -118,14 +118,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		search = new JTextArea();
 		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
 
-		game1Name = new JLabel(centerService.selectGameName("롤"));
-		game1Info = new JLabel(centerService.selectGameInfo("롤"));
+		game1Name = new JLabel(firstGameInfos.getGameName());
+		game1Info = new JLabel(firstGameInfos.getGameInfo());
 
-		game2Name = new JLabel(centerService.selectGameName("피파온라인4"));
-		game2Info = new JLabel(centerService.selectGameInfo("피파온라인4"));
+		game2Name = new JLabel(secondGameInfos.getGameName());
+		game2Info = new JLabel(secondGameInfos.getGameInfo());
 
-		game3Name = new JLabel(centerService.selectGameName("크레이지아케이드"));
-		game3Info = new JLabel(centerService.selectGameInfo("크레이지아케이드"));
+		game3Name = new JLabel(thirdGameInfos.getGameName());
+		game3Info = new JLabel(thirdGameInfos.getGameInfo());
 	}
 
 	private void setInitLayout() {
@@ -147,7 +147,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		back.setSize(50, 50);
 		back.setLocation(20, 20);
 		back.setBorderPainted(false); // 버튼 테두리
-		// back.setContentAreaFilled(false); // 버튼 영역
 		back.setFocusPainted(false); // 버튼 포커스
 		back.setBackground(new Color(30, 40, 90));
 		add(back);
@@ -225,7 +224,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	}
 
 	private void addEventListener() {
-//		this.addMouseWheelListener(new MyListener());
 		myInfo.addActionListener(this);
 		logOut.addActionListener(this);
 		back.addActionListener(this);
@@ -233,7 +231,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		gameButton2.addActionListener(this);
 		gameButton3.addActionListener(this);
 		searchButton.addActionListener(this);
-//		scrollBar.addAdjustmentListener(new MyListener());
 	}
 
 	@Override
@@ -261,17 +258,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
 			new CrazyArcadeInfoFrame(thirdGameInfos);
-
-		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-			if (search.getText().equals(firstGameInfos.getGameName())) {
-				new LOLInfoFrame(firstGameInfos);
-			} else if (search.getText().equals(secondGameInfos.getGameName())) {
-				new FIFAInfoFrame(secondGameInfos);
-			} else if (search.getText().equals(thirdGameInfos.getGameName())) {
-				new CrazyArcadeInfoFrame(thirdGameInfos);
-			} else {
-				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
-			}
 		}
 	}
 }

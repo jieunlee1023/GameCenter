@@ -298,7 +298,6 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		gameInformation.setLocation(40, 400);
 		gameInformation.setLineWrap(true);
 		gameInformation.setText(gameInfoClass.getGameInfo());
-
 		add(gameInformation);
 	}
 }
