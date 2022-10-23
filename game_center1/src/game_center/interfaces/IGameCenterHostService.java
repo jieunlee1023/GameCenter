@@ -23,7 +23,7 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	void updateGame(RequestGameCenter rgc, GameInfo gameInfo); // 게임 정보 수정
 
-	void updateCharacter(RequestGameCenter rgc); // 게임 캐릭터 수정
+	void updateCharacter(RequestGameCenter rgc, CharacterInfo characterInfo); // 게임 캐릭터 수정
 
 	void updateMap(RequestGameCenter rgc, MapInfo mapInfo); // 게임 맵 수정
 
