@@ -86,6 +86,9 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			} else {
 				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 			}
+		} else if (targetButton.getText().equals(userSelect.getText())) {
+			System.out.println("유저 정보 조회");
+			new userSearch();
 		}
 	}
 }

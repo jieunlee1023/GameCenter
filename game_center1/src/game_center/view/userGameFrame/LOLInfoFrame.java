@@ -266,44 +266,6 @@ public class LOLInfoFrame extends GameItem {
 		add(map3pInfo);
 	}
 
-	private void gameMapUpdateComponents() {
-		updateMap1Name.setSize(100, 20);
-		updateMap1Name.setForeground(Color.white);
-		updateMap1Name.setLocation(50, 280);
-		updateMap1Name.setText(firstMapInfos.getGameMapName());
-		add(updateMap1Name);
-
-		updateMap1Info.setSize(290, 20);
-		updateMap1Info.setLocation(160, 280);
-		updateMap1Info.setText(firstMapInfos.getGameMapInfo());
-		add(updateMap1Info);
-
-		updateMap2Name.setSize(140, 20);
-		updateMap2Name.setForeground(Color.white);
-		updateMap2Name.setLocation(310, 325);
-		updateMap2Name.setText(secondMapInfos.getGameMapName());
-		add(updateMap2Name);
-
-		updateMap2Info.setSize(140, 100);
-		updateMap2Info.setLocation(310, 355);
-		updateMap2Info.setText(secondMapInfos.getGameMapInfo());
-		add(updateMap2Info);
-
-		updateMap3Name.setSize(140, 20);
-		updateMap3Name.setForeground(Color.white);
-		updateMap3Name.setLocation(310, 475);
-		updateMap3Name.setText(thirdMapInfos.getGameMapName());
-		add(updateMap3Name);
-
-		updateMap3Info.setSize(140, 100);
-		updateMap3Info.setLocation(310, 505);
-		updateMap3Info.setText(thirdMapInfos.getGameMapInfo());
-		add(updateMap3Info);
-
-	}
-
-	// character
-
 	private void characterItem() {
 
 		caracterInfo = new JLabel("★ Character Info ★");
@@ -441,47 +403,4 @@ public class LOLInfoFrame extends GameItem {
 
 	}
 
-	private void gameCharacterUpdateComponents() {
-
-		updateCharacter1Name.setSize(100, 20);
-		updateCharacter1Name.setLocation(85, 260);
-		updateCharacter1Name.setForeground(Color.white);
-		updateCharacter1Name.setText(firstCharacterInfos.getGameCharacterName());
-		add(updateCharacter1Name);
-		updateCharacter1nfo.setSize(150, 50);
-		updateCharacter1nfo.setLocation(60, 290);
-		updateCharacter1nfo.setText(firstCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter1nfo);
-
-		updateCharacter2Name.setSize(100, 20);
-		updateCharacter2Name.setLocation(315, 260);
-		updateCharacter2Name.setForeground(Color.white);
-		updateCharacter2Name.setText(secondCharacterInfos.getGameCharacterName());
-		add(updateCharacter2Name);
-		updateCharacter2nfo.setSize(150, 50);
-		updateCharacter2nfo.setLocation(290, 290);
-		updateCharacter2nfo.setText(secondCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter2nfo);
-
-		updateCharacter3Name.setSize(100, 20);
-		updateCharacter3Name.setLocation(85, 530);
-		updateCharacter3Name.setForeground(Color.white);
-		updateCharacter3Name.setText(thirdCharacterInfos.getGameCharacterName());
-		add(updateCharacter3Name);
-		updateCharacter3nfo.setSize(150, 50);
-		updateCharacter3nfo.setLocation(60, 560);
-		updateCharacter3nfo.setText(thirdCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter3nfo);
-
-		updateCharacter4Name.setSize(100, 20);
-		updateCharacter4Name.setLocation(315, 530);
-		updateCharacter4Name.setForeground(Color.white);
-		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
-		add(updateCharacter4Name);
-		updateCharacter4nfo.setSize(150, 50);
-		updateCharacter4nfo.setLocation(290, 560);
-		updateCharacter4nfo.setText(fourthCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter4nfo);
-
-	}
 }
