@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import game_center.dto.CharacterInfo;
 import game_center.dto.GameInfo;
@@ -41,6 +40,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
 		initData();
+		
 		mapInfo();
 		characterInfo();
 	}
