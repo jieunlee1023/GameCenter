@@ -123,6 +123,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		remove(super.getGameImage());
 		remove(super.getGameName());
 		remove(super.getAgeLimit());
+		remove(super.getAgeLimitInfo());
 		remove(super.getGameInformation());
 		remove(super.getGameNameUpdate());
 		remove(super.getAgeLimitUpdate());
@@ -136,11 +137,11 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 		map1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111맵 이름");
-		map1Info = new JLabel("111맵 정보");
+		map1Info = new JTextArea("111맵 정보");
 
 		map2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222맵 정보");
+		map2Info = new JTextArea("222맵 정보");
 
 		updateMap1Name = new JLabel("11맵수정");
 		updateMap1Info = new JTextArea();
@@ -200,6 +201,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		map1Info.setSize(360, 25);
 		map1Info.setLocation(70, 310);
 		map1Info.setForeground(Color.white);
+		map1Info.setLineWrap(true);
 		add(map1Info);
 
 		map2Name.setSize(150, 20);
@@ -210,6 +212,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		map2Info.setSize(360, 25);
 		map2Info.setLocation(70, 590);
 		map2Info.setForeground(Color.white);
+		map2Info.setLineWrap(true);
 		add(map2Info);
 
 	}
@@ -244,19 +247,19 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
-		character1Info = new JLabel("캐릭터 소개");
+		character1Info = new JTextArea("캐릭터 소개");
 
 		character2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca2.png"));
 		character2Name = new JLabel("캐릭터 이름");
-		character2Info = new JLabel("캐릭터 소개");
+		character2Info = new JTextArea("캐릭터 소개");
 
 		character3 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca3.png"));
 		character3Name = new JLabel("캐릭터 이름");
-		character3Info = new JLabel("캐릭터 소개");
+		character3Info = new JTextArea("캐릭터 소개");
 
 		character4 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
-		character4Info = new JLabel("캐릭터 소개");
+		character4Info = new JTextArea("캐릭터 소개");
 
 		updateCharacter1Name = new JLabel("1111");
 		updateCharacter1nfo = new JTextArea();
@@ -265,10 +268,10 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		updateCharacter2nfo = new JTextArea();
 
 		updateCharacter3Name = new JLabel("3333");
-		updateCharacter3nfo = new JTextField();
+		updateCharacter3nfo = new JTextArea();
 
 		updateCharacter4Name = new JLabel("4444");
-		updateCharacter4nfo = new JTextField();
+		updateCharacter4nfo = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {
@@ -337,7 +340,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		add(character1Name);
 		character1Info.setSize(300, 80);
 		character1Info.setLocation(150, 110);
-		character1Info.setForeground(Color.WHITE);
+		character1Info.setLineWrap(true);
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
@@ -346,7 +349,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		add(character2Name);
 		character2Info.setSize(300, 80);
 		character2Info.setLocation(70, 240);
-		character2Info.setForeground(Color.WHITE);
+		character2Info.setLineWrap(true);
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
@@ -355,7 +358,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		add(character3Name);
 		character3Info.setSize(300, 80);
 		character3Info.setLocation(150, 370);
-		character3Name.setForeground(Color.WHITE);
+		character3Info.setLineWrap(true);
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
@@ -364,7 +367,7 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		add(character4Name);
 		character4Info.setSize(300, 80);
 		character4Info.setLocation(70, 500);
-		character4Info.setForeground(Color.WHITE);
+		character4Info.setLineWrap(true);
 		add(character4Info);
 
 	}

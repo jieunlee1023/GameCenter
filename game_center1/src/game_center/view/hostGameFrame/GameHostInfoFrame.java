@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import game_center.dto.GameInfo;
@@ -55,7 +56,8 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 
 	private JLabel gameName = new JLabel();
 	private JLabel ageLimit = new JLabel();
-	private JLabel gameInformation = new JLabel();
+	private JLabel ageLimitInfo = new JLabel("연령 제한 : ");
+	private JTextArea gameInformation = new JTextArea();
 	private JLabel info = new JLabel("★ Game Info ★");
 
 	// 수정시 사용 (관리자만 사용함)
@@ -126,10 +128,6 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		infomation.setForeground(Color.white);
 		add(infomation);
 
-		gameInformation.setSize(400, 200);
-		gameInformation.setLocation(50, 300);
-		gameInformation.setForeground(Color.white);
-		add(gameInformation);
 		memo.setSize(400, 20);
 		memo.setLocation(50, 460);
 		memo.setForeground(Color.white);
@@ -178,6 +176,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			remove(gameInformation);
 			remove(gameNameUpdate);
 			remove(ageLimitUpdate);
+			remove(ageLimitInfo);
 			remove(gameInfomationUpdate);
 
 			gameSelectComponents();
@@ -194,6 +193,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			remove(gameImage);
 			remove(gameName);
 			remove(ageLimit);
+			remove(ageLimitInfo);
 			remove(gameInformation);
 
 			System.out.println("게임 정보 수정");
@@ -209,6 +209,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			centerHostService.updateGame(rgc, gameInfoClass);
 		} else if (targetItem.getText().equals(gameDelete.getText())) {
 			System.out.println("게임 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
@@ -223,6 +224,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			System.out.println("맵 저장 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
 			System.out.println("맵 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
 
 			System.out.println("캐릭터 조회 ");
@@ -232,6 +234,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			System.out.println("캐릭터 저장");
 		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
 			System.out.println("캐릭터 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		}
 	}
 
@@ -242,9 +245,10 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		gameImage.setBackground(Color.white);
 		add(gameImage);
 
-		gameNameUpdate.setSize(400, 20);
-		gameNameUpdate.setLocation(40, 360);
+		gameNameUpdate.setSize(400, 30);
+		gameNameUpdate.setLocation(40, 350);
 		gameNameUpdate.setForeground(Color.white);
+		gameNameUpdate.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		gameNameUpdate.setText(gameInfoClass.getGameName());
 		add(gameNameUpdate);
 
@@ -255,6 +259,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 
 		gameInfomationUpdate.setSize(400, 200);
 		gameInfomationUpdate.setLocation(40, 400);
+		gameInfomationUpdate.setLineWrap(true);
 		gameInfomationUpdate.setText(gameInfoClass.getGameInfo());
 		add(gameInfomationUpdate);
 
@@ -273,21 +278,29 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		gameImage.setBackground(Color.white);
 		add(gameImage);
 
-		gameName.setSize(400, 20);
-		gameName.setLocation(40, 360);
+		gameName.setSize(400, 30);
+		gameName.setLocation(40, 350);
 		gameName.setForeground(Color.white);
+		gameName.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		gameName.setText(gameInfoClass.getGameName());
 		add(gameName);
 
+		ageLimitInfo.setSize(100, 20);
+		ageLimitInfo.setLocation(340, 360);
+		ageLimitInfo.setForeground(Color.white);
+		ageLimitInfo.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		add(ageLimitInfo);
+
 		ageLimit.setSize(80, 20);
-		ageLimit.setLocation(370, 360);
-		ageLimit.setForeground(Color.white);
+		ageLimit.setLocation(410, 360);
+		ageLimit.setForeground(Color.red);
+		ageLimit.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		ageLimit.setText(gameInfoClass.getAgeLimit());
 		add(ageLimit);
 
 		gameInformation.setSize(400, 200);
 		gameInformation.setLocation(40, 400);
-		gameInformation.setForeground(Color.white);
+		gameInformation.setLineWrap(true);
 		gameInformation.setText(gameInfoClass.getGameInfo());
 		add(gameInformation);
 	}

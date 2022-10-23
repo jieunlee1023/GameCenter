@@ -90,24 +90,20 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		if (targetItem.getText().equals(super.getGameSelected().getText())) {
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
 		} else if (targetItem.getText().equals(super.getGameMapSelected().getText())) {
 
 			superRemove();
-			thisMapUpdateRemove();
 			gameMapImageComponents();
 			gameMapSelectComponents();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
@@ -116,12 +112,10 @@ public class CrazyArcadeInfoFrame extends GameItem {
 			superRemove();
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			gameCharacterImageComponents();
 			gameCharacterSelectComponents();
 
-			thisCharacterUpdateRemove();
 			repaint();
 
 		}
@@ -138,10 +132,8 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(super.getGameImage());
 		remove(super.getGameName());
 		remove(super.getAgeLimit());
+		remove(super.getAgeLimitInfo());
 		remove(super.getGameInformation());
-		remove(super.getGameNameUpdate());
-		remove(super.getAgeLimitUpdate());
-		remove(super.getGameInfomationUpdate());
 	}
 
 	// map
@@ -151,26 +143,18 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		map1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));
 		map1Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111 맵 이름");
-		map1Info = new JLabel("111 맵정보");
+		map1Info = new JTextArea("111 맵정보");
 
 		map2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m2.png"));
 		map2Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222게임정보");
+		map2Info = new JTextArea("222게임정보");
 
 		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
 		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JLabel("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
-		updateMap1Name = new JLabel();
-		updateMap1Info = new JTextArea();
-
-		updateMap2Name = new JLabel();
-		updateMap2Info = new JTextArea();
-
-		updateMap3Name = new JLabel();
-		updateMap3Info = new JTextField();
 	}
 
 	private void thisMapImgRemove() {
@@ -191,17 +175,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
-	}
-
-	private void thisMapUpdateRemove() {
-
-		remove(updateMap1Name);
-		remove(updateMap1Info);
-		remove(updateMap2Name);
-		remove(updateMap2Info);
-		remove(updateMap3Name);
-		remove(updateMap3Info);
+		remove(map3Info);
 	}
 
 	private void gameMapImageComponents() {
@@ -241,40 +215,40 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	private void gameMapSelectComponents() {
 
 		map1Name.setSize(100, 30);
-		map1Name.setLocation(60, 200);
+		map1Name.setLocation(50, 200);
 		map1Name.setForeground(Color.white);
 		map1Name.setText(firstMapInfos.getGameMapName());
 		add(map1Name);
 
 		map1Info.setSize(100, 230);
-		map1Info.setLocation(60, 230);
-		map1Info.setForeground(Color.white);
+		map1Info.setLocation(50, 230);
 		map1Info.setText(firstMapInfos.getGameMapInfo());
+		map1Info.setLineWrap(true);
 		add(map1Info);
 
 		map2Name.setSize(100, 30);
-		map2Name.setLocation(210, 200);
+		map2Name.setLocation(200, 200);
 		map2Name.setForeground(Color.white);
 		map2Name.setText(secondMapInfos.getGameMapName());
 		add(map2Name);
 
 		map2Info.setSize(100, 230);
-		map2Info.setLocation(210, 230);
-		map2Info.setForeground(Color.white);
+		map2Info.setLocation(200, 230);
 		map2Info.setText(secondMapInfos.getGameMapInfo());
+		map2Info.setLineWrap(true);
 		add(map2Info);
 
 		map3Name.setSize(100, 30);
-		map3Name.setLocation(360, 200);
+		map3Name.setLocation(350, 200);
 		map3Name.setForeground(Color.white);
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(100, 230);
-		map3pInfo.setLocation(360, 230);
-		map3pInfo.setForeground(Color.white);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		add(map3pInfo);
+		map3Info.setSize(100, 230);
+		map3Info.setLocation(350, 230);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		map3Info.setLineWrap(true);
+		add(map3Info);
 
 	}
 
@@ -285,31 +259,19 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 		character1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
-		character1Info = new JLabel("캐릭터 소개");
+		character1Info = new JTextArea("캐릭터 소개");
 
 		character2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca2.png"));
 		character2Name = new JLabel("캐릭터 이름");
-		character2Info = new JLabel("캐릭터 소개");
+		character2Info = new JTextArea("캐릭터 소개");
 
 		character3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca3.png"));
 		character3Name = new JLabel("캐릭터 이름");
-		character3Info = new JLabel("캐릭터 소개");
+		character3Info = new JTextArea("캐릭터 소개");
 
 		character4 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
-		character4Info = new JLabel("캐릭터 소개");
-
-		updateCharacter1Name = new JLabel();
-		updateCharacter1nfo = new JTextArea();
-
-		updateCharacter2Name = new JLabel();
-		updateCharacter2nfo = new JTextArea();
-
-		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextField();
-
-		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextField();
+		character4Info = new JTextArea("캐릭터 소개");
 	}
 
 	private void thisCharacterImgRemove() {
@@ -331,17 +293,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(character3Info);
 		remove(character4Name);
 		remove(character4Info);
-	}
-
-	private void thisCharacterUpdateRemove() {
-		remove(updateCharacter1Name);
-		remove(updateCharacter1nfo);
-		remove(updateCharacter2Name);
-		remove(updateCharacter2nfo);
-		remove(updateCharacter3Name);
-		remove(updateCharacter3nfo);
-		remove(updateCharacter4Name);
-		remove(updateCharacter4nfo);
 	}
 
 	private void gameCharacterImageComponents() {
@@ -372,46 +323,46 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	private void gameCharacterSelectComponents() {
 
 		character1Name.setSize(100, 20);
-		character1Name.setLocation(85, 270);
+		character1Name.setLocation(120, 270);
 		character1Name.setForeground(Color.WHITE);
 		character1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(character1Name);
 		character1Info.setSize(150, 50);
 		character1Info.setLocation(60, 300);
-		character1Info.setForeground(Color.WHITE);
+		character1Info.setLineWrap(true);
 		character1Info.setText(firstCharacterInfos.getGameCharacterInfo());
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
-		character2Name.setLocation(315, 270);
+		character2Name.setLocation(355, 270);
 		character2Name.setForeground(Color.WHITE);
 		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
 		character2Info.setSize(150, 50);
 		character2Info.setLocation(290, 300);
-		character2Info.setForeground(Color.WHITE);
+		character2Info.setLineWrap(true);
 		character2Info.setText(secondCharacterInfos.getGameCharacterInfo());
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
-		character3Name.setLocation(85, 530);
+		character3Name.setLocation(120, 530);
 		character3Name.setForeground(Color.WHITE);
 		character3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(character3Name);
 		character3Info.setSize(150, 50);
 		character3Info.setLocation(60, 560);
-		character3Info.setForeground(Color.WHITE);
+		character3Info.setLineWrap(true);
 		character3Info.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
-		character4Name.setLocation(315, 530);
+		character4Name.setLocation(355, 530);
 		character4Name.setForeground(Color.WHITE);
 		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);
 		character4Info.setSize(150, 50);
 		character4Info.setLocation(290, 560);
-		character4Info.setForeground(Color.WHITE);
+		character4Info.setLineWrap(true);
 		character4Info.setText(fourthCharacterInfos.getGameCharacterInfo());
 		add(character4Info);
 
