@@ -6,9 +6,12 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import game_center.dto.CharacterInfo;
+import game_center.dto.GameInfo;
+import game_center.dto.LoginUserInfo;
+import game_center.dto.MapInfo;
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
-import game_center.dto.LoginUserInfo;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.DBClient;
 
@@ -401,33 +404,82 @@ public class GameCenterUserService implements IGameCenterService {
 		return list;
 	}
 
-	public static void main(String[] args) {
-//		RequestGameCenter rgc = new RequestGameCenter();
-//		GameCenterUserService a = new GameCenterUserService();
+	@Override
+	public List<GameInfo> GameInfo() {
+		List<GameInfo> list = new ArrayList<>();
 
-//      rgc.setUserId("bins");
-//      rgc.setPassword("1234");
-//      rgc.setUserName("강빈");
-//      rgc.setEmail("adasd@sadasd.com");
-//      rgc.setMobile("010-9432-9080");
-//      a.insertJoin(rgc);
+		String query = "select * from gameInfo";
 
-		// selectbyId
-//		List<ResponseGameCenter> select = a.selectUserById("bins");
-//		if (select == null) {
-//			System.out.println("없는 ID 입니다.");
-//		} else {
-//			System.out.println(rgc.getIDENTITY_NUM_USER());
-//			System.out.println(select.toString());
-//		}
-//		// 2 bins 1234 강빈 adasd@sadasd.com 010-9432-9080
-//		rgc.setPassword("1212");
-//		rgc.setUserName("binbi");
-//		rgc.setEmail(null);
-//		rgc.setMobile(null);
-//		rgc.setUserId("bins");
-//
-//		a.update(rgc);
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			rs = psmt.executeQuery();
 
+			while (rs.next()) {
+				GameInfo gameInfo = new GameInfo();
+				gameInfo.setGameName(rs.getString("gamename"));
+				gameInfo.setAgeLimit(rs.getString("ageLimit"));
+				gameInfo.setGameInfo(rs.getString("gameInfo"));
+
+				list.add(gameInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
+		}
+
+		return list;
+	}
+
+	@Override
+	public List<MapInfo> MapInfo() {
+		List<MapInfo> list = new ArrayList<>();
+
+		String query = "select * from gamemap";
+
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				MapInfo mapInfo = new MapInfo();
+				mapInfo.setGameName(rs.getString("gamename"));
+				mapInfo.setGameMapName(rs.getString("gameMapName"));
+				mapInfo.setGameMapInfo(rs.getString("gameMapInfo"));
+
+				list.add(mapInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
+		}
+		return list;
+	}
+
+	@Override
+	public List<CharacterInfo> CharacterInfo() {
+		List<CharacterInfo> list = new ArrayList<>();
+
+		String query = "select * from gameCharacter";
+
+		try {
+			psmt = dbClient.getConnection().prepareStatement(query);
+			rs = psmt.executeQuery();
+
+			while (rs.next()) {
+				CharacterInfo characterInfo = new CharacterInfo();
+				characterInfo.setGameName(rs.getString("gamename"));
+				characterInfo.setGameCharacterName(rs.getString("gameCharacterName"));
+				characterInfo.setGameCharacterInfo(rs.getString("gameCharacterInfo"));
+
+				list.add(characterInfo);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			memoryClose();
+		}
+		return list;
 	}
 }

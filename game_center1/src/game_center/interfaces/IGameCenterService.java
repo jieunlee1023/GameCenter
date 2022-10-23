@@ -2,6 +2,9 @@ package game_center.interfaces;
 
 import java.util.List;
 
+import game_center.dto.CharacterInfo;
+import game_center.dto.GameInfo;
+import game_center.dto.MapInfo;
 import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 
@@ -16,7 +19,7 @@ public interface IGameCenterService {
 	List<ResponseGameCenter> selectMap(String mapName); // 게임 맵 선택 (맵상세)
 
 	String selectGameName(String name);
-	
+
 	String selectGameInfo(String name);
 
 	String selectCharacterName(String name);
@@ -41,4 +44,9 @@ public interface IGameCenterService {
 
 	List<ResponseGameCenter> selectUserById(String userId);
 
+	List<GameInfo> GameInfo();
+
+	List<MapInfo> MapInfo();
+
+	List<CharacterInfo> CharacterInfo();
 }

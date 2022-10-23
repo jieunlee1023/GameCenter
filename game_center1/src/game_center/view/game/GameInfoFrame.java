@@ -214,10 +214,13 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
+
 			System.out.println("맵 조회 ");
 		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
+
 			System.out.println("맵 수정 ");
 		} else if (targetItem.getText().equals(gameMapSave.getText())) {
+
 			System.out.println("맵 저장 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
 			System.out.println("맵 삭제 ");

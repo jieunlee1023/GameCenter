@@ -25,7 +25,7 @@ public interface IGameCenterHostService extends IGameCenterService {
 
 	void updateCharacter(RequestGameCenter rgc); // 게임 캐릭터 수정
 
-	void updateMap(RequestGameCenter rgc); // 게임 맵 수정
+	void updateMap(RequestGameCenter rgc, MapInfo mapInfo); // 게임 맵 수정
 
 	void deleteGame(String gameName); // 게임 삭제
 
@@ -36,11 +36,5 @@ public interface IGameCenterHostService extends IGameCenterService {
 	void hostIn(String userId);
 
 	void hostOut(String userId);
-
-	List<GameInfo> GameInfo();
-
-	List<MapInfo> MapInfo();
-
-	List<CharacterInfo> CharacterInfo();
 
 }
