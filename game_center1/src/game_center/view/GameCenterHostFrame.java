@@ -64,7 +64,7 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			new FIFAHostInfoFrame(getSecondGameInfos());
 		} else if (targetButton.hashCode() == (getGameButton3().hashCode())) {
 			System.out.println("게임 3");
-			new CrazyArcadeHostInfoFrame(getSecondGameInfos());
+			new CrazyArcadeHostInfoFrame(getThirdGameInfos());
 		} else if (targetButton.hashCode() == getSearchButton().hashCode()) {
 			if (getSearch().getText().equals(getFirstGameInfos().getGameName())) {
 				new LOLHostInfoFrame(getFirstGameInfos());
