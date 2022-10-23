@@ -719,21 +719,18 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateCharacter(RequestGameCenter rgc) {
+	public void updateCharacter(RequestGameCenter rgc, CharacterInfo characterInfo) {
 
-		String query = "update gameCharacter " + " set gameCharacterName = ? " + ", gameCharacterInfo = ? "
-				+ "where gameCharacterName = ? ";
+		String query = "update gameCharacter set  gameCharacterInfo = ? where gameCharacterName = ? ";
 
 		try {
 			ps = client.getConnection().prepareStatement(query);
 
-			ps.setString(1, rgc.getGameCharacterName());
-			ps.setString(2, rgc.getGameCharacterInfo());
-
-//			ps.setString(3, name);
-
+			ps.setString(1, rgc.getGameCharacterInfo());
+			ps.setString(2, characterInfo.getGameCharacterName());
 			ps.executeUpdate();
 
+			characterInfo.setGameCharacterInfo(rgc.getGameCharacterInfo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -743,17 +740,14 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 	@Override
 	public void updateMap(RequestGameCenter rgc, MapInfo mapInfo) {
-		String query = "update gameMap set gameMapName = ? , gameMapInfo = ? where gameMapName = ? ";
+		String query = "update gameMap set gameMapInfo = ? where gameMapName = ? ";
 
 		try {
 			ps = client.getConnection().prepareStatement(query);
 
-			ps.setString(1, rgc.getGameMapName());
-			ps.setString(2, rgc.getGameMapInfo());
-			ps.setString(3, mapInfo.getGameMapName());
+			ps.setString(1, rgc.getGameMapInfo());
+			ps.setString(2, mapInfo.getGameMapName());
 			ps.executeUpdate();
-
-			mapInfo.setGameMapName(rgc.getGameMapName());
 
 			mapInfo.setGameMapInfo(rgc.getGameMapInfo());
 		} catch (SQLException e) {

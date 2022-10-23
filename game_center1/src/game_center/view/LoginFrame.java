@@ -14,6 +14,7 @@ import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
 import game_center.interfaces.IGameCenterHostService;
+import game_center.interfaces.IGameCenterService;
 import game_center.service.GameCenterHostService;
 import game_center.service.GameCenterUserService;
 
@@ -22,6 +23,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 	GameCenterHostService gameCenterHostService = new GameCenterHostService();
 	GameCenterUserService gameCenterUserService = new GameCenterUserService();
 	IGameCenterHostService centerHostService = gameCenterHostService;
+	IGameCenterService centerService = gameCenterUserService;
 
 	private JLabel userId;
 	private JTextField userIdField;
@@ -124,7 +126,7 @@ public class LoginFrame extends JFrame implements ActionListener {
 					this.setVisible(false);
 				} else {
 					System.out.println(" 사용자 로그인 성공");
-					new GameCenterFrame(centerHostService);
+					new GameCenterFrame(centerService);
 					this.setVisible(false);
 				}
 			} else {

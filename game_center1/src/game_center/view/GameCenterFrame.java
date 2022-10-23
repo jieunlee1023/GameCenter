@@ -30,7 +30,6 @@ import lombok.Data;
 @Data
 public class GameCenterFrame extends JFrame implements ActionListener {
 
-	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
 
 	private final int LOL = 0;
@@ -63,13 +62,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	private JLabel game3Name;
 	private JLabel game3Info;
 
-	public GameCenterFrame(IGameCenterHostService centerHostService) {
-		this.centerHostService = centerHostService;
-		initData();
-		setInitLayout();
-		addEventListener();
-	}
-
 	public GameCenterFrame(IGameCenterService centerService) {
 		this.centerService = centerService;
 		initData();
@@ -78,7 +70,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	}
 
 	private void initData() {
-		setSize(1000, 900);
+		setSize(1000, 700);
 		setTitle("Game Center");
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -107,14 +99,14 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		search = new JTextArea();
 		searchButton = new JButton(new ImageIcon(Define.IMAGE_PATH + "search.png"));
 
-		game1Name = new JLabel(centerHostService.selectGameName("롤"));
-		game1Info = new JLabel(centerHostService.selectGameInfo("롤"));
+		game1Name = new JLabel(centerService.selectGameName("롤"));
+		game1Info = new JLabel(centerService.selectGameInfo("롤"));
 
-		game2Name = new JLabel(centerHostService.selectGameName("피파온라인4"));
-		game2Info = new JLabel(centerHostService.selectGameInfo("피파온라인4"));
+		game2Name = new JLabel(centerService.selectGameName("피파온라인4"));
+		game2Info = new JLabel(centerService.selectGameInfo("피파온라인4"));
 
-		game3Name = new JLabel(centerHostService.selectGameName("크레이지아케이드"));
-		game3Info = new JLabel(centerHostService.selectGameInfo("크레이지아케이드"));
+		game3Name = new JLabel(centerService.selectGameName("크레이지아케이드"));
+		game3Info = new JLabel(centerService.selectGameInfo("크레이지아케이드"));
 	}
 
 	private void setInitLayout() {
@@ -167,7 +159,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		add(gameButton1);
 
 		game1Name.setSize(300, 20);
-		game1Name.setLocation(30, 500);
+		game1Name.setLocation(40, 500);
 		game1Name.setForeground(Color.white);
 		add(game1Name);
 
@@ -177,7 +169,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		add(game1Info);
 
 		game2Name.setSize(300, 20);
-		game2Name.setLocation(340, 500);
+		game2Name.setLocation(350, 500);
 		game2Name.setForeground(Color.white);
 		add(game2Name);
 
@@ -187,7 +179,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		add(game2Info);
 
 		game3Name.setSize(300, 20);
-		game3Name.setLocation(650, 500);
+		game3Name.setLocation(660, 500);
 		game3Name.setForeground(Color.white);
 		add(game3Name);
 
@@ -230,7 +222,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 		JButton targetButton = (JButton) e.getSource();
 
-		List<GameInfo> list = centerHostService.GameInfo();
+		List<GameInfo> list = centerService.GameInfo();
 
 		if (targetButton.getText().equals(myInfo.getText())) {
 			System.out.println("내 정보");
@@ -270,8 +262,8 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 //				if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
 //					new CrazyArcadeInfoFrame(list.get(CRAZY));
 //				}
-		} else {
-			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
+//		} else {
+//			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 		}
 	}
 }

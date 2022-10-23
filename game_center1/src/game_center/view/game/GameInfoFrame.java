@@ -238,29 +238,30 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private void gameUpdateComponents() {
 
 		gameImage.setSize(400, 400);
-		gameImage.setLocation(50, 0);
+		gameImage.setLocation(40, 0);
 		gameImage.setBackground(Color.white);
 		add(gameImage);
 
-		gameNameUpdate.setSize(300, 20);
-		gameNameUpdate.setLocation(50, 370);
+		gameNameUpdate.setSize(400, 20);
+		gameNameUpdate.setLocation(40, 360);
 		gameNameUpdate.setForeground(Color.white);
 		gameNameUpdate.setText(gameInfoClass.getGameName());
 		add(gameNameUpdate);
 
 		ageLimitUpdate.setSize(80, 20);
-		ageLimitUpdate.setLocation(370, 370);
+		ageLimitUpdate.setLocation(370, 360);
 		ageLimitUpdate.setText(gameInfoClass.getAgeLimit());
 		add(ageLimitUpdate);
 
 		gameInfomationUpdate.setSize(400, 200);
-		gameInfomationUpdate.setLocation(50, 400);
+		gameInfomationUpdate.setLocation(40, 400);
 		gameInfomationUpdate.setText(gameInfoClass.getGameInfo());
 		add(gameInfomationUpdate);
 
 	}
 
 	private void gameSelectComponents() {
+
 
 		info.setSize(500, 50);
 		info.setLocation(140, 20);
@@ -279,15 +280,14 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		gameName.setText(gameInfoClass.getGameName());
 		add(gameName);
 
-		ageLimit.setSize(400, 20);
-		ageLimit.setLocation(350, 360);
+		ageLimit.setSize(80, 20);
+		ageLimit.setLocation(370, 360);
 		ageLimit.setForeground(Color.white);
 		ageLimit.setText(gameInfoClass.getAgeLimit());
 		add(ageLimit);
 
 		gameInformation.setSize(400, 200);
-		gameInformation.setLocation(50, 300);
-		gameInformation.setLocation(40, 300);
+		gameInformation.setLocation(40, 400);
 		gameInformation.setForeground(Color.white);
 		gameInformation.setText(gameInfoClass.getGameInfo());
 
