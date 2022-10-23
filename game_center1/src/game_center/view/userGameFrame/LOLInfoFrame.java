@@ -174,7 +174,7 @@ public class LOLInfoFrame extends GameItem {
 		updateMap2Info = new JTextArea();
 
 		updateMap3Name = new JLabel();
-		updateMap3Info = new JTextField();
+		updateMap3Info = new JTextArea();
 	}
 
 	private void thisMapImgRemove() {
@@ -310,19 +310,19 @@ public class LOLInfoFrame extends GameItem {
 
 		character1 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
-		character1Info = new JLabel("캐릭터 소개");
+		character1Info = new JTextArea("캐릭터 소개");
 
 		character2 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca2.png"));
 		character2Name = new JLabel("캐릭터 이름");
-		character2Info = new JLabel("캐릭터 소개");
+		character2Info = new JTextArea("캐릭터 소개");
 
 		character3 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca3.png"));
 		character3Name = new JLabel("캐릭터 이름");
-		character3Info = new JLabel("캐릭터 소개");
+		character3Info = new JTextArea("캐릭터 소개");
 
 		character4 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
-		character4Info = new JLabel("캐릭터 소개");
+		character4Info = new JTextArea("캐릭터 소개");
 
 		updateCharacter1Name = new JLabel();
 		updateCharacter1nfo = new JTextArea();
@@ -331,10 +331,10 @@ public class LOLInfoFrame extends GameItem {
 		updateCharacter2nfo = new JTextArea();
 
 		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextField();
+		updateCharacter3nfo = new JTextArea();
 
 		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextField();
+		updateCharacter4nfo = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {

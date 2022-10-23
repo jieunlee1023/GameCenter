@@ -485,7 +485,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
-		character2Name.setLocation(360, 270);
+		character2Name.setLocation(355, 270);
 		character2Name.setForeground(Color.WHITE);
 		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
@@ -507,7 +507,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
-		character4Name.setLocation(360, 530);
+		character4Name.setLocation(355, 530);
 		character4Name.setForeground(Color.WHITE);
 		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);
@@ -533,7 +533,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		add(updateCharacter1nfo);
 
 		updateCharacter2Name.setSize(100, 20);
-		updateCharacter2Name.setLocation(360, 270);
+		updateCharacter2Name.setLocation(355, 270);
 		updateCharacter2Name.setForeground(Color.white);
 		updateCharacter2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(updateCharacter2Name);
@@ -555,7 +555,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		add(updateCharacter3nfo);
 
 		updateCharacter4Name.setSize(100, 20);
-		updateCharacter4Name.setLocation(360, 530);
+		updateCharacter4Name.setLocation(355, 530);
 		updateCharacter4Name.setForeground(Color.white);
 		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(updateCharacter4Name);

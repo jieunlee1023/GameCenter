@@ -178,32 +178,35 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		add(gameButton1);
 
 		game1Name.setSize(300, 20);
-		game1Name.setLocation(40, 500);
+		game1Name.setLocation(30, 500);
 		game1Name.setForeground(Color.white);
+		game1Name.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(game1Name);
 
 		game1Info.setSize(300, 50);
-		game1Info.setLocation(30, 510);
+		game1Info.setLocation(25, 510);
 		game1Info.setForeground(Color.white);
 		add(game1Info);
 
 		game2Name.setSize(300, 20);
-		game2Name.setLocation(350, 500);
+		game2Name.setLocation(340, 500);
 		game2Name.setForeground(Color.white);
+		game2Name.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(game2Name);
 
 		game2Info.setSize(300, 50);
-		game2Info.setLocation(340, 510);
+		game2Info.setLocation(335, 510);
 		game2Info.setForeground(Color.white);
 		add(game2Info);
 
 		game3Name.setSize(300, 20);
-		game3Name.setLocation(660, 500);
+		game3Name.setLocation(650, 500);
 		game3Name.setForeground(Color.white);
+		game3Name.setFont(new Font("맑은 고딕", Font.BOLD, 15));
 		add(game3Name);
 
 		game3Info.setSize(300, 50);
-		game3Info.setLocation(650, 510);
+		game3Info.setLocation(655, 510);
 		game3Info.setForeground(Color.white);
 		add(game3Info);
 
