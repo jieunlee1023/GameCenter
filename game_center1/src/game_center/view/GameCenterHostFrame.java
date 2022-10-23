@@ -16,7 +16,6 @@ import game_center.view.hostGameFrame.LOLHostInfoFrame;
 public class GameCenterHostFrame extends GameCenterFrame implements ActionListener {
 
 	private RoundedButton userSelect;
-	private RoundedButton gameInsert;
 	private IGameCenterHostService centerService;
 
 	public GameCenterHostFrame(IGameCenterHostService centerHostService) {
@@ -29,7 +28,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 
 	private void initData() {
 		userSelect = new RoundedButton("유저 조회");
-		gameInsert = new RoundedButton("게임 추가");
 
 	}
 
@@ -37,15 +35,10 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 		userSelect.setSize(80, 35);
 		userSelect.setLocation(85, 25);
 		add(userSelect);
-
-		gameInsert.setSize(80, 35);
-		gameInsert.setLocation(870, 70);
-		add(gameInsert);
 	}
 
 	private void addEventListener() {
 		userSelect.addActionListener(this);
-		gameInsert.addActionListener(this);
 
 	}
 
