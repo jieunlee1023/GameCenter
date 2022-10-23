@@ -191,7 +191,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 			rgc.setGameCharacterInfo(updateCharacter4nfo.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
 		}
-
 	}
 
 	private void superRemove() {

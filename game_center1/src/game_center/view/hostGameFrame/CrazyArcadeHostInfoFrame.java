@@ -50,12 +50,16 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		for (CharacterInfo characterInfo : characterInfosClass) {
 			if (characterInfo.getGameCharacterName().equals("배찌")) {
 				firstCharacterInfos = characterInfo;
+				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("우니")) {
 				secondCharacterInfos = characterInfo;
+				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("계피")) {
 				thirdCharacterInfos = characterInfo;
+				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("다오")) {
 				fourthCharacterInfos = characterInfo;
+				System.out.println(characterInfo);
 			}
 		}
 
@@ -177,15 +181,23 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 
 			rgc.setGameCharacterInfo(updateCharacter1nfo.getText());
 			gchs.updateCharacter(rgc, firstCharacterInfos);
+			System.out.println("1 : " + rgc.getGameCharacterInfo());
+			System.out.println(firstCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter2nfo.getText());
 			gchs.updateCharacter(rgc, secondCharacterInfos);
+			System.out.println("2 : " + rgc.getGameCharacterInfo());
+			System.out.println(secondCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter3nfo.getText());
 			gchs.updateCharacter(rgc, thirdCharacterInfos);
+			System.out.println(" 3 : " + rgc.getGameCharacterInfo());
+			System.out.println(thirdCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter4nfo.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
+			System.out.println(" 4 : " + rgc.getGameCharacterInfo());
+			System.out.println(fourthCharacterInfos.getGameCharacterName());
 		}
 	}
 
