@@ -34,7 +34,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
-	GameCenterHostFrame centerHostFrame;
 
 	private JPanel mainPanel = new JPanel();
 	private JScrollBar scrollBar = new JScrollBar();
