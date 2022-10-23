@@ -455,7 +455,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 	private void gameCharacterSelectComponents() {
 
 		character1Name.setSize(100, 20);
-		character1Name.setLocation(85, 260);
+		character1Name.setLocation(115, 260);
 		character1Name.setForeground(Color.WHITE);
 		character1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(character1Name);
@@ -465,7 +465,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
-		character2Name.setLocation(315, 260);
+		character2Name.setLocation(355, 260);
 		character2Name.setForeground(Color.WHITE);
 		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
@@ -475,7 +475,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
-		character3Name.setLocation(85, 530);
+		character3Name.setLocation(100, 530);
 		character3Name.setForeground(Color.WHITE);
 		character3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(character3Name);
@@ -485,7 +485,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
-		character4Name.setLocation(315, 530);
+		character4Name.setLocation(355, 530);
 		character4Name.setForeground(Color.WHITE);
 		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);
@@ -499,7 +499,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 	private void gameCharacterUpdateComponents() {
 
 		updateCharacter1Name.setSize(100, 20);
-		updateCharacter1Name.setLocation(85, 260);
+		updateCharacter1Name.setLocation(115, 260);
 		updateCharacter1Name.setForeground(Color.white);
 		updateCharacter1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(updateCharacter1Name);
@@ -509,7 +509,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(updateCharacter1nfo);
 
 		updateCharacter2Name.setSize(100, 20);
-		updateCharacter2Name.setLocation(315, 260);
+		updateCharacter2Name.setLocation(365, 260);
 		updateCharacter2Name.setForeground(Color.white);
 		updateCharacter2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(updateCharacter2Name);
@@ -519,7 +519,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(updateCharacter2nfo);
 
 		updateCharacter3Name.setSize(100, 20);
-		updateCharacter3Name.setLocation(85, 530);
+		updateCharacter3Name.setLocation(100, 530);
 		updateCharacter3Name.setForeground(Color.white);
 		updateCharacter3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(updateCharacter3Name);
@@ -529,7 +529,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(updateCharacter3nfo);
 
 		updateCharacter4Name.setSize(100, 20);
-		updateCharacter4Name.setLocation(315, 530);
+		updateCharacter4Name.setLocation(365, 530);
 		updateCharacter4Name.setForeground(Color.white);
 		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(updateCharacter4Name);
@@ -539,4 +539,5 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(updateCharacter4nfo);
 
 	}
+
 }

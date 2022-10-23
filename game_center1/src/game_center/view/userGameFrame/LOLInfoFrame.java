@@ -309,7 +309,7 @@ public class LOLInfoFrame extends GameItem {
 	private void gameCharacterSelectComponents() {
 
 		character1Name.setSize(100, 20);
-		character1Name.setLocation(85, 260);
+		character1Name.setLocation(115, 260);
 		character1Name.setForeground(Color.WHITE);
 		character1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(character1Name);
@@ -320,7 +320,7 @@ public class LOLInfoFrame extends GameItem {
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
-		character2Name.setLocation(315, 260);
+		character2Name.setLocation(355, 260);
 		character2Name.setForeground(Color.WHITE);
 		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
@@ -331,7 +331,7 @@ public class LOLInfoFrame extends GameItem {
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
-		character3Name.setLocation(85, 530);
+		character3Name.setLocation(100, 530);
 		character3Name.setForeground(Color.WHITE);
 		character3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(character3Name);
@@ -342,7 +342,7 @@ public class LOLInfoFrame extends GameItem {
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
-		character4Name.setLocation(315, 530);
+		character4Name.setLocation(355, 530);
 		character4Name.setForeground(Color.WHITE);
 		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);
