@@ -262,7 +262,6 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 
 	private void gameSelectComponents() {
 
-
 		info.setSize(500, 50);
 		info.setLocation(140, 20);
 		info.setFont(new Font("", Font.BOLD, 30));
@@ -290,7 +289,6 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		gameInformation.setLocation(40, 400);
 		gameInformation.setForeground(Color.white);
 		gameInformation.setText(gameInfoClass.getGameInfo());
-
 		add(gameInformation);
 	}
 }

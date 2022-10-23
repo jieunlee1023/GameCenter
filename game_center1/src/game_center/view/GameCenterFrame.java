@@ -261,17 +261,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
 			new CrazyArcadeInfoFrame(thirdGameInfos);
-
-		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-			if (search.getText().equals(firstGameInfos.getGameName())) {
-				new LOLInfoFrame(firstGameInfos);
-			} else if (search.getText().equals(secondGameInfos.getGameName())) {
-				new FIFAInfoFrame(secondGameInfos);
-			} else if (search.getText().equals(thirdGameInfos.getGameName())) {
-				new CrazyArcadeInfoFrame(thirdGameInfos);
-			} else {
-				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
-			}
 		}
 	}
 }

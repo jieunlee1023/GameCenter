@@ -278,7 +278,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			rs = ps.executeQuery();
 			while (rs.next()) {
 				ResponseGameCenter userInfo = new ResponseGameCenter();
-				userInfo.setIdentityNum(1);
+				userInfo.setIdentityNum(rs.getInt("identityNum"));
 				userInfo.setUserId(rs.getString("userId"));
 				userInfo.setPassword(rs.getString("password"));
 				userInfo.setUserName(rs.getString("userName"));
@@ -297,12 +297,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 			}
 			e.printStackTrace();
 		} finally {
-			try {
-				ps.close();
-				client.connectionClose();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			closeDB();
 		}
 		return list;
 	}
@@ -844,85 +839,5 @@ public class GameCenterHostService implements IGameCenterHostService {
 			closeDB();
 		}
 		return identityNum;
-	}
-
-	public static void main(String[] args) {
-
-		RequestGameCenter center = new RequestGameCenter();
-		GameCenterHostService service = new GameCenterHostService();
-
-//		service.hostIn("test1");
-
-//      List<ResponseGameCenter> list = service.selectGame("test2");
-//
-//      System.out.println(list);
-
-//      List<ResponseGameCenter> list = service.selectCharacter("우니");
-//
-//      System.out.println(list);
-
-//      List<ResponseGameCenter> list = service.selectMap("소환사의 협곡");
-//
-//      System.out.println(list);
-
-//      center.setUserId("test1");
-//      center.setPassword("1234");
-//      center.setUserName("test1");
-//      center.setEmail("test@naver.com");
-//      center.setMobile("010-1111-1111");
-//
-//      service.insertJoin(center);
-
-//      center.setGameName("test");
-//      center.setAgeLimit(19);
-//      center.setGameInfo("크래프톤[15]의 자회사인 펍지 스튜디오[16]의 MMO 슈팅 게임이다. 공식 명칭은...");
-//
-//      service.insertGame(center);
-
-//      service.deleteGame("test");
-//      service.deleteCharater("야스오");
-//      service.deleteMap("칼바람 나락");
-
-//      center.setGameName("배틀그라운드");
-//      center.setGameCharacterName("여자");
-//      center.setGameCharacterInfo("없다.");
-//
-//      service.insertChracter(center);
-
-//      center.setGameName("크레이지아케이드");
-//      center.setGameMapName("아쿠아");
-//      center.setGameMapInfo("무시무시한 상어가 살고 있는 바닷속 맵으로 상어에 닿아..");
-//
-//      service.insertMap(center);
-
-//		service.logIn(center, "A", "asd123");
-//		service.logIn(center, "A", "asd1234");
-
-//      center.setGameName("test");
-//      center.setAgeLimit(15);
-//      center.setGameInfo("testText");
-//
-//      service.updateGame(center, "test");
-
-//      center.setGameName("롤");
-//      center.setGameCharacterName("룰루");
-//      center.setGameCharacterInfo("씹련이다.");
-//      
-//      service.updateCharacter(center, "제드");
-
-//      center.setGameMapName("소환사의 협곡");
-//      center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
-//      
-//      service.updateMap(center, "상점");
-//		List<GameInfo> gameInfos = service.GameInfo();
-//		List<CharacterInfo> characterInfos = service.CharacterInfo();
-		List<MapInfo> mapInfos = service.MapInfo();
-
-//		System.out.println(gameInfos.get(1));
-//		System.out.println(characterInfos.get(5));
-		for (int i = 0; i < mapInfos.size(); i++) {
-			System.out.println(mapInfos.get(i));
-		}
-
 	}
 }

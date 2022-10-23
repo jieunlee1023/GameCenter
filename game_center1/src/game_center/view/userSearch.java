@@ -106,10 +106,13 @@ public class userSearch extends JFrame implements ActionListener {
 		} else if (targetItem.getText().equals(hostIn.getText())) {
 			gameCenterHostService.hostIn(search.getText());
 			System.out.println("userField.getText() : " + search.getText());
+			System.out.println(gameCenterHostService.getResponseGameCenter().getIdentityNum());
 			System.out.println("임명~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			JOptionPane.showMessageDialog(this, "관리자로 임명되었습니다.");
 		} else if (targetItem.getText().equals(hostOut.getText())) {
 			gameCenterHostService.hostOut(search.getText());
+			System.out.println("userField.getText() : " + search.getText());
+			System.out.println(gameCenterHostService.getResponseGameCenter().getIdentityNum());
 			System.out.println("제명~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
 			JOptionPane.showMessageDialog(this, "관리자에서 제명 되었습니다.");
 		}
