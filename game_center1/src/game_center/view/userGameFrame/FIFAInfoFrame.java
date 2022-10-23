@@ -3,6 +3,7 @@ package game_center.view.userGameFrame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,14 +11,69 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import game_center.dto.CharacterInfo;
 import game_center.dto.GameInfo;
+import game_center.dto.MapInfo;
+import game_center.dto.RequestGameCenter;
+import game_center.service.GameCenterHostService;
 import game_center.utils.Define;
+import game_center.view.GameCenterHostFrame;
 
 public class FIFAInfoFrame extends GameItem {
+	
+	private GameCenterHostService gchs;
+	private RequestGameCenter rgc;
+	
+	private List<MapInfo> mapInfoClass;
+	private MapInfo firstMapInfos;
+	private MapInfo secondMapInfos;
+	private MapInfo thirdMapInfos;
+
+	private List<CharacterInfo> characterInfosClass;
+	private CharacterInfo firstCharacterInfos;
+	private CharacterInfo secondCharacterInfos;
+	private CharacterInfo thirdCharacterInfos;
+	private CharacterInfo fourthCharacterInfos;
 
 	public FIFAInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
+		gchs = super.centerHostService;
+		rgc = super.rgc;
+		mapInfoClass = gchs.MapInfo();
+		characterInfosClass = gchs.CharacterInfo();
 		initData();
+		setInitLayout();
+
+		mapInfo();
+		characterInfo();
+	}
+	
+	private void characterInfo() {
+		for (CharacterInfo characterInfo : characterInfosClass) {
+			if (characterInfo.getGameCharacterName().equals("호나우두")) {
+				firstCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("리오넬 메시")) {
+				secondCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("카림 벤제마")) {
+				thirdCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("손흥민")) {
+				fourthCharacterInfos = characterInfo;
+			}
+		}
+	}
+
+	private void mapInfo() {
+		for (MapInfo mapInfoClass : mapInfoClass) {
+			if (mapInfoClass.getGameMapName().equals("에스타티오 산티아고 베르나베우")) {
+				firstMapInfos = mapInfoClass;
+			} else if (mapInfoClass.getGameMapName().equals("올드 트래포드")) {
+				secondMapInfos = mapInfoClass;
+			} 
+		}
+	}
+
+	private void setInitLayout() {
+		super.setGameImage(new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "main.png")));
 	}
 
 	private void initData() {
@@ -206,7 +262,7 @@ public class FIFAInfoFrame extends GameItem {
 		caracterInfo = new JLabel("★ Character Info ★");
 
 		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));
-		character1Name = new JLabel("캐릭터 이름");
+		character1Name = new JLabel("캐릭터 이름 : ");
 		character1Info = new JLabel("캐릭터 소개");
 
 		character2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca2.png"));
