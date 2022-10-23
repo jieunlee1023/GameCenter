@@ -151,17 +151,17 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		map1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));
 		map1Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111 맵 이름");
-		map1Info = new JLabel("111 맵정보");
+		map1Info = new JTextArea("111 맵정보");
 
 		map2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m2.png"));
 		map2Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222게임정보");
+		map2Info = new JTextArea("222게임정보");
 
 		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
 		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JLabel("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -191,7 +191,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
+		remove(map3Info);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -247,8 +247,9 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		add(map1Name);
 
 		map1Info.setSize(100, 230);
-		map1Info.setLocation(60, 230);
+		map1Info.setLocation(50, 230);
 		map1Info.setForeground(Color.white);
+		map1Info.setLineWrap(true);
 		map1Info.setText(firstMapInfos.getGameMapInfo());
 		add(map1Info);
 
@@ -259,8 +260,9 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		add(map2Name);
 
 		map2Info.setSize(100, 230);
-		map2Info.setLocation(210, 230);
+		map2Info.setLocation(200, 230);
 		map2Info.setForeground(Color.white);
+		map2Info.setLineWrap(true);
 		map2Info.setText(secondMapInfos.getGameMapInfo());
 		add(map2Info);
 
@@ -270,11 +272,12 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(100, 230);
-		map3pInfo.setLocation(360, 230);
-		map3pInfo.setForeground(Color.white);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		add(map3pInfo);
+		map3Info.setSize(100, 230);
+		map3Info.setLocation(350, 230);
+		map3Info.setForeground(Color.white);
+		map3Info.setLineWrap(true);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		add(map3Info);
 
 	}
 

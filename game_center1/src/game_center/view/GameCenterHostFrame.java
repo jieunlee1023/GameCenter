@@ -74,7 +74,7 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			}
 		} else if (targetButton.hashCode() == (getGameButton3().hashCode())) {
 			System.out.println("게임 3");
-			if (list.get(getCRAZY()).getGameName().equals("크레이지아케이드")) {  
+			if (list.get(getCRAZY()).getGameName().equals("크레이지아케이드")) {
 				new CrazyArcadeHostInfoFrame(list.get(getCRAZY()));
 			}
 		} else if (targetButton.getText().equals(userSelect.getText())) {

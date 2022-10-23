@@ -205,6 +205,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		remove(super.getGameImage());
 		remove(super.getGameName());
 		remove(super.getAgeLimit());
+		remove(super.getAgeLimitInfo());
 		remove(super.getGameInformation());
 		remove(super.getGameNameUpdate());
 		remove(super.getAgeLimitUpdate());
@@ -218,15 +219,15 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		map1 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111맵 이름");
-		map1Info = new JLabel("111맵정보");
+		map1Info = new JTextArea("111맵정보");
 
 		map2 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222맵정보");
+		map2Info = new JTextArea("222맵정보");
 
 		map3 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JLabel("333맵정보");
+		map3pInfo = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -235,7 +236,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		updateMap2Info = new JTextArea();
 
 		updateMap3Name = new JLabel();
-		updateMap3Info = new JTextField();
+		updateMap3Info = new JTextArea();
 	}
 
 	private void thisMapImgRemove() {
@@ -371,19 +372,19 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		character1 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
-		character1Info = new JLabel("캐릭터 소개");
+		character1Info = new JTextArea("캐릭터 소개");
 
 		character2 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca2.png"));
 		character2Name = new JLabel("캐릭터 이름");
-		character2Info = new JLabel("캐릭터 소개");
+		character2Info = new JTextArea("캐릭터 소개");
 
 		character3 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca3.png"));
 		character3Name = new JLabel("캐릭터 이름");
-		character3Info = new JLabel("캐릭터 소개");
+		character3Info = new JTextArea("캐릭터 소개");
 
 		character4 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
-		character4Info = new JLabel("캐릭터 소개");
+		character4Info = new JTextArea("캐릭터 소개");
 
 		updateCharacter1Name = new JLabel();
 		updateCharacter1nfo = new JTextArea();
@@ -392,10 +393,10 @@ public class LOLHostInfoFrame extends GameHostItem {
 		updateCharacter2nfo = new JTextArea();
 
 		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextField();
+		updateCharacter3nfo = new JTextArea();
 
 		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextField();
+		updateCharacter4nfo = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {

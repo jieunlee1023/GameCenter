@@ -157,15 +157,15 @@ public class LOLInfoFrame extends GameItem {
 
 		map1 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111맵 이름");
-		map1Info = new JLabel("111맵정보");
+		map1Info = new JTextArea("111맵정보");
 
 		map2 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222맵정보");
+		map2Info = new JTextArea("222맵정보");
 
 		map3 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JLabel("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -192,7 +192,7 @@ public class LOLInfoFrame extends GameItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
+		remove(map3Info);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -259,11 +259,11 @@ public class LOLInfoFrame extends GameItem {
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(140, 100);
-		map3pInfo.setLocation(310, 505);
-		map3pInfo.setForeground(Color.white);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		add(map3pInfo);
+		map3Info.setSize(140, 100);
+		map3Info.setLocation(310, 505);
+		map3Info.setForeground(Color.white);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		add(map3Info);
 	}
 
 	private void gameMapUpdateComponents() {

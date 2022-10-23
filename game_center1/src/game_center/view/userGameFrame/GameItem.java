@@ -10,7 +10,6 @@ import lombok.Data;
 
 public class GameItem extends GameInfoFrame {
 
-
 	public GameItem(GameInfo gameInfo) {
 		super(gameInfo);
 	}
@@ -23,17 +22,17 @@ public class GameItem extends GameInfoFrame {
 	protected JLabel map1;
 	protected JLabel map1Detail;
 	protected JLabel map1Name;
-	protected JLabel map1Info;
+	protected JTextArea map1Info;
 
 	protected JLabel map2;
 	protected JLabel map2Detail;
 	protected JLabel map2Name;
-	protected JLabel map2Info;
+	protected JTextArea map2Info;
 
 	protected JLabel map3;
 	protected JLabel map3Detail;
 	protected JLabel map3Name;
-	protected JLabel map3pInfo;
+	protected JTextArea map3Info;
 
 	protected JLabel updateMap1Name;
 	protected JTextArea updateMap1Info;

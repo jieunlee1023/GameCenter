@@ -99,11 +99,11 @@ public class FIFAInfoFrame extends GameItem {
 
 		map1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel("111맵 이름");
-		map1Info = new JLabel("111맵 정보");
+		map1Info = new JTextArea("111맵 정보");
 
 		map2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222맵 정보");
+		map2Info = new JTextArea("222맵 정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
