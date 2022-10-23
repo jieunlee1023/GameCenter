@@ -299,7 +299,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		map1Info.setSize(290, 20);
 		map1Info.setLocation(160, 280);
-		map1Info.setForeground(Color.white);
 		map1Info.setText(firstMapInfos.getGameMapInfo());
 		add(map1Info);
 
@@ -311,7 +310,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		map2Info.setSize(140, 100);
 		map2Info.setLocation(310, 355);
-		map2Info.setForeground(Color.white);
 		map2Info.setText(secondMapInfos.getGameMapInfo());
 		add(map2Info);
 
@@ -463,7 +461,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character1Name);
 		character1Info.setSize(150, 50);
 		character1Info.setLocation(60, 290);
-		character1Info.setForeground(Color.WHITE);
 		character1Info.setText(firstCharacterInfos.getGameCharacterInfo());
 		add(character1Info);
 
@@ -474,7 +471,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character2Name);
 		character2Info.setSize(150, 50);
 		character2Info.setLocation(290, 290);
-		character2Info.setForeground(Color.WHITE);
 		character2Info.setText(secondCharacterInfos.getGameCharacterInfo());
 		add(character2Info);
 
@@ -485,7 +481,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character3Name);
 		character3Info.setSize(150, 50);
 		character3Info.setLocation(60, 560);
-		character3Info.setForeground(Color.WHITE);
 		character3Info.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(character3Info);
 
@@ -496,7 +491,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 		add(character4Name);
 		character4Info.setSize(150, 50);
 		character4Info.setLocation(290, 560);
-		character4Info.setForeground(Color.WHITE);
 		character4Info.setText(fourthCharacterInfos.getGameCharacterInfo());
 		add(character4Info);
 
