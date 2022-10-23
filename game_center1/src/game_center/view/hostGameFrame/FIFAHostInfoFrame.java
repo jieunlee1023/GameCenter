@@ -1,4 +1,4 @@
-package game_center.view.game;
+package game_center.view.hostGameFrame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -13,21 +13,18 @@ import javax.swing.JTextField;
 import game_center.dto.GameInfo;
 import game_center.utils.Define;
 
-public class CrazyArcadeInfoFrame extends GameItem {
+public class FIFAHostInfoFrame extends GameHostItem {
 
-	GameInfo gameInfo;
-
-	public CrazyArcadeInfoFrame(GameInfo gameInfo) {
+	public FIFAHostInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
-		this.gameInfo = gameInfo;
 		initData();
 	}
 
 	private void initData() {
-		setTitle("크레이지아케이드 정보창");
+		setTitle("피파 정보창");
 
-		mainImg = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "main.png"));
-		setGameImage(mainImg);
+		mainImg = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "main.png"));
+		super.setGameImage(mainImg);
 		mapItem();
 		characterItem();
 	}
@@ -134,41 +131,28 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 	// map
 	private void mapItem() {
+
 		mapInfo = new JLabel("★ Map Info ★");
 
-		map1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));
-		map1Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map1.png"));
-		map1Name = new JLabel("111 맵 이름");
-		map1Info = new JLabel("111 맵정보");
+		map1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map1.png"));
+		map1Name = new JLabel("111맵 이름");
+		map1Info = new JLabel("111맵 정보");
 
-		map2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m2.png"));
-		map2Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map2.png"));
+		map2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map2.png"));
 		map2Name = new JLabel("222맵 이름");
-		map2Info = new JLabel("222게임정보");
-
-		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
-		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
-		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JLabel("333맵정보");
+		map2Info = new JLabel("222맵 정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
 
 		updateMap2Name = new JLabel();
 		updateMap2Info = new JTextArea();
-
-		updateMap3Name = new JLabel();
-		updateMap3Info = new JTextField();
 	}
 
 	private void thisMapImgRemove() {
 		remove(mapInfo);
 		remove(map1);
-		remove(map1Detail);
 		remove(map2);
-		remove(map2Detail);
-		remove(map3);
-		remove(map3Detail);
 
 	}
 
@@ -178,8 +162,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(map1Info);
 		remove(map2Name);
 		remove(map2Info);
-		remove(map3Name);
-		remove(map3pInfo);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -188,126 +170,92 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(updateMap1Info);
 		remove(updateMap2Name);
 		remove(updateMap2Info);
-		remove(updateMap3Name);
-		remove(updateMap3Info);
 	}
 
 	private void gameMapImageComponents() {
 
 		mapInfo.setSize(500, 50);
-		mapInfo.setLocation(140, 20);
+		mapInfo.setLocation(140, 10);
 		mapInfo.setFont(new Font("", Font.BOLD, 30));
 		mapInfo.setForeground(Color.white);
 		add(mapInfo);
 
-		map1.setSize(100, 105);
-		map1.setLocation(50, 80);
+		map1.setSize(400, 220);
+		map1.setLocation(50, 60);
 		add(map1);
 
-		map1Detail.setSize(135, 120);
-		map1Detail.setLocation(30, 480);
-		add(map1Detail);
-
-		map2.setSize(100, 105);
-		map2.setLocation(200, 80);
+		map2.setSize(400, 220);
+		map2.setLocation(50, 340);
 		add(map2);
-
-		map2Detail.setSize(135, 120);
-		map2Detail.setLocation(175, 480);
-		add(map2Detail);
-
-		map3.setSize(100, 105);
-		map3.setLocation(345, 80);
-		add(map3);
-
-		map3Detail.setSize(135, 120);
-		map3Detail.setLocation(320, 480);
-		add(map3Detail);
 
 	}
 
 	private void gameMapSelectComponents() {
 
-		map1Name.setSize(100, 30);
-		map1Name.setLocation(60, 200);
+		map1Name.setSize(150, 20);
+		map1Name.setLocation(70, 285);
 		map1Name.setForeground(Color.white);
 		add(map1Name);
 
-		map1Info.setSize(100, 230);
-		map1Info.setLocation(60, 230);
+		map1Info.setSize(360, 25);
+		map1Info.setLocation(70, 310);
 		map1Info.setForeground(Color.white);
 		add(map1Info);
 
-		map2Name.setSize(100, 30);
-		map2Name.setLocation(210, 200);
+		map2Name.setSize(150, 20);
+		map2Name.setLocation(70, 565);
 		map2Name.setForeground(Color.white);
 		add(map2Name);
 
-		map2Info.setSize(100, 230);
-		map2Info.setLocation(210, 230);
+		map2Info.setSize(360, 25);
+		map2Info.setLocation(70, 590);
 		map2Info.setForeground(Color.white);
 		add(map2Info);
-
-		map3Name.setSize(100, 30);
-		map3Name.setLocation(360, 200);
-		map3Name.setForeground(Color.white);
-		add(map3Name);
-
-		map3pInfo.setSize(100, 230);
-		map3pInfo.setLocation(360, 230);
-		map3pInfo.setForeground(Color.white);
-		add(map3pInfo);
 
 	}
 
 	private void gameMapUpdateComponents() {
-		updateMap1Name.setSize(100, 20);
-		updateMap1Name.setLocation(50, 200);
+
+		updateMap1Name.setSize(150, 20);
+		updateMap1Name.setLocation(70, 285);
 		updateMap1Name.setForeground(Color.white);
 		add(updateMap1Name);
 
-		updateMap1Info.setSize(100, 230);
-		updateMap1Info.setLocation(50, 230);
+		updateMap1Info.setSize(360, 25);
+		updateMap1Info.setLocation(70, 310);
 		add(updateMap1Info);
 
-		updateMap2Name.setSize(100, 20);
-		updateMap2Name.setLocation(200, 200);
+		updateMap2Name.setSize(150, 20);
+		updateMap2Name.setLocation(70, 565);
 		updateMap2Name.setForeground(Color.white);
 		add(updateMap2Name);
 
-		updateMap2Info.setSize(100, 230);
-		updateMap2Info.setLocation(200, 230);
+		updateMap2Info.setSize(360, 25);
+		updateMap2Info.setLocation(70, 590);
 		add(updateMap2Info);
-
-		updateMap3Name.setSize(100, 20);
-		updateMap3Name.setLocation(350, 200);
-		updateMap3Name.setForeground(Color.white);
-		add(updateMap3Name);
-
-		updateMap3Info.setSize(100, 230);
-		updateMap3Info.setLocation(350, 230);
-		add(updateMap3Info);
 
 	}
 
 	// character
+
 	private void characterItem() {
+
 
 		caracterInfo = new JLabel("★ Character Info ★");
 
-		character1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca1.png"));
+		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
 		character1Info = new JLabel("캐릭터 소개");
 
-		character2 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca2.png"));
+		character2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca2.png"));
 		character2Name = new JLabel("캐릭터 이름");
 		character2Info = new JLabel("캐릭터 소개");
 
-		character3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca3.png"));
+		character3 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca3.png"));
 		character3Name = new JLabel("캐릭터 이름");
 		character3Info = new JLabel("캐릭터 소개");
 
-		character4 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca4.png"));
+		character4 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JLabel("캐릭터 소개");
 
@@ -326,6 +274,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 	private void thisCharacterImgRemove() {
 
+
 		remove(caracterInfo);
 		remove(character1);
 		remove(character2);
@@ -334,6 +283,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	}
 
 	private void thisCharacterSelectRemove() {
+
 
 		remove(character1Name);
 		remove(character1Info);
@@ -357,26 +307,27 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	}
 
 	private void gameCharacterImageComponents() {
+
 		caracterInfo.setSize(500, 50);
-		caracterInfo.setLocation(105, 20);
+		caracterInfo.setLocation(105, 10);
 		caracterInfo.setFont(new Font("", Font.BOLD, 30));
 		caracterInfo.setForeground(Color.white);
 		add(caracterInfo);
 
-		character1.setSize(170, 165);
-		character1.setLocation(50, 100);
+		character1.setSize(90, 150);
+		character1.setLocation(40, 60);
 		add(character1);
 
-		character2.setSize(170, 165);
-		character2.setLocation(280, 100);
+		character2.setSize(90, 150);
+		character2.setLocation(380, 200);
 		add(character2);
 
-		character3.setSize(170, 165);
-		character3.setLocation(50, 360);
+		character3.setSize(90, 150);
+		character3.setLocation(40, 330);
 		add(character3);
 
-		character4.setSize(170, 165);
-		character4.setLocation(280, 360);
+		character4.setSize(90, 150);
+		character4.setLocation(380, 460);
 		add(character4);
 
 	}
@@ -384,38 +335,38 @@ public class CrazyArcadeInfoFrame extends GameItem {
 	private void gameCharacterSelectComponents() {
 
 		character1Name.setSize(100, 20);
-		character1Name.setLocation(85, 270);
+		character1Name.setLocation(150, 80);
 		character1Name.setForeground(Color.WHITE);
 		add(character1Name);
-		character1Info.setSize(150, 50);
-		character1Info.setLocation(60, 300);
+		character1Info.setSize(300, 80);
+		character1Info.setLocation(150, 110);
 		character1Info.setForeground(Color.WHITE);
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
-		character2Name.setLocation(315, 270);
+		character2Name.setLocation(270, 210);
 		character2Name.setForeground(Color.WHITE);
 		add(character2Name);
-		character2Info.setSize(150, 50);
-		character2Info.setLocation(290, 300);
+		character2Info.setSize(300, 80);
+		character2Info.setLocation(70, 240);
 		character2Info.setForeground(Color.WHITE);
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
-		character3Name.setLocation(85, 530);
+		character3Name.setLocation(150, 340);
 		character3Name.setForeground(Color.WHITE);
 		add(character3Name);
-		character3Info.setSize(150, 50);
-		character3Info.setLocation(60, 560);
-		character3Info.setForeground(Color.WHITE);
+		character3Info.setSize(300, 80);
+		character3Info.setLocation(150, 370);
+		character3Name.setForeground(Color.WHITE);
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
-		character4Name.setLocation(315, 530);
+		character4Name.setLocation(270, 470);
 		character4Name.setForeground(Color.WHITE);
 		add(character4Name);
-		character4Info.setSize(150, 50);
-		character4Info.setLocation(290, 560);
+		character4Info.setSize(300, 80);
+		character4Info.setLocation(70, 500);
 		character4Info.setForeground(Color.WHITE);
 		add(character4Info);
 
@@ -423,36 +374,37 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 	private void gameCharacterUpdateComponents() {
 
+
 		updateCharacter1Name.setSize(100, 20);
-		updateCharacter1Name.setLocation(85, 270);
+		updateCharacter1Name.setLocation(150, 80);
 		updateCharacter1Name.setForeground(Color.white);
 		add(updateCharacter1Name);
-		updateCharacter1nfo.setSize(150, 50);
-		updateCharacter1nfo.setLocation(60, 300);
+		updateCharacter1nfo.setSize(300, 80);
+		updateCharacter1nfo.setLocation(150, 110);
 		add(updateCharacter1nfo);
 
 		updateCharacter2Name.setSize(100, 20);
-		updateCharacter2Name.setLocation(315, 270);
+		updateCharacter2Name.setLocation(270, 210);
 		updateCharacter2Name.setForeground(Color.white);
 		add(updateCharacter2Name);
-		updateCharacter2nfo.setSize(150, 50);
-		updateCharacter2nfo.setLocation(290, 300);
+		updateCharacter2nfo.setSize(300, 80);
+		updateCharacter2nfo.setLocation(70, 240);
 		add(updateCharacter2nfo);
 
 		updateCharacter3Name.setSize(100, 20);
-		updateCharacter3Name.setLocation(85, 530);
+		updateCharacter3Name.setLocation(150, 340);
 		updateCharacter3Name.setForeground(Color.white);
 		add(updateCharacter3Name);
-		updateCharacter3nfo.setSize(150, 50);
-		updateCharacter3nfo.setLocation(60, 560);
+		updateCharacter3nfo.setSize(300, 80);
+		updateCharacter3nfo.setLocation(150, 370);
 		add(updateCharacter3nfo);
 
 		updateCharacter4Name.setSize(100, 20);
-		updateCharacter4Name.setLocation(315, 530);
+		updateCharacter4Name.setLocation(270, 470);
 		updateCharacter4Name.setForeground(Color.white);
 		add(updateCharacter4Name);
-		updateCharacter4nfo.setSize(150, 50);
-		updateCharacter4nfo.setLocation(290, 560);
+		updateCharacter4nfo.setSize(300, 80);
+		updateCharacter4nfo.setLocation(70, 500);
 		add(updateCharacter4nfo);
 
 	}

@@ -1,4 +1,4 @@
-package game_center.view.game;
+package game_center.view.hostGameFrame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -19,7 +19,7 @@ import game_center.service.GameCenterHostService;
 import game_center.utils.Define;
 import lombok.experimental.SuperBuilder;
 
-public class LOLInfoFrame extends GameItem {
+public class LOLHostInfoFrame extends GameHostItem {
 
 	private GameCenterHostService gchs;
 	private RequestGameCenter rgc;
@@ -35,7 +35,7 @@ public class LOLInfoFrame extends GameItem {
 	private CharacterInfo thirdCharacterInfos;
 	private CharacterInfo fourthCharacterInfos;
 
-	public LOLInfoFrame(GameInfo gameInfo) {
+	public LOLHostInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
 		gchs = super.centerHostService;
 		rgc = super.rgc;

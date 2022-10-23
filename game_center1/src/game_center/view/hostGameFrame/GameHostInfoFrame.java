@@ -1,4 +1,4 @@
-package game_center.view.game;
+package game_center.view.hostGameFrame;
 
 import java.awt.Color;
 import java.awt.Font;
@@ -20,7 +20,7 @@ import game_center.utils.Define;
 import lombok.Data;
 
 @Data
-public class GameInfoFrame extends JFrame implements ActionListener {
+public class GameHostInfoFrame extends JFrame implements ActionListener {
 
 	GameCenterHostService centerHostService = new GameCenterHostService();
 	RequestGameCenter rgc = new RequestGameCenter();
@@ -65,7 +65,7 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 
 	private GameInfo gameInfoClass;
 
-	public GameInfoFrame(GameInfo gameInfo) {
+	public GameHostInfoFrame(GameInfo gameInfo) {
 		this.gameInfoClass = gameInfo;
 		initData();
 		setInitLayout();

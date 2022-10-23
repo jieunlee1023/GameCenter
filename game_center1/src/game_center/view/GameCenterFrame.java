@@ -12,19 +12,17 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import game_center.dto.GameInfo;
-import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
-import game_center.view.game.CrazyArcadeInfoFrame;
-import game_center.view.game.FIFAInfoFrame;
-import game_center.view.game.LOLInfoFrame;
+import game_center.view.userGameFrame.CrazyArcadeInfoFrame;
+import game_center.view.userGameFrame.FIFAInfoFrame;
+import game_center.view.userGameFrame.LOLInfoFrame;
 import lombok.Data;
 
 @Data
@@ -70,7 +68,7 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 	}
 
 	private void initData() {
-		setSize(1000, 700);
+		setSize(1000, 650);
 		setTitle("Game Center");
 		setResizable(false);
 		setLocationRelativeTo(null);
@@ -248,82 +246,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
 				new CrazyArcadeInfoFrame(list.get(CRAZY));
 			}
-//		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-//			if (search.getText().equals("롤")) {
-//				if (list.get(LOL).getGameName().equals("롤")) {
-//					new LOLInfoFrame(list.get(LOL));
-//				}
-//			} else if (search.getText().equals("피파온라인4")) {
-//				if (list.get(FIFA).getGameName().equals("피파온라인4")) {
-//					new FIFAInfoFrame(list.get(FIFA));
-//				}
-//			} else if (search.getText().equals("크레이지아케이드") || search.getText().equals("크아")
-//					|| search.getText().equals("크레이지 아케이드")) {
-//				if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
-//					new CrazyArcadeInfoFrame(list.get(CRAZY));
-//				}
-//		} else {
-//			JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 		}
 	}
 }
-
-//	@Override
-//	public void actionPerformed(ActionEvent e) {
-//
-//		JButton targetButton = (JButton) e.getSource();
-//
-//		if (targetButton.getText().equals(myInfo.getText())) {
-//			System.out.println("내 정보");
-//			new MyInfoFrame();
-//		} else if (targetButton.hashCode() == (back.hashCode())) {
-//			new LoginFrame();
-//			this.setVisible(false);
-//		} else if (targetButton.getText().equals(logOut.getText())) {
-//			System.out.println("로그아웃");
-//			System.exit(0);
-//		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
-//			System.out.println("게임 1");
-//			new GameInfoFrame(gameInfo);
-//			System.out.println(gameInfo);
-//		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
-//			System.out.println("게임 2");
-//			new GameInfoFrame(gameInfo);
-//			System.out.println(gameInfo);
-//		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
-//			System.out.println("게임 3");
-//			new GameInfoFrame(gameInfo);
-//			System.out.println(gameInfo);
-//		} else if (targetButton.hashCode() == searchButton.hashCode()) {
-//			if (search.getText() == "게임 아이디 등 검색할 정보") {
-//				System.out.println("검색버튼");
-//			}
-//		}
-//
-//	}
-
-//private class MyListener extends MouseAdapter implements AdjustmentListener {
-//
-//	JScrollBar vertical;
-//	int currentStatus;
-//
-//	@Override
-//	public void mouseWheelMoved(MouseWheelEvent e) {
-//
-//		int notches = e.getWheelRotation();
-//		if (notches < 0) {
-//			System.out.println("위");
-//		} else {
-//			System.out.println("아래");
-//		}
-//	}
-//
-//	@Override
-//	public void adjustmentValueChanged(AdjustmentEvent e) {
-//		System.out.println("1111111111111111111111111");
-//
-//		vertical = scrollPane.getVerticalScrollBar();
-//		currentStatus = e.getValue();
-//
-//	}
-//} // end of inner class

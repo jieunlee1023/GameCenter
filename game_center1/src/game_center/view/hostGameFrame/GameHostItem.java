@@ -1,4 +1,4 @@
-package game_center.view.game;
+package game_center.view.hostGameFrame;
 
 import javax.swing.JLabel;
 import javax.swing.JTextArea;
@@ -7,9 +7,9 @@ import javax.swing.JTextField;
 import game_center.dto.GameInfo;
 import lombok.Data;
 
-public class GameItem extends GameInfoFrame {
+public class GameHostItem extends GameHostInfoFrame {
 
-	public GameItem(GameInfo gameInfo) {
+	public GameHostItem(GameInfo gameInfo) {
 		super(gameInfo);
 	}
 
