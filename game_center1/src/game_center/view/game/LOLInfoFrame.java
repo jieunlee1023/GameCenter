@@ -3,6 +3,7 @@ package game_center.view.game;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,22 +11,59 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import game_center.dto.CharacterInfo;
 import game_center.dto.GameInfo;
+import game_center.dto.MapInfo;
 import game_center.dto.RequestGameCenter;
 import game_center.service.GameCenterHostService;
 import game_center.utils.Define;
 
 public class LOLInfoFrame extends GameItem {
 
-	GameCenterHostService gchs;
-	RequestGameCenter rgc;
+	private GameCenterHostService gchs;
+	private RequestGameCenter rgc;
+	private CharacterInfo characterInfoClass;
+
+	private GameInfo gameInfo;
+
+	private List<MapInfo> mapInfoClass;
+	private MapInfo firstMapInfos;
+	private MapInfo secondMapInfos;
+	private MapInfo thirdMapInfos;
+
+	private List<CharacterInfo> characterInfos;
+	private CharacterInfo firstCharacterInfos;
+	private CharacterInfo secondCharacterInfos;
+	private CharacterInfo thirdCharacterInfos;
+	private CharacterInfo fourthCharacterInfos;
+
+	private final int 소환사의협곡 = 1;
+	private final int 수정의상처 = 2;
+	private final int 칼바람나락 = 4;
 
 	public LOLInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
+		this.gameInfo = gameInfo;
 		gchs = super.centerHostService;
 		rgc = super.rgc;
+		mapInfoClass = gchs.MapInfo();
 		initData();
 		setInitLayout();
+
+		for (MapInfo mapInfoClass : mapInfoClass) {
+			if (mapInfoClass.getGameMapName().equals("소환사의 협곡")) {
+				firstMapInfos = mapInfoClass;
+			} else if (mapInfoClass.getGameMapName().equals("칼바람 나락")) {
+				secondMapInfos = mapInfoClass;
+			} else if (mapInfoClass.getGameMapName().equals("수정의 상처")) {
+				thirdMapInfos = mapInfoClass;
+			}
+		}
+
+//		if (characterInfos.get(소환사의협곡).getGameName().equals(gameInfo.getGameName())) {
+//
+//		}
+
 	}
 
 	private void setInitLayout() {
@@ -94,6 +132,23 @@ public class LOLInfoFrame extends GameItem {
 			thisCharacterUpdateRemove();
 
 			repaint();
+
+		} else if (targetItem.getText().equals(super.getGameMapSave().getText())) {
+
+			rgc.setGameMapName(updateMap1Name.getText());
+			rgc.setGameMapInfo(updateMap1Info.getText());
+			rgc.setGameName(firstMapInfos.getGameName());
+			gchs.updateMap(rgc, firstMapInfos);
+
+			rgc.setGameMapName(updateMap2Name.getText());
+			rgc.setGameMapInfo(updateMap2Info.getText());
+			rgc.setGameName(secondMapInfos.getGameName());
+			gchs.updateMap(rgc, secondMapInfos);
+
+			rgc.setGameMapName(updateMap3Name.getText());
+			rgc.setGameMapInfo(updateMap3Info.getText());
+			rgc.setGameName(thirdMapInfos.getGameName());
+			gchs.updateMap(rgc, thirdMapInfos);
 
 		} else if (targetItem.getText().equals(super.getGameCharacterSelected().getText())) {
 
@@ -223,60 +278,69 @@ public class LOLInfoFrame extends GameItem {
 		map1Name.setSize(100, 20);
 		map1Name.setLocation(50, 280);
 		map1Name.setForeground(Color.white);
+		map1Name.setText(firstMapInfos.getGameMapName());
 		add(map1Name);
 
 		map1Info.setSize(290, 20);
 		map1Info.setLocation(160, 280);
 		map1Info.setForeground(Color.white);
+		map1Info.setText(firstMapInfos.getGameMapInfo());
 		add(map1Info);
 
 		map2Name.setSize(140, 20);
 		map2Name.setLocation(310, 325);
 		map2Name.setForeground(Color.white);
+		map2Name.setText(secondMapInfos.getGameMapName());
 		add(map2Name);
 
 		map2Info.setSize(140, 100);
 		map2Info.setLocation(310, 355);
 		map2Info.setForeground(Color.white);
+		map2Info.setText(secondMapInfos.getGameMapInfo());
 		add(map2Info);
 
 		map3Name.setSize(140, 20);
 		map3Name.setLocation(310, 475);
 		map3Name.setForeground(Color.white);
+		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
 		map3pInfo.setSize(140, 100);
 		map3pInfo.setLocation(310, 505);
 		map3pInfo.setForeground(Color.white);
+		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
 		add(map3pInfo);
-
-		gchs.MapInfo();
-
 	}
 
 	private void gameMapUpdateComponents() {
 		updateMap1Name.setSize(100, 20);
 		updateMap1Name.setLocation(50, 280);
+		updateMap1Name.setText(firstMapInfos.getGameMapName());
 		add(updateMap1Name);
 
 		updateMap1Info.setSize(290, 20);
 		updateMap1Info.setLocation(160, 280);
+		updateMap1Info.setText(firstMapInfos.getGameMapInfo());
 		add(updateMap1Info);
 
 		updateMap2Name.setSize(140, 20);
 		updateMap2Name.setLocation(310, 325);
+		updateMap2Name.setText(secondMapInfos.getGameMapName());
 		add(updateMap2Name);
 
 		updateMap2Info.setSize(140, 100);
 		updateMap2Info.setLocation(310, 355);
+		updateMap2Info.setText(secondMapInfos.getGameMapInfo());
 		add(updateMap2Info);
 
 		updateMap3Name.setSize(140, 20);
 		updateMap3Name.setLocation(310, 475);
+		updateMap3Name.setText(thirdMapInfos.getGameMapName());
 		add(updateMap3Name);
 
 		updateMap3Info.setSize(140, 100);
 		updateMap3Info.setLocation(310, 505);
+		updateMap3Info.setText(thirdMapInfos.getGameMapInfo());
 		add(updateMap3Info);
 
 	}

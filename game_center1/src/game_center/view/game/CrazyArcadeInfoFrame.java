@@ -15,8 +15,11 @@ import game_center.utils.Define;
 
 public class CrazyArcadeInfoFrame extends GameItem {
 
+	GameInfo gameInfo;
+
 	public CrazyArcadeInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
+		this.gameInfo = gameInfo;
 		initData();
 	}
 
@@ -24,7 +27,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		setTitle("크레이지아케이드 정보창");
 
 		mainImg = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "main.png"));
-		super.setGameImage(mainImg);
+		setGameImage(mainImg);
 		mapItem();
 		characterItem();
 	}
@@ -131,7 +134,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 
 	// map
 	private void mapItem() {
-
 		mapInfo = new JLabel("★ Map Info ★");
 
 		map1 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m1.png"));

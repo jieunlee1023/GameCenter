@@ -742,19 +742,20 @@ public class GameCenterHostService implements IGameCenterHostService {
 	}
 
 	@Override
-	public void updateMap(RequestGameCenter rgc) {
-		String query = "update gameMap " + "set gameMapName = ? " + ", gameMapInfo = ? " + "where gameMapName = ? ";
+	public void updateMap(RequestGameCenter rgc, MapInfo mapInfo) {
+		String query = "update gameMap set gameMapName = ? , gameMapInfo = ? where gameMapName = ? ";
 
 		try {
 			ps = client.getConnection().prepareStatement(query);
 
 			ps.setString(1, rgc.getGameMapName());
 			ps.setString(2, rgc.getGameMapInfo());
-
-//			ps.setString(3, name);
-
+			ps.setString(3, mapInfo.getGameMapName());
 			ps.executeUpdate();
 
+			mapInfo.setGameMapName(rgc.getGameMapName());
+
+			mapInfo.setGameMapInfo(rgc.getGameMapInfo());
 		} catch (SQLException e) {
 			e.printStackTrace();
 		} finally {
@@ -917,13 +918,15 @@ public class GameCenterHostService implements IGameCenterHostService {
 //      center.setGameMapInfo("특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...");
 //      
 //      service.updateMap(center, "상점");
-		List<GameInfo> gameInfos = service.GameInfo();
-		List<CharacterInfo> characterInfos = service.CharacterInfo();
+//		List<GameInfo> gameInfos = service.GameInfo();
+//		List<CharacterInfo> characterInfos = service.CharacterInfo();
 		List<MapInfo> mapInfos = service.MapInfo();
 
-		System.out.println(gameInfos.get(1));
-		System.out.println(characterInfos.get(5));
-		System.out.println(mapInfos.get(1));
+//		System.out.println(gameInfos.get(1));
+//		System.out.println(characterInfos.get(5));
+		for (int i = 0; i < mapInfos.size(); i++) {
+			System.out.println(mapInfos.get(i));
+		}
 
 	}
 }
