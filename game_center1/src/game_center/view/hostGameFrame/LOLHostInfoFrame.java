@@ -323,7 +323,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		map3pInfo.setSize(140, 100);
 		map3pInfo.setLocation(310, 505);
-		map3pInfo.setForeground(Color.white);
 		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
 		add(map3pInfo);
 	}
