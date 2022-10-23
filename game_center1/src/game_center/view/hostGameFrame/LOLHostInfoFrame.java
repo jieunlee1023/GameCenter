@@ -227,7 +227,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 
 		map3 = new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JTextArea("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -254,7 +254,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
+		remove(map3Info);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -319,10 +319,10 @@ public class LOLHostInfoFrame extends GameHostItem {
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(140, 100);
-		map3pInfo.setLocation(310, 505);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		add(map3pInfo);
+		map3Info.setSize(140, 100);
+		map3Info.setLocation(310, 505);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		add(map3Info);
 	}
 
 	private void gameMapUpdateComponents() {

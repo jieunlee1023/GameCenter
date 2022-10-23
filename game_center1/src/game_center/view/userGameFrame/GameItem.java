@@ -34,15 +34,6 @@ public class GameItem extends GameInfoFrame {
 	protected JLabel map3Name;
 	protected JTextArea map3Info;
 
-	protected JLabel updateMap1Name;
-	protected JTextArea updateMap1Info;
-
-	protected JLabel updateMap2Name;
-	protected JTextArea updateMap2Info;
-
-	protected JLabel updateMap3Name;
-	protected JTextArea updateMap3Info;
-
 	// 캐릭터 아이템
 
 	protected JLabel caracterInfo;
@@ -62,17 +53,5 @@ public class GameItem extends GameInfoFrame {
 	protected JLabel character4;
 	protected JLabel character4Name;
 	protected JTextArea character4Info;
-
-	protected JLabel updateCharacter1Name;
-	protected JTextArea updateCharacter1nfo;
-
-	protected JLabel updateCharacter2Name;
-	protected JTextArea updateCharacter2nfo;
-
-	protected JLabel updateCharacter3Name;
-	protected JTextArea updateCharacter3nfo;
-
-	protected JLabel updateCharacter4Name;
-	protected JTextArea updateCharacter4nfo;
 
 }

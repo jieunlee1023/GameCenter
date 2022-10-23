@@ -37,24 +37,20 @@ public class FIFAInfoFrame extends GameItem {
 		if (targetItem.getText().equals(super.getGameSelected().getText())) {
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
 		} else if (targetItem.getText().equals(super.getGameMapSelected().getText())) {
 
 			superRemove();
-			thisMapUpdateRemove();
 			gameMapImageComponents();
 			gameMapSelectComponents();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
@@ -63,12 +59,10 @@ public class FIFAInfoFrame extends GameItem {
 			superRemove();
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			gameCharacterImageComponents();
 			gameCharacterSelectComponents();
 
-			thisCharacterUpdateRemove();
 			repaint();
 
 		}
@@ -86,10 +80,8 @@ public class FIFAInfoFrame extends GameItem {
 		remove(super.getGameImage());
 		remove(super.getGameName());
 		remove(super.getAgeLimit());
+		remove(super.getAgeLimitInfo());
 		remove(super.getGameInformation());
-		remove(super.getGameNameUpdate());
-		remove(super.getAgeLimitUpdate());
-		remove(super.getGameInfomationUpdate());
 	}
 
 	// map
@@ -105,11 +97,6 @@ public class FIFAInfoFrame extends GameItem {
 		map2Name = new JLabel("222맵 이름");
 		map2Info = new JTextArea("222맵 정보");
 
-		updateMap1Name = new JLabel();
-		updateMap1Info = new JTextArea();
-
-		updateMap2Name = new JLabel();
-		updateMap2Info = new JTextArea();
 	}
 
 	private void thisMapImgRemove() {
@@ -125,14 +112,6 @@ public class FIFAInfoFrame extends GameItem {
 		remove(map1Info);
 		remove(map2Name);
 		remove(map2Info);
-	}
-
-	private void thisMapUpdateRemove() {
-
-		remove(updateMap1Name);
-		remove(updateMap1Info);
-		remove(updateMap2Name);
-		remove(updateMap2Info);
 	}
 
 	private void gameMapImageComponents() {
@@ -162,7 +141,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		map1Info.setSize(360, 25);
 		map1Info.setLocation(70, 310);
-		map1Info.setForeground(Color.white);
+		map1Info.setLineWrap(true);
 		add(map1Info);
 
 		map2Name.setSize(150, 20);
@@ -172,30 +151,8 @@ public class FIFAInfoFrame extends GameItem {
 
 		map2Info.setSize(360, 25);
 		map2Info.setLocation(70, 590);
-		map2Info.setForeground(Color.white);
+		map2Info.setLineWrap(true);
 		add(map2Info);
-
-	}
-
-	private void gameMapUpdateComponents() {
-
-		updateMap1Name.setSize(150, 20);
-		updateMap1Name.setLocation(70, 285);
-		updateMap1Name.setForeground(Color.white);
-		add(updateMap1Name);
-
-		updateMap1Info.setSize(360, 25);
-		updateMap1Info.setLocation(70, 310);
-		add(updateMap1Info);
-
-		updateMap2Name.setSize(150, 20);
-		updateMap2Name.setLocation(70, 565);
-		updateMap2Name.setForeground(Color.white);
-		add(updateMap2Name);
-
-		updateMap2Info.setSize(360, 25);
-		updateMap2Info.setLocation(70, 590);
-		add(updateMap2Info);
 
 	}
 
@@ -221,17 +178,6 @@ public class FIFAInfoFrame extends GameItem {
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JTextArea("캐릭터 소개");
 
-		updateCharacter1Name = new JLabel();
-		updateCharacter1nfo = new JTextArea();
-
-		updateCharacter2Name = new JLabel();
-		updateCharacter2nfo = new JTextArea();
-
-		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextArea();
-
-		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {
@@ -253,17 +199,6 @@ public class FIFAInfoFrame extends GameItem {
 		remove(character3Info);
 		remove(character4Name);
 		remove(character4Info);
-	}
-
-	private void thisCharacterUpdateRemove() {
-		remove(updateCharacter1Name);
-		remove(updateCharacter1nfo);
-		remove(updateCharacter2Name);
-		remove(updateCharacter2nfo);
-		remove(updateCharacter3Name);
-		remove(updateCharacter3nfo);
-		remove(updateCharacter4Name);
-		remove(updateCharacter4nfo);
 	}
 
 	private void gameCharacterImageComponents() {
@@ -300,7 +235,7 @@ public class FIFAInfoFrame extends GameItem {
 		add(character1Name);
 		character1Info.setSize(300, 80);
 		character1Info.setLocation(150, 110);
-		character1Info.setForeground(Color.WHITE);
+		character1Info.setLineWrap(true);
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
@@ -309,7 +244,7 @@ public class FIFAInfoFrame extends GameItem {
 		add(character2Name);
 		character2Info.setSize(300, 80);
 		character2Info.setLocation(70, 240);
-		character2Info.setForeground(Color.WHITE);
+		character2Info.setLineWrap(true);
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
@@ -318,7 +253,7 @@ public class FIFAInfoFrame extends GameItem {
 		add(character3Name);
 		character3Info.setSize(300, 80);
 		character3Info.setLocation(150, 370);
-		character3Name.setForeground(Color.WHITE);
+		character3Info.setLineWrap(true);
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
@@ -327,44 +262,9 @@ public class FIFAInfoFrame extends GameItem {
 		add(character4Name);
 		character4Info.setSize(300, 80);
 		character4Info.setLocation(70, 500);
-		character4Info.setForeground(Color.WHITE);
+		character4Info.setLineWrap(true);
 		add(character4Info);
 
 	}
 
-	private void gameCharacterUpdateComponents() {
-
-		updateCharacter1Name.setSize(100, 20);
-		updateCharacter1Name.setLocation(150, 80);
-		updateCharacter1Name.setForeground(Color.white);
-		add(updateCharacter1Name);
-		updateCharacter1nfo.setSize(300, 80);
-		updateCharacter1nfo.setLocation(150, 110);
-		add(updateCharacter1nfo);
-
-		updateCharacter2Name.setSize(100, 20);
-		updateCharacter2Name.setLocation(270, 210);
-		updateCharacter2Name.setForeground(Color.white);
-		add(updateCharacter2Name);
-		updateCharacter2nfo.setSize(300, 80);
-		updateCharacter2nfo.setLocation(70, 240);
-		add(updateCharacter2nfo);
-
-		updateCharacter3Name.setSize(100, 20);
-		updateCharacter3Name.setLocation(150, 340);
-		updateCharacter3Name.setForeground(Color.white);
-		add(updateCharacter3Name);
-		updateCharacter3nfo.setSize(300, 80);
-		updateCharacter3nfo.setLocation(150, 370);
-		add(updateCharacter3nfo);
-
-		updateCharacter4Name.setSize(100, 20);
-		updateCharacter4Name.setLocation(270, 470);
-		updateCharacter4Name.setForeground(Color.white);
-		add(updateCharacter4Name);
-		updateCharacter4nfo.setSize(300, 80);
-		updateCharacter4nfo.setLocation(70, 500);
-		add(updateCharacter4nfo);
-
-	}
 }

@@ -31,7 +31,7 @@ public class GameHostItem extends GameHostInfoFrame {
 	protected JLabel map3;
 	protected JLabel map3Detail;
 	protected JLabel map3Name;
-	protected JTextArea map3pInfo;
+	protected JTextArea map3Info;
 
 	protected JLabel updateMap1Name;
 	protected JTextArea updateMap1Info;

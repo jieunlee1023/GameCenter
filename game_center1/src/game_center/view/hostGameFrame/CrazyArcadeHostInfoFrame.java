@@ -224,7 +224,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
 		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JTextArea("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -254,7 +254,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
+		remove(map3Info);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -333,11 +333,11 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(100, 230);
-		map3pInfo.setLocation(350, 230);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		map3pInfo.setLineWrap(true);
-		add(map3pInfo);
+		map3Info.setSize(100, 230);
+		map3Info.setLocation(350, 230);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		map3Info.setLineWrap(true);
+		add(map3Info);
 
 	}
 

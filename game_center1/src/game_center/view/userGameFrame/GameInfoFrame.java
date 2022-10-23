@@ -47,12 +47,8 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 	private JLabel info = new JLabel("★ Game Info ★");
 	private JLabel gameName = new JLabel();
 	private JLabel ageLimit = new JLabel();
+	private JLabel ageLimitInfo = new JLabel("연령 제한 : ");
 	private JTextArea gameInformation = new JTextArea();
-
-	// 수정시 사용 (관리자만 사용함)
-	private JLabel gameNameUpdate = new JLabel();
-	private JTextArea ageLimitUpdate = new JTextArea();
-	private JTextArea gameInfomationUpdate = new JTextArea();
 
 	private GameInfo gameInfoClass;
 
@@ -140,10 +136,8 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			remove(gameImage);
 			remove(gameName);
 			remove(ageLimit);
+			remove(ageLimitInfo);
 			remove(gameInformation);
-			remove(gameNameUpdate);
-			remove(ageLimitUpdate);
-			remove(gameInfomationUpdate);
 
 			gameSelectComponents();
 
@@ -174,18 +168,25 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		gameImage.setBackground(Color.white);
 		add(gameImage);
 
-		gameName.setSize(400, 50);
-		gameName.setLocation(40, 360);
+		gameName.setSize(400, 30);
+		gameName.setLocation(40, 350);
 		gameName.setForeground(Color.white);
-		gameName.setFont(new Font("", Font.BOLD, 20));
+		gameName.setFont(new Font("맑은 고딕", Font.BOLD, 30));
 		gameName.setText(gameInfoClass.getGameName());
 		add(gameName);
 
 		ageLimit.setSize(80, 20);
-		ageLimit.setLocation(370, 360);
-		ageLimit.setForeground(Color.white);
+		ageLimit.setLocation(410, 360);
+		ageLimit.setForeground(Color.red);
+		ageLimit.setFont(new Font("맑은 고딕", Font.BOLD, 18));
 		ageLimit.setText(gameInfoClass.getAgeLimit());
 		add(ageLimit);
+
+		ageLimitInfo.setSize(100, 20);
+		ageLimitInfo.setLocation(340, 360);
+		ageLimitInfo.setForeground(Color.white);
+		ageLimitInfo.setFont(new Font("맑은 고딕", Font.BOLD, 12));
+		add(ageLimitInfo);
 
 		gameInformation.setSize(400, 200);
 		gameInformation.setLocation(40, 400);
