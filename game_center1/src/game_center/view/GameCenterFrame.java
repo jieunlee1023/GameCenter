@@ -32,7 +32,6 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 
 	IGameCenterHostService centerHostService;
 	IGameCenterService centerService;
-	GameCenterHostFrame centerHostFrame;
 
 	private final int LOL = 0;
 	private final int FIFA = 3;
