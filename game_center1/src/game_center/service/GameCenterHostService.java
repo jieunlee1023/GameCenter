@@ -14,7 +14,9 @@ import game_center.dto.RequestGameCenter;
 import game_center.dto.ResponseGameCenter;
 import game_center.interfaces.IGameCenterHostService;
 import game_center.utils.DBClient;
+import lombok.Data;
 
+@Data
 public class GameCenterHostService implements IGameCenterHostService {
 
 	private DBClient client;

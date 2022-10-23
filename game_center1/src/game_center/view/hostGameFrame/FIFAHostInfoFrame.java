@@ -142,10 +142,10 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		map2Name = new JLabel("222맵 이름");
 		map2Info = new JLabel("222맵 정보");
 
-		updateMap1Name = new JLabel();
+		updateMap1Name = new JLabel("11맵수정");
 		updateMap1Info = new JTextArea();
 
-		updateMap2Name = new JLabel();
+		updateMap2Name = new JLabel("맵수정22");
 		updateMap2Info = new JTextArea();
 	}
 
@@ -240,7 +240,6 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 	private void characterItem() {
 
-
 		caracterInfo = new JLabel("★ Character Info ★");
 
 		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));
@@ -259,21 +258,20 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JLabel("캐릭터 소개");
 
-		updateCharacter1Name = new JLabel();
+		updateCharacter1Name = new JLabel("1111");
 		updateCharacter1nfo = new JTextArea();
 
-		updateCharacter2Name = new JLabel();
+		updateCharacter2Name = new JLabel("2222");
 		updateCharacter2nfo = new JTextArea();
 
-		updateCharacter3Name = new JLabel();
+		updateCharacter3Name = new JLabel("3333");
 		updateCharacter3nfo = new JTextField();
 
-		updateCharacter4Name = new JLabel();
+		updateCharacter4Name = new JLabel("4444");
 		updateCharacter4nfo = new JTextField();
 	}
 
 	private void thisCharacterImgRemove() {
-
 
 		remove(caracterInfo);
 		remove(character1);
@@ -283,7 +281,6 @@ public class FIFAHostInfoFrame extends GameHostItem {
 	}
 
 	private void thisCharacterSelectRemove() {
-
 
 		remove(character1Name);
 		remove(character1Info);
@@ -373,7 +370,6 @@ public class FIFAHostInfoFrame extends GameHostItem {
 	}
 
 	private void gameCharacterUpdateComponents() {
-
 
 		updateCharacter1Name.setSize(100, 20);
 		updateCharacter1Name.setLocation(150, 80);

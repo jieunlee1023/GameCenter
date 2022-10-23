@@ -12,12 +12,14 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollBar;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
 import game_center.dto.GameInfo;
+import game_center.interfaces.IGameCenterHostService;
 import game_center.interfaces.IGameCenterService;
 import game_center.utils.Define;
 import game_center.view.userGameFrame.CrazyArcadeInfoFrame;
@@ -28,7 +30,12 @@ import lombok.Data;
 @Data
 public class GameCenterFrame extends JFrame implements ActionListener {
 
-	IGameCenterService centerService;
+	private IGameCenterService centerService;
+
+	private List<GameInfo> gameInfos;
+	private GameInfo firstGameInfos;
+	private GameInfo secondGameInfos;
+	private GameInfo thirdGameInfos;
 
 	private final int LOL = 0;
 	private final int CRAZY = 1;
@@ -65,6 +72,20 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		initData();
 		setInitLayout();
 		addEventListener();
+		gameInfo();
+	}
+
+	private void gameInfo() {
+		gameInfos = centerService.GameInfo();
+		for (GameInfo gameInfo : gameInfos) {
+			if (gameInfo.getGameName().equals("롤")) {
+				firstGameInfos = gameInfo;
+			} else if (gameInfo.getGameName().equals("피파온라인4")) {
+				secondGameInfos = gameInfo;
+			} else if (gameInfo.getGameName().equals("크레이지아케이드")) {
+				thirdGameInfos = gameInfo;
+			}
+		}
 	}
 
 	private void initData() {
@@ -233,18 +254,23 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
 			System.out.println("게임 1");
-			if (list.get(LOL).getGameName().equals("롤")) {
-				new LOLInfoFrame(list.get(LOL));
-			}
+			new LOLInfoFrame(firstGameInfos);
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
 			System.out.println("게임 2");
-			if (list.get(FIFA).getGameName().equals("피파온라인4")) {
-				new FIFAInfoFrame(list.get(FIFA));
-			}
+			new FIFAInfoFrame(secondGameInfos);
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
 			System.out.println("게임 3");
-			if (list.get(CRAZY).getGameName().equals("크레이지아케이드")) {
-				new CrazyArcadeInfoFrame(list.get(CRAZY));
+			new CrazyArcadeInfoFrame(thirdGameInfos);
+
+		} else if (targetButton.hashCode() == searchButton.hashCode()) {
+			if (search.getText().equals(firstGameInfos.getGameName())) {
+				new LOLInfoFrame(firstGameInfos);
+			} else if (search.getText().equals(secondGameInfos.getGameName())) {
+				new FIFAInfoFrame(secondGameInfos);
+			} else if (search.getText().equals(thirdGameInfos.getGameName())) {
+				new CrazyArcadeInfoFrame(thirdGameInfos);
+			} else {
+				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 			}
 		}
 	}

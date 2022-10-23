@@ -5,9 +5,11 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
 import game_center.dto.GameInfo;
+import game_center.view.GameCenterHostFrame;
 import lombok.Data;
 
 public class GameItem extends GameInfoFrame {
+
 
 	public GameItem(GameInfo gameInfo) {
 		super(gameInfo);

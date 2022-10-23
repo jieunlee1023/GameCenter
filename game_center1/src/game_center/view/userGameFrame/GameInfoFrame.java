@@ -165,31 +165,6 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 		}
 	}
 
-	private void gameUpdateComponents() {
-
-		gameImage.setSize(400, 400);
-		gameImage.setLocation(40, 0);
-		gameImage.setBackground(Color.white);
-		add(gameImage);
-
-		gameNameUpdate.setSize(400, 20);
-		gameNameUpdate.setLocation(40, 360);
-		gameNameUpdate.setForeground(Color.white);
-		gameNameUpdate.setText(gameInfoClass.getGameName());
-		add(gameNameUpdate);
-
-		ageLimitUpdate.setSize(80, 20);
-		ageLimitUpdate.setLocation(370, 360);
-		ageLimitUpdate.setText(gameInfoClass.getAgeLimit());
-		add(ageLimitUpdate);
-
-		gameInfomationUpdate.setSize(400, 200);
-		gameInfomationUpdate.setLocation(40, 400);
-		gameInfomationUpdate.setText(gameInfoClass.getGameInfo());
-		add(gameInfomationUpdate);
-
-	}
-
 	private void gameSelectComponents() {
 
 		info.setSize(500, 50);

@@ -16,9 +16,11 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 
 	private RoundedButton userSelect;
 	private RoundedButton gameInsert;
+	private IGameCenterHostService centerService;
 
 	public GameCenterHostFrame(IGameCenterHostService centerHostService) {
 		super(centerHostService);
+		this.centerService = centerHostService;
 		initData();
 		setInitLayout();
 		addEventListener();
@@ -78,8 +80,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 		} else if (targetButton.getText().equals(userSelect.getText())) {
 			System.out.println("유저 정보 조회");
 			new userSearch();
-		} else if (targetButton.getText().equals(gameInsert.getText())) {
-			System.out.println("게임 추가");
 		}
 	}
 }
