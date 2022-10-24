@@ -178,7 +178,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 			e.printStackTrace();
 		}
 
-		System.out.println(gameInfo);
 		return gameInfo;
 	}
 
@@ -208,7 +207,6 @@ public class GameCenterHostService implements IGameCenterHostService {
 
 			LoginUserInfo.isLogin = false;
 			userInfo = null;
-			System.out.println("탈퇴 (계정 삭제) 완료");
 
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -223,9 +221,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 		LoginUserInfo userInfo = LoginUserInfo.getInstance();
 
 		String query = "UPDATE user SET password = ?, userName = ?, email = ?, mobile = ? WHERE userId = ? ";
-		System.out.println("try 전");
 		try {
-			System.out.println("try 후");
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, rgc.getPassword());
 			ps.setString(2, rgc.getUserName());
@@ -240,30 +236,16 @@ public class GameCenterHostService implements IGameCenterHostService {
 			userInfo.setMobile(rgc.getMobile());
 			userInfo.setUserId(rgc.getUserId());
 
-			System.out.println("rgc에 들어간 정보들");
-			System.out.println(rgc.getPassword());
-			System.out.println(rgc.getUserName());
-			System.out.println(rgc.getEmail());
-			System.out.println(rgc.getMobile());
-			System.out.println(rgc.getUserId());
-			System.out.println("+++++++++++++++++++");
-
-			System.out.println("유저 인포에 들어간 정보들");
-			System.out.println(userInfo.getPassword());
-			System.out.println(userInfo.getUserName());
-			System.out.println(userInfo.getEmail());
-			System.out.println(userInfo.getMobile());
-			System.out.println(userInfo.getUserId());
-
-		} catch (SQLException e) {
+		} catch (SQLException e1) {
 			try {
 				client.getConnection().rollback();
 				System.out.println("롤백됐습니다.");
-			} catch (SQLException e1) {
-				e1.printStackTrace();
-			} finally {
-				closeDB();
+			} catch (SQLException e) {
+				e.printStackTrace();
 			}
+			e1.printStackTrace();
+		} finally {
+			closeDB();
 		}
 	}
 
@@ -291,7 +273,7 @@ public class GameCenterHostService implements IGameCenterHostService {
 		} catch (SQLException e) {
 			try {
 				client.getConnection().rollback();
-				System.out.println("롤백됐습니다.");
+				System.err.println("롤백됐습니다.");
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
@@ -823,15 +805,11 @@ public class GameCenterHostService implements IGameCenterHostService {
 		try {
 			ps = client.getConnection().prepareStatement(query);
 			ps.setString(1, userId);
-			System.out.println(userId);
 			rs = ps.executeQuery();
-			System.out.println("rs : " + rs);
 			while (rs.next()) {
 				responseGameCenter.setIdentityNum(rs.getInt("identityNum"));
 
-				System.out.println("번호 : " + identityNum);
 				identityNum = responseGameCenter.getIdentityNum();
-				System.out.println("번호1 : " + identityNum);
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();

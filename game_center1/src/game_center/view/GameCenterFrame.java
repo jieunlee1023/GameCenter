@@ -244,22 +244,17 @@ public class GameCenterFrame extends JFrame implements ActionListener {
 		List<GameInfo> list = centerService.GameInfo();
 
 		if (targetButton.getText().equals(myInfo.getText())) {
-			System.out.println("내 정보");
 			new MyInfoFrame();
 		} else if (targetButton.hashCode() == (back.hashCode())) {
 			new LoginFrame();
 			this.setVisible(false);
 		} else if (targetButton.getText().equals(logOut.getText())) {
-			System.out.println("로그아웃");
 			System.exit(0);
 		} else if (targetButton.hashCode() == (gameButton1.hashCode())) {
-			System.out.println("게임 1");
 			new LOLInfoFrame(firstGameInfos);
 		} else if (targetButton.hashCode() == (gameButton2.hashCode())) {
-			System.out.println("게임 2");
 			new FIFAInfoFrame(secondGameInfos);
 		} else if (targetButton.hashCode() == (gameButton3.hashCode())) {
-			System.out.println("게임 3");
 			new CrazyArcadeInfoFrame(thirdGameInfos);
 		}
 	}

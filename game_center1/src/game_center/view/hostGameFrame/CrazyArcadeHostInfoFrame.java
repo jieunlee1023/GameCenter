@@ -50,16 +50,12 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		for (CharacterInfo characterInfo : characterInfosClass) {
 			if (characterInfo.getGameCharacterName().equals("배찌")) {
 				firstCharacterInfos = characterInfo;
-				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("우니")) {
 				secondCharacterInfos = characterInfo;
-				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("계피")) {
 				thirdCharacterInfos = characterInfo;
-				System.out.println(characterInfo);
 			} else if (characterInfo.getGameCharacterName().equals("다오")) {
 				fourthCharacterInfos = characterInfo;
-				System.out.println(characterInfo);
 			}
 		}
 	}
@@ -68,8 +64,6 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		for (MapInfo mapInfoClass : mapInfoClass) {
 			if (mapInfoClass.getGameMapName().equals("패트릿")) {
 				firstMapInfos = mapInfoClass;
-				System.out.println(firstMapInfos);
-				System.out.println(mapInfoClass);
 			} else if (mapInfoClass.getGameMapName().equals("캠프")) {
 				secondMapInfos = mapInfoClass;
 			} else if (mapInfoClass.getGameMapName().equals("팩토리")) {
@@ -182,24 +176,15 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 
 			rgc.setGameCharacterInfo(updateCharacter1Info.getText());
 			gchs.updateCharacter(rgc, firstCharacterInfos);
-			System.out.println("1 : " + updateCharacter1Info.getText());
-			System.out.println("1 : " + rgc.getGameCharacterInfo());
-			System.out.println(firstCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter2Info.getText());
 			gchs.updateCharacter(rgc, secondCharacterInfos);
-			System.out.println("2 : " + updateCharacter2Info.getText());
-			System.out.println(secondCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter3Info.getText());
 			gchs.updateCharacter(rgc, thirdCharacterInfos);
-			System.out.println(" 3 : " + rgc.getGameCharacterInfo());
-			System.out.println(thirdCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter4Info.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
-			System.out.println(" 4 : " + rgc.getGameCharacterInfo());
-			System.out.println(fourthCharacterInfos.getGameCharacterName());
 		}
 	}
 

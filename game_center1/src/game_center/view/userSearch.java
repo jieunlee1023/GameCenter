@@ -30,7 +30,7 @@ public class userSearch extends JFrame implements ActionListener {
 	private JTextArea userField = new JTextArea();
 	private JLabel define = new JLabel("[ ⓐ: 등급 / ⓑ : 아이디 / ⓒ : 비밀번호 / ⓓ : 이름 / ⓔ : 이메일  / ⓕ : 번호]");
 
-	GameCenterHostService gameCenterHostService = new GameCenterHostService();
+	private GameCenterHostService gameCenterHostService = new GameCenterHostService();
 
 	public userSearch() {
 		initData();
@@ -95,25 +95,16 @@ public class userSearch extends JFrame implements ActionListener {
 
 		JMenuItem targetItem = (JMenuItem) e.getSource();
 		if (targetItem.getText().equals(allSelected.getText())) {
-			System.out.println("전체");
 			userField.setText(gameCenterHostService.selectAllUser().toString());
 		} else if (targetItem.getText().equals(choiceSelected.getText())) {
-			System.out.println("선택");
 			userField.setText(gameCenterHostService.selectUserById(search.getText()).toString());
 		} else if (targetItem.getText().equals(exit.getText())) {
-			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetItem.getText().equals(hostIn.getText())) {
 			gameCenterHostService.hostIn(search.getText());
-			System.out.println("userField.getText() : " + search.getText());
-			System.out.println(gameCenterHostService.getResponseGameCenter().getIdentityNum());
-			System.out.println("임명~~~~~~~~~~~~~~~~~~~~~~~~~~");
 			JOptionPane.showMessageDialog(this, "관리자로 임명되었습니다.");
 		} else if (targetItem.getText().equals(hostOut.getText())) {
 			gameCenterHostService.hostOut(search.getText());
-			System.out.println("userField.getText() : " + search.getText());
-			System.out.println(gameCenterHostService.getResponseGameCenter().getIdentityNum());
-			System.out.println("제명~~~~~~~~~~~~~~~~~~~~~~~~~~~`");
 			JOptionPane.showMessageDialog(this, "관리자에서 제명 되었습니다.");
 		}
 	}

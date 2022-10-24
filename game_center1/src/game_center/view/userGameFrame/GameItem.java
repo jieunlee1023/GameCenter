@@ -10,10 +10,6 @@ import lombok.Data;
 
 public class GameItem extends GameInfoFrame {
 
-	public GameItem(GameInfo gameInfo) {
-		super(gameInfo);
-	}
-
 	protected JLabel mainImg;
 
 	// map 아이템들
@@ -53,5 +49,9 @@ public class GameItem extends GameInfoFrame {
 	protected JLabel character4;
 	protected JLabel character4Name;
 	protected JTextArea character4Info;
+
+	public GameItem(GameInfo gameInfo) {
+		super(gameInfo);
+	}
 
 }

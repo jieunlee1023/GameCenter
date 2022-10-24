@@ -55,14 +55,6 @@ public class FIFAHostInfoFrame extends GameHostItem {
 			} else if (characterInfo.getGameCharacterName().equals("손흥민")) {
 				fourthCharacterInfos = characterInfo;
 			}
-
-			System.err.println("젤 처음 !!");
-			System.out.println(firstCharacterInfos);
-			System.out.println(secondCharacterInfos);
-			System.out.println(thirdCharacterInfos);
-			System.out.println(fourthCharacterInfos);
-
-			System.err.println("마지막 !!");
 		}
 	}
 
@@ -192,27 +184,15 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 			rgc.setGameCharacterInfo(updateCharacter1Info.getText());
 			gchs.updateCharacter(rgc, firstCharacterInfos);
-			System.out.println("1 : " + updateCharacter1Info.getText());
-			System.out.println("1 : " + rgc.getGameCharacterInfo());
-			System.out.println(firstCharacterInfos.getGameCharacterName());
 			
 			rgc.setGameCharacterInfo(updateCharacter2Info.getText());
 			gchs.updateCharacter(rgc, secondCharacterInfos);
-			System.out.println("2 : " + updateCharacter2Info.getText());
-			System.out.println("2 : " + rgc.getGameCharacterInfo());
-			System.out.println(firstCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter3Info.getText());
 			gchs.updateCharacter(rgc, thirdCharacterInfos);
-			System.out.println("3 : " + updateCharacter3Info.getText());
-			System.out.println("3 : " + rgc.getGameCharacterInfo());
-			System.out.println(firstCharacterInfos.getGameCharacterName());
 
 			rgc.setGameCharacterInfo(updateCharacter4Info.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
-			System.out.println("4 : " + updateCharacter4Info.getText());
-			System.out.println("4 : " + rgc.getGameCharacterInfo());
-			System.out.println(firstCharacterInfos.getGameCharacterName());
 		}
 	}
 

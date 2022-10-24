@@ -22,8 +22,8 @@ import lombok.Data;
 @Data
 public class GameInfoFrame extends JFrame implements ActionListener {
 
-	GameCenterHostService centerHostService = new GameCenterHostService();
-	RequestGameCenter rgc = new RequestGameCenter();
+	protected GameCenterHostService centerHostService = new GameCenterHostService();
+	protected RequestGameCenter rgc = new RequestGameCenter();
 	private JLabel mainImage = new JLabel(new ImageIcon(Define.IMAGE_PATH + "game.gif"));
 	private JLabel logo = new JLabel(new ImageIcon(Define.IMAGE_PATH + "logo1.png"));
 	private JLabel infomation = new JLabel("상단의 카테고리를 이용하여 원하시는 정보를 찾아보세요!");
@@ -144,14 +144,11 @@ public class GameInfoFrame extends JFrame implements ActionListener {
 			repaint();
 
 		} else if (targetItem.getText().equals(exit.getText())) {
-			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
 
-			System.out.println("맵 조회 ");
 		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
 
-			System.out.println("캐릭터 조회 ");
 		}
 	}
 
