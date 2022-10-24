@@ -60,9 +60,9 @@ public class FIFAInfoFrame extends GameItem {
 
 	private void mapInfo() {
 		for (MapInfo mapInfoClass : mapInfoClass) {
-			if (mapInfoClass.getGameMapName().equals("에스타티오 산티아고 베르나베우")) {
+			if (mapInfoClass.getGameMapName().equals("스페인 마드리드에 위치")) {
 				firstMapInfos = mapInfoClass;
-			} else if (mapInfoClass.getGameMapName().equals("올드 트래포드")) {
+			} else if (mapInfoClass.getGameMapName().equals("영국 트래포드 맷 버스비")) {
 				secondMapInfos = mapInfoClass;
 			}
 		}
@@ -197,7 +197,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		map2Name.setSize(150, 20);
 		map2Name.setLocation(70, 565);
-		map2Name.setForeground(Color.white);
+		map2Name.setForeground(Color.WHITE);
 		map2Name.setText(secondMapInfos.getGameMapName());
 		add(map2Name);
 
@@ -208,8 +208,6 @@ public class FIFAInfoFrame extends GameItem {
 		add(map2Info);
 
 	}
-
-	// character
 
 	private void characterItem() {
 
@@ -327,5 +325,4 @@ public class FIFAInfoFrame extends GameItem {
 		add(character4Info);
 
 	}
-
 }

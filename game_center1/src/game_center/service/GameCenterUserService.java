@@ -66,7 +66,6 @@ public class GameCenterUserService implements IGameCenterService {
 			e.printStackTrace();
 		}
 
-		System.out.println(gameInfo);
 		return gameInfo;
 	}
 
@@ -96,7 +95,6 @@ public class GameCenterUserService implements IGameCenterService {
 
 			LoginUserInfo.isLogin = false;
 			userInfo = null;
-			System.out.println("탈퇴 (계정 삭제) 완료");
 
 		} catch (SQLException e) {
 			e.printStackTrace();

@@ -23,8 +23,8 @@ import lombok.Data;
 @Data
 public class GameHostInfoFrame extends JFrame implements ActionListener {
 
-	GameCenterHostService centerHostService = new GameCenterHostService();
-	RequestGameCenter rgc = new RequestGameCenter();
+	protected GameCenterHostService centerHostService = new GameCenterHostService();
+	protected RequestGameCenter rgc = new RequestGameCenter();
 	private JLabel mainImage = new JLabel(new ImageIcon(Define.IMAGE_PATH + "game.gif"));
 	private JLabel logo = new JLabel(new ImageIcon(Define.IMAGE_PATH + "logo1.png"));
 	private JLabel infomation = new JLabel("상단의 카테고리를 이용하여 원하시는 정보를 찾아보세요!");
@@ -196,44 +196,28 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			remove(ageLimitInfo);
 			remove(gameInformation);
 
-			System.out.println("게임 정보 수정");
 			gameUpdateComponents();
 			repaint();
 
 		} else if (targetItem.getText().equals(gameSave.getText())) {
 
-			rgc.setGameName(gameNameUpdate.getText());
 			rgc.setAgeLimit(ageLimitUpdate.getText());
 			rgc.setGameInfo(gameInfomationUpdate.getText());
-
 			centerHostService.updateGame(rgc, gameInfoClass);
+
 		} else if (targetItem.getText().equals(gameDelete.getText())) {
-			System.out.println("게임 삭제 ");
 			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(exit.getText())) {
-			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetItem.getText().equals(gameMapSelected.getText())) {
-
-			System.out.println("맵 조회 ");
 		} else if (targetItem.getText().equals(gameMapUpdate.getText())) {
-
-			System.out.println("맵 수정 ");
 		} else if (targetItem.getText().equals(gameMapSave.getText())) {
-
-			System.out.println("맵 저장 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
-			System.out.println("맵 삭제 ");
 			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
-
-			System.out.println("캐릭터 조회 ");
 		} else if (targetItem.getText().equals(gameCharacterUpdate.getText())) {
-			System.out.println("캐릭터 수정 ");
 		} else if (targetItem.getText().equals(gameCharacterSave.getText())) {
-			System.out.println("캐릭터 저장");
 		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
-			System.out.println("캐릭터 삭제 ");
 			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		}
 	}

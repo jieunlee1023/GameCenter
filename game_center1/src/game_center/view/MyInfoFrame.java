@@ -21,8 +21,8 @@ import lombok.Data;
 @Data
 public class MyInfoFrame extends JFrame implements ActionListener {
 
-	RequestGameCenter center = new RequestGameCenter();
-	GameCenterHostService centerHostService = new GameCenterHostService();
+	private RequestGameCenter center = new RequestGameCenter();
+	private GameCenterHostService centerHostService = new GameCenterHostService();
 
 	private JLabel logo;
 	private JLabel info;
@@ -191,9 +191,7 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 	public void actionPerformed(ActionEvent e) {
 		JButton targetButton = (JButton) e.getSource();
 
-		System.out.println("if문 전");
 		if (targetButton.getText().equals(save.getText())) {
-			System.out.println("저장 누름");
 
 			center.setPassword(passwordField.getText());
 			center.setUserName(userNameField.getText());
@@ -202,14 +200,11 @@ public class MyInfoFrame extends JFrame implements ActionListener {
 			center.setUserId(userIdField.getText());
 
 			centerHostService.update(center);
-			System.out.println("수정 완료 !");
 			JOptionPane.showMessageDialog(this, "수정이 완료되었습니다.");
 		} else if (targetButton.getText().equals(exit.getText())) {
-			System.out.println("나가기");
 			this.setVisible(false);
 		} else if (targetButton.getText().equals(leave.getText())) {
 			centerHostService.delete(userIdField.getText());
-			System.out.println("탈퇴 완료");
 			JOptionPane.showMessageDialog(this, "탈퇴가 완료되었습니다.");
 			new LoginFrame();
 			this.setVisible(false);

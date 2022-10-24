@@ -18,8 +18,8 @@ import game_center.service.GameCenterUserService;
 
 public class JoinFrame extends JFrame implements ActionListener {
 
-	RequestGameCenter center = new RequestGameCenter();
-	GameCenterUserService gameCenterUserService = new GameCenterUserService();
+	private RequestGameCenter center = new RequestGameCenter();
+	private GameCenterUserService gameCenterUserService = new GameCenterUserService();
 
 	private JLabel logo;
 	private JLabel userId;
@@ -202,7 +202,6 @@ public class JoinFrame extends JFrame implements ActionListener {
 
 		if (targetButton.hashCode() == (userIdCheckBtn.hashCode())) {
 			userIdCehck = gameCenterUserService.joinIdCheck(userIdField.getText());
-			System.out.println("아이디 중복 체크 : " + userIdCehck);
 			if (userIdCehck == false) {
 				JOptionPane.showMessageDialog(this, "중복된 아이디가 존재합니다. \n 다시 입력해주세요.");
 			} else {
@@ -210,17 +209,13 @@ public class JoinFrame extends JFrame implements ActionListener {
 			}
 		} else if (targetButton.hashCode() == passwordCheckBtn.hashCode()) {
 			if (passwordField.getText().equals(passwordFieldCheck.getText())) {
-				System.out.println("비밀번호 체크 완료");
 				JOptionPane.showMessageDialog(this, "비밀번호가 일치합니다.");
 				userPasswordCehck = true;
 			} else if (passwordField.getText().isEmpty()) {
-				System.out.println("비밀번호를 입력하세요.");
 				userPasswordCehck = false;
 			} else if (passwordFieldCheck.getText().isEmpty()) {
-				System.out.println("비밀번호 확인을 입력하세요.");
 				userPasswordCehck = false;
 			} else {
-				System.out.println("비밀번호를 확인하세요.");
 				userPasswordCehck = false;
 				JOptionPane.showMessageDialog(this, "비밀번호가 일치하지 않습니다. \n 다시 입력해주세요.");
 			}
@@ -234,27 +229,18 @@ public class JoinFrame extends JFrame implements ActionListener {
 			center.setMobile(mobileField.getText());
 
 			if (userIdField.getText().isEmpty()) {
-				System.out.println("아이디를 입력하세요");
 			} else if (passwordField.getText().isEmpty()) {
-				System.out.println("비밀번호를 입력하세요.");
 			} else if (userNameField.getText().isEmpty()) {
-				System.out.println("회원님의 이름을 입력하세요.");
 			} else if (emailField.getText().isEmpty()) {
-				System.out.println("회원님의 이메일을 입력하세요.");
 			} else if (mobileField.getText().isEmpty()) {
-				System.out.println("전화번호를 입력하세요.");
 			} else {
 				gameCenterUserService.insertJoin(center);
-				System.out.println("회원가입 완료 !");
 				JOptionPane.showMessageDialog(this, "회원가입이 완료 되었습니다.");
 				this.setVisible(false);
 			}
 		} else if (targetButton.getText().equals(save.getText()) && !userIdCehck) {
-			System.out.println("아이디 중복 체크를 확인하세요.");
 		} else if (targetButton.getText().equals(save.getText()) && !userPasswordCehck) {
-			System.out.println("비밀번호 확인 체크를 확인하세요.");
 		} else if (targetButton.getText().equals(exit.getText())) {
-			System.out.println("나가기");
 			this.setVisible(false);
 		}
 	}

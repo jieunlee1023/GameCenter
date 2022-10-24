@@ -41,9 +41,9 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		rgc = super.rgc;
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
-		initData();
 		mapInfo();
 		characterInfo();
+		initData();
 	}
 
 	private void characterInfo() {
@@ -58,15 +58,12 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 				fourthCharacterInfos = characterInfo;
 			}
 		}
-
 	}
 
 	private void mapInfo() {
 		for (MapInfo mapInfoClass : mapInfoClass) {
 			if (mapInfoClass.getGameMapName().equals("패트릿")) {
 				firstMapInfos = mapInfoClass;
-				System.out.println(firstMapInfos);
-				System.out.println(mapInfoClass);
 			} else if (mapInfoClass.getGameMapName().equals("캠프")) {
 				secondMapInfos = mapInfoClass;
 			} else if (mapInfoClass.getGameMapName().equals("팩토리")) {

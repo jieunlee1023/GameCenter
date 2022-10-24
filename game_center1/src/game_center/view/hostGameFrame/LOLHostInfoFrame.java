@@ -191,7 +191,6 @@ public class LOLHostInfoFrame extends GameHostItem {
 			rgc.setGameCharacterInfo(updateCharacter4Info.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
 		}
-
 	}
 
 	private void superRemove() {
@@ -531,7 +530,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(355, 530);
 		updateCharacter4Name.setForeground(Color.white);
-		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
+		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter4Name);
 		updateCharacter4Info.setSize(150, 50);
 		updateCharacter4Info.setLocation(290, 560);
