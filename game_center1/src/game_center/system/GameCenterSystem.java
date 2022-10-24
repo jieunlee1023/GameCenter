@@ -1,4 +1,4 @@
-package game_center;
+package game_center.system;
 
 import game_center.interfaces.IGameCenterHostService;
 import game_center.view.GameCenterFrame;
@@ -23,7 +23,6 @@ public class GameCenterSystem {
 	}
 
 	public static void main(String[] args) {
-
 		GameCenterSystem gameCenterSystem = new GameCenterSystem();
 		gameCenterSystem.showLogin();
 	}

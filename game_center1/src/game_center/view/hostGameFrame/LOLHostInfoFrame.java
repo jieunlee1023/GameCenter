@@ -59,6 +59,12 @@ public class LOLHostInfoFrame extends GameHostItem {
 			} else if (characterInfo.getGameCharacterName().equals("쓰레쉬")) {
 				fourthCharacterInfos = characterInfo;
 			}
+			System.err.println("시작");
+			System.out.println(firstCharacterInfos);
+			System.out.println(secondCharacterInfos);
+			System.out.println(thirdCharacterInfos);
+			System.out.println(fourthCharacterInfos);
+			System.err.println("끝");
 		}
 	}
 
@@ -530,7 +536,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(355, 530);
 		updateCharacter4Name.setForeground(Color.white);
-		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterInfo());
+		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(updateCharacter4Name);
 		updateCharacter4Info.setSize(150, 50);
 		updateCharacter4Info.setLocation(290, 560);
