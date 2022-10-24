@@ -3,6 +3,7 @@ package game_center.view.hostGameFrame;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
+import java.util.List;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
@@ -10,14 +11,63 @@ import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 
+import game_center.dto.CharacterInfo;
 import game_center.dto.GameInfo;
+import game_center.dto.MapInfo;
+import game_center.dto.RequestGameCenter;
+import game_center.service.GameCenterHostService;
 import game_center.utils.Define;
 
 public class FIFAHostInfoFrame extends GameHostItem {
 
+	private GameCenterHostService gchs;
+	private RequestGameCenter rgc;
+
+	private List<MapInfo> mapInfoClass;
+	private MapInfo firstMapInfos;
+	private MapInfo secondMapInfos;
+	private MapInfo thirdMapInfos;
+
+	private List<CharacterInfo> characterInfosClass;
+	private CharacterInfo firstCharacterInfos;
+	private CharacterInfo secondCharacterInfos;
+	private CharacterInfo thirdCharacterInfos;
+	private CharacterInfo fourthCharacterInfos;
+
 	public FIFAHostInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
+		gchs = super.centerHostService;
+		rgc = super.rgc;
+		mapInfoClass = gchs.MapInfo();
+		characterInfosClass = gchs.CharacterInfo();
 		initData();
+
+		mapInfo();
+		characterInfo();
+	}
+
+	private void characterInfo() {
+		for (CharacterInfo characterInfo : characterInfosClass) {
+			if (characterInfo.getGameCharacterName().equals("호나우두")) {
+				firstCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("리오넬 메시")) {
+				secondCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("카림 벤제마")) {
+				thirdCharacterInfos = characterInfo;
+			} else if (characterInfo.getGameCharacterName().equals("손흥민")) {
+				fourthCharacterInfos = characterInfo;
+			}
+		}
+	}
+
+	private void mapInfo() {
+		for (MapInfo mapInfoClass : mapInfoClass) {
+			if (mapInfoClass.getGameMapName().equals("에스타디오 산티아고 베르나베우")) {
+				firstMapInfos = mapInfoClass;
+			} else if (mapInfoClass.getGameMapName().equals("올드 트래포드")) {
+				secondMapInfos = mapInfoClass;
+			}
+		}
 	}
 
 	private void initData() {
@@ -83,6 +133,14 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 			repaint();
 
+		} else if (targetItem.getText().equals(super.getGameMapSave().getText())) {
+
+			rgc.setGameMapInfo(updateMap1Info.getText());
+			gchs.updateMap(rgc, firstMapInfos);
+
+			rgc.setGameMapInfo(updateMap2Info.getText());
+			gchs.updateMap(rgc, secondMapInfos);
+
 		} else if (targetItem.getText().equals(super.getGameCharacterSelected().getText())) {
 
 			superRemove();
@@ -96,6 +154,14 @@ public class FIFAHostInfoFrame extends GameHostItem {
 			thisCharacterUpdateRemove();
 			repaint();
 
+		} else if (targetItem.getText().equals(super.getGameMapSave().getText())) {
+
+			rgc.setGameMapInfo(updateMap1Info.getText());
+			gchs.updateMap(rgc, firstMapInfos);
+
+			rgc.setGameMapInfo(updateMap2Info.getText());
+			gchs.updateMap(rgc, secondMapInfos);
+
 		} else if (targetItem.getText().equals(super.getGameCharacterUpdate().getText())) {
 
 			superRemove();
@@ -108,8 +174,21 @@ public class FIFAHostInfoFrame extends GameHostItem {
 
 			thisCharacterSelectRemove();
 			repaint();
-		}
+		} else if (targetItem.getText().equals(super.getGameCharacterSave().getText())) {
 
+			rgc.setGameCharacterInfo(updateCharacter1nfo.getText());
+			gchs.updateCharacter(rgc, firstCharacterInfos);
+
+			rgc.setGameCharacterInfo(updateCharacter2nfo.getText());
+			gchs.updateCharacter(rgc, secondCharacterInfos);
+
+			rgc.setGameCharacterInfo(updateCharacter3nfo.getText());
+			gchs.updateCharacter(rgc, thirdCharacterInfos);
+
+			rgc.setGameCharacterInfo(updateCharacter4nfo.getText());
+			gchs.updateCharacter(rgc, fourthCharacterInfos);
+
+		}
 	}
 
 	private void superRemove() {
@@ -196,22 +275,24 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		map1Name.setSize(150, 20);
 		map1Name.setLocation(70, 285);
 		map1Name.setForeground(Color.white);
+		map1Name.setText(firstMapInfos.getGameMapName());
 		add(map1Name);
 
 		map1Info.setSize(360, 25);
 		map1Info.setLocation(70, 310);
-		map1Info.setForeground(Color.white);
+		map1Info.setText(firstMapInfos.getGameMapInfo());
 		map1Info.setLineWrap(true);
 		add(map1Info);
 
 		map2Name.setSize(150, 20);
 		map2Name.setLocation(70, 565);
 		map2Name.setForeground(Color.white);
+		map2Name.setText(secondMapInfos.getGameMapName());
 		add(map2Name);
 
 		map2Info.setSize(360, 25);
 		map2Info.setLocation(70, 590);
-		map2Info.setForeground(Color.white);
+		map2Info.setText(secondMapInfos.getGameMapInfo());
 		map2Info.setLineWrap(true);
 		add(map2Info);
 
@@ -222,19 +303,23 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		updateMap1Name.setSize(150, 20);
 		updateMap1Name.setLocation(70, 285);
 		updateMap1Name.setForeground(Color.white);
+		updateMap1Name.setText(firstMapInfos.getGameMapName());
 		add(updateMap1Name);
 
 		updateMap1Info.setSize(360, 25);
 		updateMap1Info.setLocation(70, 310);
+		updateMap1Info.setText(firstMapInfos.getGameMapInfo());
 		add(updateMap1Info);
 
 		updateMap2Name.setSize(150, 20);
 		updateMap2Name.setLocation(70, 565);
 		updateMap2Name.setForeground(Color.white);
+		updateMap2Name.setText(secondMapInfos.getGameMapName());
 		add(updateMap2Name);
 
 		updateMap2Info.setSize(360, 25);
 		updateMap2Info.setLocation(70, 590);
+		updateMap2Info.setText(secondMapInfos.getGameMapInfo());
 		add(updateMap2Info);
 
 	}
@@ -337,36 +422,44 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		character1Name.setSize(100, 20);
 		character1Name.setLocation(150, 80);
 		character1Name.setForeground(Color.WHITE);
+		character1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(character1Name);
 		character1Info.setSize(300, 80);
 		character1Info.setLocation(150, 110);
+		character1Info.setText(firstCharacterInfos.getGameCharacterInfo());
 		character1Info.setLineWrap(true);
 		add(character1Info);
 
 		character2Name.setSize(100, 20);
 		character2Name.setLocation(270, 210);
 		character2Name.setForeground(Color.WHITE);
+		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
 		character2Info.setSize(300, 80);
 		character2Info.setLocation(70, 240);
+		character2Info.setText(secondCharacterInfos.getGameCharacterInfo());
 		character2Info.setLineWrap(true);
 		add(character2Info);
 
 		character3Name.setSize(100, 20);
 		character3Name.setLocation(150, 340);
 		character3Name.setForeground(Color.WHITE);
+		character3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(character3Name);
 		character3Info.setSize(300, 80);
 		character3Info.setLocation(150, 370);
+		character3Info.setText(thirdCharacterInfos.getGameCharacterInfo());
 		character3Info.setLineWrap(true);
 		add(character3Info);
 
 		character4Name.setSize(100, 20);
 		character4Name.setLocation(270, 470);
 		character4Name.setForeground(Color.WHITE);
+		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);
 		character4Info.setSize(300, 80);
 		character4Info.setLocation(70, 500);
+		character4Info.setText(fourthCharacterInfos.getGameCharacterInfo());
 		character4Info.setLineWrap(true);
 		add(character4Info);
 
@@ -377,33 +470,41 @@ public class FIFAHostInfoFrame extends GameHostItem {
 		updateCharacter1Name.setSize(100, 20);
 		updateCharacter1Name.setLocation(150, 80);
 		updateCharacter1Name.setForeground(Color.white);
+		updateCharacter1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(updateCharacter1Name);
 		updateCharacter1nfo.setSize(300, 80);
 		updateCharacter1nfo.setLocation(150, 110);
+		updateCharacter1nfo.setText(firstCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter1nfo);
 
 		updateCharacter2Name.setSize(100, 20);
 		updateCharacter2Name.setLocation(270, 210);
 		updateCharacter2Name.setForeground(Color.white);
+		updateCharacter2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(updateCharacter2Name);
 		updateCharacter2nfo.setSize(300, 80);
 		updateCharacter2nfo.setLocation(70, 240);
+		updateCharacter2nfo.setText(secondCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter2nfo);
 
 		updateCharacter3Name.setSize(100, 20);
 		updateCharacter3Name.setLocation(150, 340);
 		updateCharacter3Name.setForeground(Color.white);
+		updateCharacter3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(updateCharacter3Name);
 		updateCharacter3nfo.setSize(300, 80);
 		updateCharacter3nfo.setLocation(150, 370);
+		updateCharacter3nfo.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter3nfo);
 
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(270, 470);
 		updateCharacter4Name.setForeground(Color.white);
+		updateCharacter3nfo.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter4Name);
 		updateCharacter4nfo.setSize(300, 80);
 		updateCharacter4nfo.setLocation(70, 500);
+		updateCharacter4nfo.setText(fourthCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter4nfo);
 
 	}

@@ -530,7 +530,7 @@ public class LOLHostInfoFrame extends GameHostItem {
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(315, 530);
 		updateCharacter4Name.setForeground(Color.white);
-		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
+		updateCharacter3nfo.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(updateCharacter4Name);
 		updateCharacter4nfo.setSize(150, 50);
 		updateCharacter4nfo.setLocation(290, 560);
