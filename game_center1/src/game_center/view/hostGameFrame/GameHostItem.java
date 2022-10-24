@@ -31,7 +31,7 @@ public class GameHostItem extends GameHostInfoFrame {
 	protected JLabel map3;
 	protected JLabel map3Detail;
 	protected JLabel map3Name;
-	protected JTextArea map3pInfo;
+	protected JTextArea map3Info;
 
 	protected JLabel updateMap1Name;
 	protected JTextArea updateMap1Info;
@@ -63,15 +63,15 @@ public class GameHostItem extends GameHostInfoFrame {
 	protected JTextArea character4Info;
 
 	protected JLabel updateCharacter1Name;
-	protected JTextArea updateCharacter1nfo;
+	protected JTextArea updateCharacter1Info;
 
 	protected JLabel updateCharacter2Name;
-	protected JTextArea updateCharacter2nfo;
+	protected JTextArea updateCharacter2Info;
 
 	protected JLabel updateCharacter3Name;
-	protected JTextArea updateCharacter3nfo;
+	protected JTextArea updateCharacter3Info;
 
 	protected JLabel updateCharacter4Name;
-	protected JTextArea updateCharacter4nfo;
+	protected JTextArea updateCharacter4Info;
 
 }

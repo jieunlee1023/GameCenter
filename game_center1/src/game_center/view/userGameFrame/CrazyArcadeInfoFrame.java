@@ -9,7 +9,6 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JMenuItem;
 import javax.swing.JTextArea;
-import javax.swing.JTextField;
 
 import game_center.dto.CharacterInfo;
 import game_center.dto.GameInfo;
@@ -41,6 +40,7 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
 		initData();
+		
 		mapInfo();
 		characterInfo();
 	}
@@ -90,24 +90,20 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		if (targetItem.getText().equals(super.getGameSelected().getText())) {
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
 		} else if (targetItem.getText().equals(super.getGameMapSelected().getText())) {
 
 			superRemove();
-			thisMapUpdateRemove();
 			gameMapImageComponents();
 			gameMapSelectComponents();
 
 			thisCharacterImgRemove();
 			thisCharacterSelectRemove();
-			thisCharacterUpdateRemove();
 
 			repaint();
 
@@ -116,12 +112,10 @@ public class CrazyArcadeInfoFrame extends GameItem {
 			superRemove();
 			thisMapImgRemove();
 			thisMapSelectRemove();
-			thisMapUpdateRemove();
 
 			gameCharacterImageComponents();
 			gameCharacterSelectComponents();
 
-			thisCharacterUpdateRemove();
 			repaint();
 
 		}
@@ -138,10 +132,8 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(super.getGameImage());
 		remove(super.getGameName());
 		remove(super.getAgeLimit());
+		remove(super.getAgeLimitInfo());
 		remove(super.getGameInformation());
-		remove(super.getGameNameUpdate());
-		remove(super.getAgeLimitUpdate());
-		remove(super.getGameInfomationUpdate());
 	}
 
 	// map
@@ -163,14 +155,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		map3Name = new JLabel("333맵 이름");
 		map3Info = new JTextArea("333맵정보");
 
-		updateMap1Name = new JLabel();
-		updateMap1Info = new JTextArea();
-
-		updateMap2Name = new JLabel();
-		updateMap2Info = new JTextArea();
-
-		updateMap3Name = new JLabel();
-		updateMap3Info = new JTextArea();
 	}
 
 	private void thisMapImgRemove() {
@@ -192,16 +176,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(map2Info);
 		remove(map3Name);
 		remove(map3Info);
-	}
-
-	private void thisMapUpdateRemove() {
-
-		remove(updateMap1Name);
-		remove(updateMap1Info);
-		remove(updateMap2Name);
-		remove(updateMap2Info);
-		remove(updateMap3Name);
-		remove(updateMap3Info);
 	}
 
 	private void gameMapImageComponents() {
@@ -298,18 +272,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		character4 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "ca4.png"));
 		character4Name = new JLabel("캐릭터 이름");
 		character4Info = new JTextArea("캐릭터 소개");
-
-		updateCharacter1Name = new JLabel();
-		updateCharacter1nfo = new JTextArea();
-
-		updateCharacter2Name = new JLabel();
-		updateCharacter2nfo = new JTextArea();
-
-		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextArea();
-
-		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {
@@ -331,17 +293,6 @@ public class CrazyArcadeInfoFrame extends GameItem {
 		remove(character3Info);
 		remove(character4Name);
 		remove(character4Info);
-	}
-
-	private void thisCharacterUpdateRemove() {
-		remove(updateCharacter1Name);
-		remove(updateCharacter1nfo);
-		remove(updateCharacter2Name);
-		remove(updateCharacter2nfo);
-		remove(updateCharacter3Name);
-		remove(updateCharacter3nfo);
-		remove(updateCharacter4Name);
-		remove(updateCharacter4nfo);
 	}
 
 	private void gameCharacterImageComponents() {

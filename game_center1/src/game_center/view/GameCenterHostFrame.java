@@ -5,7 +5,6 @@ import java.awt.event.ActionListener;
 import java.util.List;
 
 import javax.swing.JButton;
-import javax.swing.JOptionPane;
 
 import game_center.dto.GameInfo;
 import game_center.interfaces.IGameCenterHostService;
@@ -64,7 +63,7 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			new FIFAHostInfoFrame(getSecondGameInfos());
 		} else if (targetButton.hashCode() == (getGameButton3().hashCode())) {
 			System.out.println("게임 3");
-			new CrazyArcadeHostInfoFrame(getSecondGameInfos());
+			new CrazyArcadeHostInfoFrame(getThirdGameInfos());
 		} else if (targetButton.hashCode() == getSearchButton().hashCode()) {
 			if (getSearch().getText().equals(getFirstGameInfos().getGameName())) {
 				new LOLHostInfoFrame(getFirstGameInfos());
@@ -73,7 +72,6 @@ public class GameCenterHostFrame extends GameCenterFrame implements ActionListen
 			} else if (getSearch().getText().equals(getThirdGameInfos().getGameName())) {
 				new CrazyArcadeHostInfoFrame(getThirdGameInfos());
 			} else {
-				JOptionPane.showMessageDialog(this, "일치하는 정보가 없습니다.");
 			}
 		} else if (targetButton.getText().equals(userSelect.getText())) {
 			System.out.println("유저 정보 조회");

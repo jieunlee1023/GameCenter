@@ -11,6 +11,7 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 
 import game_center.dto.GameInfo;
@@ -121,7 +122,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 		logo.setSize(80, 80);
 		logo.setLocation(210, 30);
 		add(logo);
-
+		
 		infomation.setSize(400, 20);
 		infomation.setLocation(90, 420);
 		infomation.setForeground(Color.white);
@@ -201,13 +202,16 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 
 		} else if (targetItem.getText().equals(gameSave.getText())) {
 
-			rgc.setGameName(gameNameUpdate.getText());
 			rgc.setAgeLimit(ageLimitUpdate.getText());
 			rgc.setGameInfo(gameInfomationUpdate.getText());
-
 			centerHostService.updateGame(rgc, gameInfoClass);
+			System.err.println(ageLimitUpdate.getText());
+			System.err.println(gameInfomationUpdate.getText());
+			System.out.println(gameInfoClass);
+
 		} else if (targetItem.getText().equals(gameDelete.getText())) {
 			System.out.println("게임 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(exit.getText())) {
 			System.out.println("나가기");
 			this.setVisible(false);
@@ -222,6 +226,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			System.out.println("맵 저장 ");
 		} else if (targetItem.getText().equals(gameMapDelete.getText())) {
 			System.out.println("맵 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		} else if (targetItem.getText().equals(gameCharacterSelected.getText())) {
 
 			System.out.println("캐릭터 조회 ");
@@ -231,6 +236,7 @@ public class GameHostInfoFrame extends JFrame implements ActionListener {
 			System.out.println("캐릭터 저장");
 		} else if (targetItem.getText().equals(gameCharacterDelete.getText())) {
 			System.out.println("캐릭터 삭제 ");
+			JOptionPane.showMessageDialog(this, "현재는 삭제 기능을 사용 할 수 없습니다.");
 		}
 	}
 

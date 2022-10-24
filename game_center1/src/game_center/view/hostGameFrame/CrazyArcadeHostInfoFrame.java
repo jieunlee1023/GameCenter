@@ -41,9 +41,9 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		rgc = super.rgc;
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
-		initData();
 		mapInfo();
 		characterInfo();
+		initData();
 	}
 
 	private void characterInfo() {
@@ -62,13 +62,14 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 				System.out.println(characterInfo);
 			}
 		}
-
 	}
 
 	private void mapInfo() {
 		for (MapInfo mapInfoClass : mapInfoClass) {
 			if (mapInfoClass.getGameMapName().equals("패트릿")) {
 				firstMapInfos = mapInfoClass;
+				System.out.println(firstMapInfos);
+				System.out.println(mapInfoClass);
 			} else if (mapInfoClass.getGameMapName().equals("캠프")) {
 				secondMapInfos = mapInfoClass;
 			} else if (mapInfoClass.getGameMapName().equals("팩토리")) {
@@ -179,22 +180,23 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 			repaint();
 		} else if (targetItem.getText().equals(super.getGameCharacterSave().getText())) {
 
-			rgc.setGameCharacterInfo(updateCharacter1nfo.getText());
+			rgc.setGameCharacterInfo(updateCharacter1Info.getText());
 			gchs.updateCharacter(rgc, firstCharacterInfos);
+			System.out.println("1 : " + updateCharacter1Info.getText());
 			System.out.println("1 : " + rgc.getGameCharacterInfo());
 			System.out.println(firstCharacterInfos.getGameCharacterName());
 
-			rgc.setGameCharacterInfo(updateCharacter2nfo.getText());
+			rgc.setGameCharacterInfo(updateCharacter2Info.getText());
 			gchs.updateCharacter(rgc, secondCharacterInfos);
-			System.out.println("2 : " + rgc.getGameCharacterInfo());
+			System.out.println("2 : " + updateCharacter2Info.getText());
 			System.out.println(secondCharacterInfos.getGameCharacterName());
 
-			rgc.setGameCharacterInfo(updateCharacter3nfo.getText());
+			rgc.setGameCharacterInfo(updateCharacter3Info.getText());
 			gchs.updateCharacter(rgc, thirdCharacterInfos);
 			System.out.println(" 3 : " + rgc.getGameCharacterInfo());
 			System.out.println(thirdCharacterInfos.getGameCharacterName());
 
-			rgc.setGameCharacterInfo(updateCharacter4nfo.getText());
+			rgc.setGameCharacterInfo(updateCharacter4Info.getText());
 			gchs.updateCharacter(rgc, fourthCharacterInfos);
 			System.out.println(" 4 : " + rgc.getGameCharacterInfo());
 			System.out.println(fourthCharacterInfos.getGameCharacterName());
@@ -236,7 +238,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		map3 = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "m3.png"));
 		map3Detail = new JLabel(new ImageIcon(Define.CRAZY_IMAGE_PATH + "map3.png"));
 		map3Name = new JLabel("333맵 이름");
-		map3pInfo = new JTextArea("333맵정보");
+		map3Info = new JTextArea("333맵정보");
 
 		updateMap1Name = new JLabel();
 		updateMap1Info = new JTextArea();
@@ -266,7 +268,7 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		remove(map2Name);
 		remove(map2Info);
 		remove(map3Name);
-		remove(map3pInfo);
+		remove(map3Info);
 	}
 
 	private void thisMapUpdateRemove() {
@@ -345,11 +347,11 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		map3Name.setText(thirdMapInfos.getGameMapName());
 		add(map3Name);
 
-		map3pInfo.setSize(100, 230);
-		map3pInfo.setLocation(350, 230);
-		map3pInfo.setText(thirdMapInfos.getGameMapInfo());
-		map3pInfo.setLineWrap(true);
-		add(map3pInfo);
+		map3Info.setSize(100, 230);
+		map3Info.setLocation(350, 230);
+		map3Info.setText(thirdMapInfos.getGameMapInfo());
+		map3Info.setLineWrap(true);
+		add(map3Info);
 
 	}
 
@@ -414,16 +416,16 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		character4Info = new JTextArea("캐릭터 소개");
 
 		updateCharacter1Name = new JLabel();
-		updateCharacter1nfo = new JTextArea();
+		updateCharacter1Info = new JTextArea();
 
 		updateCharacter2Name = new JLabel();
-		updateCharacter2nfo = new JTextArea();
+		updateCharacter2Info = new JTextArea();
 
 		updateCharacter3Name = new JLabel();
-		updateCharacter3nfo = new JTextArea();
+		updateCharacter3Info = new JTextArea();
 
 		updateCharacter4Name = new JLabel();
-		updateCharacter4nfo = new JTextArea();
+		updateCharacter4Info = new JTextArea();
 	}
 
 	private void thisCharacterImgRemove() {
@@ -449,13 +451,13 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 
 	private void thisCharacterUpdateRemove() {
 		remove(updateCharacter1Name);
-		remove(updateCharacter1nfo);
+		remove(updateCharacter1Info);
 		remove(updateCharacter2Name);
-		remove(updateCharacter2nfo);
+		remove(updateCharacter2Info);
 		remove(updateCharacter3Name);
-		remove(updateCharacter3nfo);
+		remove(updateCharacter3Info);
 		remove(updateCharacter4Name);
-		remove(updateCharacter4nfo);
+		remove(updateCharacter4Info);
 	}
 
 	private void gameCharacterImageComponents() {
@@ -538,44 +540,44 @@ public class CrazyArcadeHostInfoFrame extends GameHostItem {
 		updateCharacter1Name.setForeground(Color.white);
 		updateCharacter1Name.setText(firstCharacterInfos.getGameCharacterName());
 		add(updateCharacter1Name);
-		updateCharacter1nfo.setSize(150, 50);
-		updateCharacter1nfo.setLocation(60, 300);
-		updateCharacter1nfo.setLineWrap(true);
-		updateCharacter1nfo.setText(firstCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter1nfo);
+		updateCharacter1Info.setSize(150, 50);
+		updateCharacter1Info.setLocation(60, 300);
+		updateCharacter1Info.setLineWrap(true);
+		updateCharacter1Info.setText(firstCharacterInfos.getGameCharacterInfo());
+		add(updateCharacter1Info);
 
 		updateCharacter2Name.setSize(100, 20);
 		updateCharacter2Name.setLocation(355, 270);
 		updateCharacter2Name.setForeground(Color.white);
 		updateCharacter2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(updateCharacter2Name);
-		updateCharacter2nfo.setSize(150, 50);
-		updateCharacter2nfo.setLocation(290, 300);
-		updateCharacter2nfo.setLineWrap(true);
-		updateCharacter2nfo.setText(secondCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter2nfo);
+		updateCharacter2Info.setSize(150, 50);
+		updateCharacter2Info.setLocation(290, 300);
+		updateCharacter2Info.setLineWrap(true);
+		updateCharacter2Info.setText(secondCharacterInfos.getGameCharacterInfo());
+		add(updateCharacter2Info);
 
 		updateCharacter3Name.setSize(100, 20);
 		updateCharacter3Name.setLocation(120, 530);
 		updateCharacter3Name.setForeground(Color.white);
 		updateCharacter3Name.setText(thirdCharacterInfos.getGameCharacterName());
 		add(updateCharacter3Name);
-		updateCharacter3nfo.setSize(150, 50);
-		updateCharacter3nfo.setLocation(60, 560);
-		updateCharacter3nfo.setLineWrap(true);
-		updateCharacter3nfo.setText(thirdCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter3nfo);
+		updateCharacter3Info.setSize(150, 50);
+		updateCharacter3Info.setLocation(60, 560);
+		updateCharacter3Info.setLineWrap(true);
+		updateCharacter3Info.setText(thirdCharacterInfos.getGameCharacterInfo());
+		add(updateCharacter3Info);
 
 		updateCharacter4Name.setSize(100, 20);
 		updateCharacter4Name.setLocation(355, 530);
 		updateCharacter4Name.setForeground(Color.white);
 		updateCharacter4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(updateCharacter4Name);
-		updateCharacter4nfo.setSize(150, 50);
-		updateCharacter4nfo.setLocation(290, 560);
-		updateCharacter4nfo.setLineWrap(true);
-		updateCharacter4nfo.setText(fourthCharacterInfos.getGameCharacterInfo());
-		add(updateCharacter4nfo);
+		updateCharacter4Info.setSize(150, 50);
+		updateCharacter4Info.setLocation(290, 560);
+		updateCharacter4Info.setLineWrap(true);
+		updateCharacter4Info.setText(fourthCharacterInfos.getGameCharacterInfo());
+		add(updateCharacter4Info);
 
 	}
 }
