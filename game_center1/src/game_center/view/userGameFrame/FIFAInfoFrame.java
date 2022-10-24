@@ -18,20 +18,19 @@ import game_center.service.GameCenterHostService;
 import game_center.utils.Define;
 
 public class FIFAInfoFrame extends GameItem {
-	
+
 	private GameCenterHostService gchs;
 	private RequestGameCenter rgc;
-	
-	private List<MapInfo> mapInfoClass;
-	private MapInfo firstMapInfos;
-	private MapInfo secondMapInfos;
-	private MapInfo thirdMapInfos;
 
 	private List<CharacterInfo> characterInfosClass;
 	private CharacterInfo firstCharacterInfos;
 	private CharacterInfo secondCharacterInfos;
 	private CharacterInfo thirdCharacterInfos;
 	private CharacterInfo fourthCharacterInfos;
+
+	private List<MapInfo> mapInfoClass;
+	private MapInfo firstMapInfos;
+	private MapInfo secondMapInfos;
 
 	public FIFAInfoFrame(GameInfo gameInfo) {
 		super(gameInfo);
@@ -40,12 +39,11 @@ public class FIFAInfoFrame extends GameItem {
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
 		initData();
-		setInitLayout();
 
 		mapInfo();
 		characterInfo();
 	}
-	
+
 	private void characterInfo() {
 		for (CharacterInfo characterInfo : characterInfosClass) {
 			if (characterInfo.getGameCharacterName().equals("호나우두")) {
@@ -66,19 +64,15 @@ public class FIFAInfoFrame extends GameItem {
 				firstMapInfos = mapInfoClass;
 			} else if (mapInfoClass.getGameMapName().equals("올드 트래포드")) {
 				secondMapInfos = mapInfoClass;
-			} 
+			}
 		}
-	}
-
-	private void setInitLayout() {
-		super.setGameImage(new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "main.png")));
 	}
 
 	private void initData() {
 		setTitle("피파 정보창");
 
 		mainImg = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "main.png"));
-		super.setGameImage(mainImg);
+		setGameImage(mainImg);
 		mapItem();
 		characterItem();
 	}
@@ -145,6 +139,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		map1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map1.png"));
 		map1Name = new JLabel();
+		map1Name = new JLabel("1111정보");
 		map1Info = new JTextArea("111맵 정보");
 
 		map2 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "map2.png"));
@@ -191,6 +186,7 @@ public class FIFAInfoFrame extends GameItem {
 		map1Name.setSize(150, 20);
 		map1Name.setLocation(70, 285);
 		map1Name.setForeground(Color.white);
+		map1Name.setText(firstMapInfos.getGameMapName());
 		add(map1Name);
 
 		map1Info.setSize(360, 25);
@@ -202,11 +198,13 @@ public class FIFAInfoFrame extends GameItem {
 		map2Name.setSize(150, 20);
 		map2Name.setLocation(70, 565);
 		map2Name.setForeground(Color.white);
+		map2Name.setText(secondMapInfos.getGameMapName());
 		add(map2Name);
 
 		map2Info.setSize(360, 25);
 		map2Info.setLocation(70, 590);
 		map2Info.setLineWrap(true);
+		map2Info.setText(secondMapInfos.getGameMapInfo());
 		add(map2Info);
 
 	}
@@ -217,7 +215,7 @@ public class FIFAInfoFrame extends GameItem {
 
 		caracterInfo = new JLabel("★ Character Info ★");
 
-		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));		
+		character1 = new JLabel(new ImageIcon(Define.FIFA_IMAGE_PATH + "ca1.png"));
 		character1Name = new JLabel("캐릭터 이름");
 		character1Info = new JTextArea("캐릭터 소개");
 
@@ -295,8 +293,8 @@ public class FIFAInfoFrame extends GameItem {
 		character1Info.setText(firstCharacterInfos.getGameCharacterInfo());
 		add(character1Info);
 
-		character2Name.setSize(100, 20);
-		character2Name.setLocation(270, 210);
+		character2Name.setSize(70, 20);
+		character2Name.setLocation(305, 210);
 		character2Name.setForeground(Color.WHITE);
 		character2Name.setText(secondCharacterInfos.getGameCharacterName());
 		add(character2Name);
@@ -317,8 +315,8 @@ public class FIFAInfoFrame extends GameItem {
 		character3Info.setText(thirdCharacterInfos.getGameCharacterInfo());
 		add(character3Info);
 
-		character4Name.setSize(100, 20);
-		character4Name.setLocation(270, 470);
+		character4Name.setSize(50, 20);
+		character4Name.setLocation(325, 470);
 		character4Name.setForeground(Color.WHITE);
 		character4Name.setText(fourthCharacterInfos.getGameCharacterName());
 		add(character4Name);

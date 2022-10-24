@@ -61,14 +61,18 @@ CREATE TABLE gameCharacter(
 INSERT INTO gameCharacter VALUES ('롤', '야스오', '야스오는 어린 시절 마을 사람들이 자신에 대해 하는 말을...');
 INSERT INTO gameCharacter VALUES ('롤', '제드', '조화로운 아이오니아의 이면에는 버려진 자들의 이야기가...');
 
-INSERT INTO gameCharacter VALUES ('피파온라인4', '박주영', '클럽에서는 2005 시즌 FC 서울에서 18골을 득점하며 신인왕을 수상...');
+desc gamecharacter;
+
+INSERT INTO gameCharacter VALUES ('피파온라인4', '호나우두', '클럽에서는 2005 시즌 FC 서울에서 18골을 득점하며 신인왕을 수상...');
+INSERT INTO gameCharacter VALUES ('피파온라인4', '리오넬 메시', '프리미어 리그와 UEFA 챔피언스 리그 아시아 선수 역대 최다 득점자이자 최초로 발롱도르...');
+INSERT INTO gameCharacter VALUES ('피파온라인4', '카림 벤제마', '프리미어 리그와 UEFA 챔피언스 리그 아시아 선수 역대 최다 득점자이자 최초로 발롱도르...');
 INSERT INTO gameCharacter VALUES ('피파온라인4', '손흥민', '프리미어 리그와 UEFA 챔피언스 리그 아시아 선수 역대 최다 득점자이자 최초로 발롱도르...');
 
 INSERT INTO gameCharacter VALUES ('크레이지아케이드', '우니', '주연 8인방 중 가장 어리고, 공갈젖꼭지를...');
 INSERT INTO gameCharacter VALUES ('크레이지아케이드', '배찌', '성장형 캐릭터로 추정된다. 카트라이더 공식 소개를 보면 실력에 발전 가능이...');
 
 CREATE TABLE gameMap(
-	gameName VARCHAR(13) NOT NULL,
+	gameName VARCHAR(16) NOT NULL,
     gameMapName VARCHAR(10) NOT NULL,
     gameMapInfo LONGTEXT NOT NULL,
     PRIMARY KEY (gameMapName),
@@ -78,8 +82,9 @@ CREATE TABLE gameMap(
 INSERT INTO gameMap VALUES ('롤', '소환사의 협곡', '특별한 이벤트 형식이 아닌 이상 대부분의 공식대회에서 지원하는 사실상...');
 INSERT INTO gameMap VALUES ('롤', '칼바람 나락', '중립 지역이 없고 공격로가 단 하나다. 그래서 다른 맵들과 다르게...');
 
-INSERT INTO gameMap VALUES ('피파온라인4', '토트넘훗스퍼스타디움', '100년이 넘은 홈구장 화이트 하트 레인의 노후화 때문에 토트넘은 새로운...');
-INSERT INTO gameMap VALUES ('피파온라인4', '서울월드컵경기장', '서울특별시 마포구 성산동에 위치한 축구장. 2002 FIFA 월드컵 한국·일본을 위해 건설된 아시아에서 2번째...');
+desc gameMap;
+INSERT INTO gameMap VALUES ('피파온라인4', '에스타티오 산티아고 베르나베우', '100년이 넘은 홈구장 화이트 하트 레인의 노후화 때문에 토트넘은 새로운...');
+INSERT INTO gameMap VALUES ('피파온라인4', '올드 트래포드', '서울특별시 마포구 성산동에 위치한 축구장. gamemap2002 FIFA 월드컵 한국·일본을 위해 건설된 아시아에서 2번째...');
 
 INSERT INTO gameMap VALUES ('크레이지아케이드', '패트릿', '짐상자를 가득 실은 해적선. 해적선답게 각종 아이템이 드롭...');
 INSERT INTO gameMap VALUES ('크레이지아케이드', '캠프', '이름은 캠프지만 군부대 시설을 모티브로 한 맵으로 군대 무늬 장애물이 널려있으며...');
@@ -92,3 +97,13 @@ JOIN gameMap AS D
 ON A.gameName = B.gameName AND A.gameName = C.gameName AND A.gameName = D.gameName;
 -- drop database game_center;
 
+select * from gameMap;
+drop table gameMap;
+insert into gamecharacter values ('롤', '쓰레쉬', '그림자 군도의 악령 쓰레쉬는 남에게 고통을 가하는 것을 즐기는 데다 교활하기까지 하다. ');
+insert into gamecharacter values ('롤', '야스오', '야스오 정보');
+insert into gamecharacter values ('롤', '럭스', '럭스 정보');
+insert into gamecharacter values ('롤', '아펠리오스', '아펠리오스 정보');
+
+insert into gamecharacter values ('크레이지아케이드', '패트릿', '패트릿의 정보');
+insert into gamecharacter values ('크레이지아케이드', '팩토리', '팩토리의 정보');
+insert into gamecharacter values ('크레이지아케이드', '캠프', '캠프의 정보');

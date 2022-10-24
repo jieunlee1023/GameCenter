@@ -42,7 +42,6 @@ public class LOLInfoFrame extends GameItem {
 		mapInfoClass = gchs.MapInfo();
 		characterInfosClass = gchs.CharacterInfo();
 		initData();
-		setInitLayout();
 
 		mapInfo();
 		characterInfo();
@@ -72,10 +71,6 @@ public class LOLInfoFrame extends GameItem {
 				thirdMapInfos = mapInfoClass;
 			}
 		}
-	}
-
-	private void setInitLayout() {
-		super.setGameImage(new JLabel(new ImageIcon(Define.LOL_IMAGE_PATH + "main.png")));
 	}
 
 	private void initData() {
