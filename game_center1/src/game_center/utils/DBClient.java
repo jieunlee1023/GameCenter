@@ -6,7 +6,7 @@ import java.sql.SQLException;
 
 public class DBClient {
 
-	private static final String DB_HOST = "192.168.7.149";
+	private static final String DB_HOST = "localhost";
 	private static final int DB_PORT = 3306;
 	private static final String DB_DATABASE_NAME = "game_center";
 	private static final String DB_CHARSET = "UTF-8";
